@@ -31,7 +31,7 @@ const FlushLocalFonts = () => {
 	};
 
 	return (
-		<section className={`astra-dep-field-${enableLoadFontsLocally} block border-b border-solid border-slate-200 px-8 py-8 justify-between`}>
+		<section className={`login-me-now-dep-field-${enableLoadFontsLocally} block border-b border-solid border-slate-200 px-8 py-8 justify-between`}>
 			<div className="w-full flex flex-col sm:flex-row justify-between">
 				<div>
 					<h3 className="p-0 text-xl leading-6 font-semibold text-slate-800">
@@ -44,7 +44,7 @@ const FlushLocalFonts = () => {
 				<div className="mt-2 sm:mt-0">
 					<button
 						type="button"
-						className="inline-flex px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-astra focus-visible:bg-astra-hover hover:bg-astra-hover focus:outline-none"
+						className="inline-flex px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none"
 						onClick={ regenerateLocalFontAssets }
 					>
 						{__("Flush Local Font Files", "login-me-now")}

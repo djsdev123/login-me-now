@@ -58,7 +58,7 @@ const Settings = () => {
 								key={item.name}
 								className={ classNames(
 									activeSettingsNavigationTab === item.slug
-										? 'border-astra text-astra focus:text-astra-hover active:text-astra hover:text-astra-hover stroke-astra fill-astra focus:stroke-astra focus:fill-astra hover:stroke-astra hover:fill-astra'
+										? 'border-login-me-now text-login-me-now focus:text-login-me-now-hover active:text-login-me-now hover:text-login-me-now-hover stroke-login-me-now fill-login-me-now focus:stroke-login-me-now focus:fill-login-me-now hover:stroke-login-me-now hover:fill-login-me-now'
 										: 'border-white text-slate-800 stroke-slate-800 fill-slate-800 focus:text-slate-900 focus:border-slate-200 focus:stroke-slate-900 focus:fill-slate-900 hover:text-slate-900 hover:border-slate-200 hover:stroke-slate-900 hover:fill-slate-900',
 									'border-l-4 group cursor-pointer py-3 pl-5 flex items-center text-base font-medium'
 								) }

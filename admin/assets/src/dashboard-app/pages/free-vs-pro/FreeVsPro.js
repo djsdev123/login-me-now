@@ -14,23 +14,23 @@ const FreeVsPro = () => {
 		}
 	};
 
-	const getAstraProTitle = () => {
+	const getLoginMeNowProTitle = () => {
 		return lmn_admin.pro_installed_status ? __('Activate Now') : __('Upgrade Now');
 	}
 
-	const redirectUpgradeAstraProPurchase = () => {
+	const redirectUpgradeLoginMeNowProPurchase = () => {
 		window.open(
 			lmn_admin.upgrade_url,
 			'_blank'
 		);
 	}
 
-	const onGetAstraPro = (e) => {
+	const onGetLoginMeNowPro = (e) => {
 		if (lmn_admin.pro_installed_status) {
 			const formData = new window.FormData();
 			formData.append('action', 'login_me_now_recommended_plugin_activate');
 			formData.append('security', lmn_admin.plugin_manager_nonce);
-			formData.append('init', 'astra-addon/astra-addon.php');
+			formData.append('init', 'login-me-now-addon/login-me-now-addon.php');
 			e.target.innerText = lmn_admin.plugin_activating_text;
 
 			apiFetch({
@@ -43,7 +43,7 @@ const FreeVsPro = () => {
 				}
 			});
 		} else {
-			redirectUpgradeAstraProPurchase();
+			redirectUpgradeLoginMeNowProPurchase();
 		}
 	};
 
@@ -55,8 +55,8 @@ const FreeVsPro = () => {
 					<h2 className="text-lg sm:text-2xl font-semibold capitalize">
 						{__('Login Me Now Free vs Pro', 'login-me-now')}
 					</h2>
-					<button onClick={onGetAstraPro} className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-astra focus-visible:bg-astra-hover hover:bg-astra-hover focus:outline-none">
-						{getAstraProTitle()}
+					<button onClick={onGetLoginMeNowPro} className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none">
+						{getLoginMeNowProTitle()}
 					</button>
 				</div>
 				{ /* Free VS Pro Data Table */}
@@ -107,8 +107,8 @@ const FreeVsPro = () => {
 										))}
 									</tbody>
 								</table>
-								<div className="flex items-center justify-center text-astra hover:text-astra-hover text-base font-medium text-center bg-white py-4 border-t border-t-slate-200">
-									<button onClick={redirectUpgradeAstraProPurchase} className="flex items-center justify-center">
+								<div className="flex items-center justify-center text-login-me-now hover:text-login-me-now-hover text-base font-medium text-center bg-white py-4 border-t border-t-slate-200">
+									<button onClick={redirectUpgradeLoginMeNowProPurchase} className="flex items-center justify-center">
 										<span className="mr-2">
 											{__(
 												"See all Login Me Now Pro features",
@@ -135,8 +135,8 @@ const FreeVsPro = () => {
 					<div className="max-w-2xl text-center text-base text-slate-600 mb-7">
 						{__("Get access to powerful features for painless WordPress designing, without the high costs. With all the time you will save, it’s a product that pays for itself!", "login-me-now")}
 					</div>
-					<button onClick={onGetAstraPro} className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-astra focus-visible:bg-astra-hover hover:bg-astra-hover focus:outline-none">
-						{getAstraProTitle()}
+					<button onClick={onGetLoginMeNowPro} className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none">
+						{getLoginMeNowProTitle()}
 					</button>
 				</section>
 			</div>

@@ -51,7 +51,7 @@ class API_Init extends WP_REST_Controller {
 	 *
 	 * @var string
 	 */
-	protected $namespace = 'astra/v1';
+	protected $namespace = 'login-me-now/v1';
 
 	/**
 	 * Route base.

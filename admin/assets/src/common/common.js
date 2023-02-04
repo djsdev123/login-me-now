@@ -2,7 +2,7 @@
 window.astWpMenuClassChange = function ( path ) {
 	const pageSlug = lmn_admin.home_slug;
 	let pageUrl = 'admin.php?page=' + pageSlug;
-	// http://localhost/astra/wp-admin/admin.php?page=astra&path=
+
 	if ( 'custom-layouts' === path ) {
 		pageUrl = 'admin.php?page=' + pageSlug + '&path=custom-layouts';
 	}

@@ -2,7 +2,7 @@ import apiFetch from '@wordpress/api-fetch';
 
 const setInitialState = (store) => {
 	apiFetch({
-		path: '/astra/v1/admin/settings/',
+		path: '/login-me-now/v1/admin/settings/',
 	}).then((data) => {
 		const initialState = {
 			settingsSavedNotification: '',

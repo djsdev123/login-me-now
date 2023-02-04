@@ -55,7 +55,7 @@ const ExtensionCard = (props) => {
 				!lmn_admin.pro_available || !condition
 					? classNames(!lmn_admin.pro_available ? 'group' : '', 'bg-slate-50')
 					: `bg-white ${getWrapperClass(moduleActivationStatus, slug)} `,
-				'box-border relative border rounded-md h-20 z-0 px-4 py-3 flex items-start gap-x-4 snap-start hover:shadow-md transition astra-icon-transition'
+				'box-border relative border rounded-md h-20 z-0 px-4 py-3 flex items-start gap-x-4 snap-start hover:shadow-md transition login-me-now-icon-transition'
 			)}
 		>
 
@@ -151,15 +151,15 @@ const ExtensionCard = (props) => {
 								});
 							}}
 							className={classNames(
-								moduleActivationStatus ? 'bg-astra' : 'bg-slate-200',
-								'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-astra focus:ring-offset-2'
+								moduleActivationStatus ? 'bg-login-me-now' : 'bg-slate-200',
+								'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-login-me-now focus:ring-offset-2'
 							)}
 						>
 							<span aria-hidden="true" className="pointer-events-none absolute h-full w-full rounded-md bg-white" />
 							<span
 								aria-hidden="true"
 								className={classNames(
-									moduleActivationStatus ? 'bg-astra' : 'bg-gray-200',
+									moduleActivationStatus ? 'bg-login-me-now' : 'bg-gray-200',
 									'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out'
 								)}
 							/>

@@ -49,12 +49,12 @@ const UpgradeNotices = () => {
 		} );
 	};
 
-	const onGetAstraPro = ( e ) => {
+	const onGetLoginMeNowPro = ( e ) => {
 		if( lmn_admin.pro_installed_status ) {
 			const formData = new window.FormData();
 			formData.append( 'action', 'login_me_now_recommended_plugin_activate' );
 			formData.append( 'security', lmn_admin.plugin_manager_nonce );
-			formData.append( 'init', 'astra-addon/astra-addon.php' );
+			formData.append( 'init', 'login-me-now-addon/login-me-now-addon.php' );
 			e.target.innerText = lmn_admin.plugin_activating_text;
 
 			apiFetch( {
@@ -78,7 +78,7 @@ const UpgradeNotices = () => {
 		);
 	};
 
-	const getAstraProTitle = () => {
+	const getLoginMeNowProTitle = () => {
 		return lmn_admin.pro_installed_status ? __( 'Activate Now', 'login-me-now' ) : __( 'Upgrade Now', 'login-me-now' );
 	}
 
@@ -90,10 +90,10 @@ const UpgradeNotices = () => {
 				</h3>
 				<button
 					type="button"
-					className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-astra transition focus:bg-astra-hover hover:bg-astra-hover focus:outline-none h-9"
-					onClick={onGetAstraPro}
+					className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-login-me-now transition focus:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none h-9"
+					onClick={onGetLoginMeNowPro}
 				>
-					{ getAstraProTitle() }
+					{ getLoginMeNowProTitle() }
 				</button>
 			</div>
 			<p className="mt-2 w-full md:w-9/12 text-sm text-slate-500 tablet:w-full">
@@ -103,7 +103,7 @@ const UpgradeNotices = () => {
 						"login-me-now"
 					)
 				}
-				<span onClick={updateUpgradeNoticesVisibility} className='cursor-pointer text-astra focus:text-astra-hover active:text-astra-hover hover:text-astra-hover' rel="noreferrer">
+				<span onClick={updateUpgradeNoticesVisibility} className='cursor-pointer text-login-me-now focus:text-login-me-now-hover active:text-login-me-now-hover hover:text-login-me-now-hover' rel="noreferrer">
 					{ 'updating' === upgradeNoticesState ? __( 'updating...', 'login-me-now' ) : __( 'here.', 'login-me-now' ) }
 				</span>
 			</p>

@@ -19,13 +19,13 @@
 	outline: none;
 }
 
-.toplevel_page_astra #wpcontent {
+.toplevel_page_login-me-now #wpcontent {
 	padding-left: 0;
 }
 
 #wpwrap {
 	background-color: #f8fafc; // Tailwind Slate-50.
-	.astra-admin {
+	.login-me-now-admin {
 		&__input-field {
 			color: #64748b; // Tailwind Slate-500.
 			background-color: #fff;
@@ -41,7 +41,7 @@
 				border-color: $slate-400;
 				box-shadow: none;
 
-				& + .astra-admin__input-field--end-display {
+				& + .login-me-now-admin__input-field--end-display {
 					border-color: $slate-400;
 					box-shadow: none;
 				}
@@ -62,7 +62,7 @@
 	}
 }
 
-.astra-dep-field-false {
+.login-me-now-dep-field-false {
 	pointer-events: none;
 	opacity: 0.4;
 }
@@ -71,12 +71,12 @@
 	font-family: Inter, sans-serif;
 }
 
-.astra-video-container {
+.login-me-now-video-container {
 	position: relative;
 	width: 100%;
 	padding-bottom: 56.25%;
 
-	.astra-video {
+	.login-me-now-video {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -87,7 +87,7 @@
 }
 
 // The Block SVGs when Disabled
-.astra-icon-transition {
+.login-me-now-icon-transition {
 	svg,
 	path {
 		transition-property: stroke;
@@ -97,7 +97,7 @@
 }
 
 // Changelog Styling.
-.astra-changelog-description {
+.login-me-now-changelog-description {
 	strong {
 		font-weight: 500;
 		font-size: 0.875rem;
@@ -151,13 +151,13 @@
 }
 
 // RTL version compat.
-[dir=rtl] .login-me-now-dashboard-app button.bg-astra[aria-checked=false] span {
+[dir=rtl] .login-me-now-dashboard-app button.bg-login-me-now[aria-checked=false] span {
     right: 0;
 }
 .translate-x-5.toggle-bubble {
 	--tw-translate-x: 1.02rem;
 }
-[dir=rtl] .login-me-now-dashboard-app button.bg-astra[aria-checked=true] .toggle-bubble {
+[dir=rtl] .login-me-now-dashboard-app button.bg-login-me-now[aria-checked=true] .toggle-bubble {
     transform: translateX(18px);
 }
 

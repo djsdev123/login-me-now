@@ -11,7 +11,7 @@ const Welcome = () => {
 	const query = new URLSearchParams(useLocation()?.search);
 
 	const allowAutoPlay =
-		"1" === query.get("astra-activation-redirect") ? 1 : 0;
+		"1" === query.get("login-me-now-activation-redirect") ? 1 : 0;
 
 	const onInstallExtension = () => {
 		window.open(lmn_admin.extension_url, "_blank");
@@ -29,7 +29,7 @@ const Welcome = () => {
 			const formData = new window.FormData();
 			formData.append('action', 'login_me_now_recommended_plugin_activate');
 			formData.append('security', lmn_admin.plugin_manager_nonce);
-			formData.append('init', 'astra-addon/astra-addon.php');
+			formData.append('init', 'login-me-now-addon/login-me-now-addon.php');
 			e.target.innerText = lmn_admin.plugin_activating_text;
 
 			apiFetch({
@@ -87,7 +87,7 @@ const Welcome = () => {
 													{__('PRO', 'login-me-now')}
 												</span>)
 												:
-												(<span className="ml-2 h-full inline-flex leading-[1rem] flex-shrink-0 py-[0rem] px-1.5 text-[0.625rem] text-astra bg-blue-50 border border-blue-50 rounded-[0.1875rem] font-medium -tablet:mt:10">
+												(<span className="ml-2 h-full inline-flex leading-[1rem] flex-shrink-0 py-[0rem] px-1.5 text-[0.625rem] text-login-me-now bg-blue-50 border border-blue-50 rounded-[0.1875rem] font-medium -tablet:mt:10">
 													{__('FREE', 'login-me-now')}
 												</span>)
 											}
@@ -103,7 +103,7 @@ const Welcome = () => {
 										<span className="relative z-0 inline-flex flex-col sm:flex-row justify-start w-full">
 											<button
 												type="button"
-												className="sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-astra focus-visible:bg-astra-hover hover:bg-astra-hover focus:outline-none mr-4 mb-2 sm:mb-0"
+												className="sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none mr-4 mb-2 sm:mb-0"
 												onClick={onInstallExtension}
 											>
 												{__(
@@ -118,10 +118,10 @@ const Welcome = () => {
 						</div>
 
 						<div className="grid grid-cols-1 gap-4 lg:col-span-2 h-full">
-							<div className="astra-video-container">
+							<div className="login-me-now-video-container">
 								{/* Added rel=0 query paramter at the end to disable YouTube recommendations */}
 								<iframe
-									className="astra-video rounded-md"
+									className="login-me-now-video rounded-md"
 									src={`https://www.youtube-nocookie.com/embed/uBNUpyCM8G8?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}&rel=0`}
 									allow="autoplay"
 									title="YouTube video player"
@@ -164,7 +164,7 @@ const Welcome = () => {
 									</span>
 									{!lmn_admin.pro_available && (
 										<a
-											className="lg:flex-shrink-0 text-sm font-medium text-astra focus:text-astra focus-visible:text-astra-hover active:text-astra-hover hover:text-astra-hover no-underline"
+											className="lg:flex-shrink-0 text-sm font-medium text-login-me-now focus:text-login-me-now focus-visible:text-login-me-now-hover active:text-login-me-now-hover hover:text-login-me-now-hover no-underline"
 											href={lmn_admin.upgrade_url}
 											target="_blank"
 											rel="noreferrer"
@@ -223,8 +223,8 @@ const Welcome = () => {
 											)}
 										</p>
 										<a
-											className="text-sm text-astra focus:text-astra focus-visible:text-astra-hover active:text-astra-hover hover:text-astra-hover no-underline"
-											href="https://wpastra.com/support/?utm_source=wp&utm_medium=dashboard"
+											className="text-sm text-login-me-now focus:text-login-me-now focus-visible:text-login-me-now-hover active:text-login-me-now-hover hover:text-login-me-now-hover no-underline"
+											href="https://wplogin-me-now.com/support/?utm_source=wp&utm_medium=dashboard"
 											target="_blank"
 											rel="noreferrer"
 										>
@@ -274,7 +274,7 @@ const Welcome = () => {
 											)}
 										</p>
 										<a
-											className="text-sm text-astra focus:text-astra focus-visible:text-astra-hover active:text-astra-hover hover:text-astra-hover no-underline"
+											className="text-sm text-login-me-now focus:text-login-me-now focus-visible:text-login-me-now-hover active:text-login-me-now-hover hover:text-login-me-now-hover no-underline"
 											href="https://wordpress.org/support/plugin/login-me-now/reviews/?rate=5#new-post"
 											target="_blank"
 											rel="noreferrer"

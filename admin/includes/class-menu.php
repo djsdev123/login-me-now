@@ -307,11 +307,11 @@ class Menu {
 				'typography'       => array(
 					'title'     => __( 'Email Magic Number', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/typography-module/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/typography-module/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -320,11 +320,11 @@ class Menu {
 				'opt_login'        => array(
 					'title'     => __( 'OTP Login', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/typography-module/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/typography-module/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -333,11 +333,11 @@ class Menu {
 				'spacing'          => array(
 					'title'     => __( 'Google Login', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/spacing-addon-overview/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/spacing-addon-overview/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/spacing-addon-overview/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/spacing-addon-overview/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -346,11 +346,11 @@ class Menu {
 				'blog-pro'         => array(
 					'title'     => __( 'Facebook Login', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/blog-pro-overview/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/blog-pro-overview/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/blog-pro-overview/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/blog-pro-overview/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -359,11 +359,11 @@ class Menu {
 				'header-sections'  => array(
 					'title'     => __( 'Github Login', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/header-sections-pro/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
+					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/header-sections-pro/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/header-sections-pro/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
+							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/header-sections-pro/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -372,11 +372,11 @@ class Menu {
 				'sticky-header'    => array(
 					'title'     => __( 'User Switching', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/sticky-header-pro/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/sticky-header-pro/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/sticky-header-pro/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/sticky-header-pro/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -385,11 +385,11 @@ class Menu {
 				'site-layouts'     => array(
 					'title'     => __( 'Login and Registration Popup', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/site-layout-overview/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/site-layout-overview/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/site-layout-overview/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/site-layout-overview/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),

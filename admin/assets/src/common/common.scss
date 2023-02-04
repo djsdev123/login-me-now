@@ -151,13 +151,13 @@
 }
 
 // RTL version compat.
-[dir=rtl] .login-me-now-dashboard-app button.bg-login-me-now[aria-checked=false] span {
+[dir=rtl] .login-me-now-dashboard-app button.bg-lmn[aria-checked=false] span {
     right: 0;
 }
 .translate-x-5.toggle-bubble {
 	--tw-translate-x: 1.02rem;
 }
-[dir=rtl] .login-me-now-dashboard-app button.bg-login-me-now[aria-checked=true] .toggle-bubble {
+[dir=rtl] .login-me-now-dashboard-app button.bg-lmn[aria-checked=true] .toggle-bubble {
     transform: translateX(18px);
 }
 

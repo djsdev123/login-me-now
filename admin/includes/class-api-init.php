@@ -100,7 +100,7 @@ class API_Init extends WP_REST_Controller {
 	 * @return mixed
 	 */
 	public static function login_me_now_get_knowledge_base_data() {
-		return json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://wpastra.com/wp-json/powerful-docs/v1/get-docs' ) ) );
+		return json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://halalbrains.com/wp-json/powerful-docs/v1/get-docs' ) ) );
 	}
 
 	/**
@@ -180,7 +180,7 @@ class API_Init extends WP_REST_Controller {
 	 */
 	public function get_permissions_check( $request ) {
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
-			return new WP_Error( 'login_me_now_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'astra' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'login_me_now_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'login-me-now' ), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;

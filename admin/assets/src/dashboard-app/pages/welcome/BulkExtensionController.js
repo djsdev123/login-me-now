@@ -94,14 +94,14 @@ const BulkExtensionController = () => {
 		<span className="z-0 flex shadow-sm rounded-[0.2rem] sm:justify-center w-fit sm:w-auto">
 			<button
 				type="button"
-				className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-login-me-now hover:bg-indigo-50 hover:text-login-me-now -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-l-md transition"
+				className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-lmn hover:bg-indigo-50 hover:text-lmn -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-l-md transition"
 				onClick={handleActivateAllTrigger}
 			>
 				{__('Activate all', 'login-me-now')}
 			</button>
 			<button
 				type="button"
-				className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-login-me-now hover:bg-indigo-50 hover:text-login-me-now -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-r-md transition"
+				className="focus:bg-indigo-50 focus:text-slate-500 focus-visible:text-lmn hover:bg-indigo-50 hover:text-lmn -ml-px relative inline-flex items-center px-4 py-2 border border-slate-200 bg-white text-sm font-medium text-slate-500 focus:z-10 focus:outline-none rounded-r-md transition"
 				onClick={handleDeactivateAllTrigger}
 			>
 				{__('Deactivate all', 'login-me-now')}

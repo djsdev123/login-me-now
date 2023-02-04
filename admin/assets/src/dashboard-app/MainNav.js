@@ -59,8 +59,8 @@ export default function MainNav() {
 										}
 										}
 										className={`${activePage === menu.slug && activePath === menu.path
-											? 'mb-4 sm:mb-0 border-login-me-now text-login-me-now active:text-login-me-now focus:text-login-me-now focus-visible:text-login-me-now-hover hover:text-login-me-now-hover inline-flex items-center px-1 border-b-2 text-sm leading-[0.875rem] font-medium'
-											: 'mb-4 sm:mb-0 border-transparent text-slate-600 active:text-login-me-now focus-visible:border-slate-300 focus-visible:text-slate-800 hover:border-slate-300 hover:text-slate-800 inline-flex items-center px-1 border-b-2 text-sm leading-[0.875rem] font-medium'
+											? 'mb-4 sm:mb-0 border-lmn text-lmn active:text-lmn focus:text-lmn focus-visible:text-lmn-hover hover:text-lmn-hover inline-flex items-center px-1 border-b-2 text-sm leading-[0.875rem] font-medium'
+											: 'mb-4 sm:mb-0 border-transparent text-slate-600 active:text-lmn focus-visible:border-slate-300 focus-visible:text-slate-800 hover:border-slate-300 hover:text-slate-800 inline-flex items-center px-1 border-b-2 text-sm leading-[0.875rem] font-medium'
 											}`}
 									>
 										{menu.name}

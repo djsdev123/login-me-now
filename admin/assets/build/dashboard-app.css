@@ -1036,6 +1036,10 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(226 232 240 / var(--tw-border-opacity));
 }
+.border-lmn {
+  --tw-border-opacity: 1;
+  border-color: rgb(4 107 210 / var(--tw-border-opacity));
+}
 .border-transparent {
   border-color: transparent;
 }
@@ -1075,6 +1079,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
+.bg-lmn {
+  --tw-bg-opacity: 1;
+  background-color: rgb(4 107 210 / var(--tw-bg-opacity));
+}
 .bg-slate-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
@@ -1097,11 +1105,17 @@ select {
 .fill-slate-800 {
   fill: #1e293b;
 }
+.fill-lmn {
+  fill: #046BD2;
+}
 .stroke-slate-800 {
   stroke: #1e293b;
 }
 .stroke-inherit {
   stroke: inherit;
+}
+.stroke-lmn {
+  stroke: #046BD2;
 }
 .p-4 {
   padding: 1rem;
@@ -1325,6 +1339,10 @@ select {
 }
 .leading-4 {
   line-height: 1rem;
+}
+.text-lmn {
+  --tw-text-opacity: 1;
+  color: rgb(4 107 210 / var(--tw-text-opacity));
 }
 .text-slate-600 {
   --tw-text-opacity: 1;
@@ -1613,7 +1631,7 @@ select {
   z-index: 999;
 }
 
-[dir=rtl] .login-me-now-dashboard-app button.bg-login-me-now[aria-checked=false] span {
+[dir=rtl] .login-me-now-dashboard-app button.bg-lmn[aria-checked=false] span {
   right: 0;
 }
 
@@ -1621,7 +1639,7 @@ select {
   --tw-translate-x: 1.02rem;
 }
 
-[dir=rtl] .login-me-now-dashboard-app button.bg-login-me-now[aria-checked=true] .toggle-bubble {
+[dir=rtl] .login-me-now-dashboard-app button.bg-lmn[aria-checked=true] .toggle-bubble {
   transform: translateX(18px);
 }
 
@@ -1715,6 +1733,10 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(226 232 240 / var(--tw-border-opacity));
 }
+.hover\:bg-lmn-hover:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(4 92 180 / var(--tw-bg-opacity));
+}
 .hover\:bg-indigo-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
@@ -1722,8 +1744,18 @@ select {
 .hover\:fill-slate-900:hover {
   fill: #0f172a;
 }
+.hover\:fill-lmn:hover {
+  fill: #046BD2;
+}
 .hover\:stroke-slate-900:hover {
   stroke: #0f172a;
+}
+.hover\:stroke-lmn:hover {
+  stroke: #046BD2;
+}
+.hover\:text-lmn-hover:hover {
+  --tw-text-opacity: 1;
+  color: rgb(4 92 180 / var(--tw-text-opacity));
 }
 .hover\:text-slate-800:hover {
   --tw-text-opacity: 1;
@@ -1736,6 +1768,10 @@ select {
 .hover\:text-slate-900:hover {
   --tw-text-opacity: 1;
   color: rgb(15 23 42 / var(--tw-text-opacity));
+}
+.hover\:text-lmn:hover {
+  --tw-text-opacity: 1;
+  color: rgb(4 107 210 / var(--tw-text-opacity));
 }
 .hover\:shadow-md:hover {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -1754,6 +1790,10 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(226 232 240 / var(--tw-border-opacity));
 }
+.focus\:bg-lmn-hover:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(4 92 180 / var(--tw-bg-opacity));
+}
 .focus\:bg-indigo-50:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
@@ -1761,8 +1801,18 @@ select {
 .focus\:fill-slate-900:focus {
   fill: #0f172a;
 }
+.focus\:fill-lmn:focus {
+  fill: #046BD2;
+}
 .focus\:stroke-slate-900:focus {
   stroke: #0f172a;
+}
+.focus\:stroke-lmn:focus {
+  stroke: #046BD2;
+}
+.focus\:text-lmn:focus {
+  --tw-text-opacity: 1;
+  color: rgb(4 107 210 / var(--tw-text-opacity));
 }
 .focus\:text-slate-900:focus {
   --tw-text-opacity: 1;
@@ -1775,6 +1825,10 @@ select {
 .focus\:text-slate-400:focus {
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity));
+}
+.focus\:text-lmn-hover:focus {
+  --tw-text-opacity: 1;
+  color: rgb(4 92 180 / var(--tw-text-opacity));
 }
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
@@ -1789,12 +1843,24 @@ select {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity));
 }
+.focus\:ring-lmn:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(4 107 210 / var(--tw-ring-opacity));
+}
 .focus\:ring-offset-2:focus {
   --tw-ring-offset-width: 2px;
 }
 .focus-visible\:border-slate-300:focus-visible {
   --tw-border-opacity: 1;
   border-color: rgb(203 213 225 / var(--tw-border-opacity));
+}
+.focus-visible\:bg-lmn-hover:focus-visible {
+  --tw-bg-opacity: 1;
+  background-color: rgb(4 92 180 / var(--tw-bg-opacity));
+}
+.focus-visible\:text-lmn-hover:focus-visible {
+  --tw-text-opacity: 1;
+  color: rgb(4 92 180 / var(--tw-text-opacity));
 }
 .focus-visible\:text-slate-800:focus-visible {
   --tw-text-opacity: 1;
@@ -1804,9 +1870,21 @@ select {
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity));
 }
+.focus-visible\:text-lmn:focus-visible {
+  --tw-text-opacity: 1;
+  color: rgb(4 107 210 / var(--tw-text-opacity));
+}
+.active\:text-lmn:active {
+  --tw-text-opacity: 1;
+  color: rgb(4 107 210 / var(--tw-text-opacity));
+}
 .active\:text-slate-500:active {
   --tw-text-opacity: 1;
   color: rgb(100 116 139 / var(--tw-text-opacity));
+}
+.active\:text-lmn-hover:active {
+  --tw-text-opacity: 1;
+  color: rgb(4 92 180 / var(--tw-text-opacity));
 }
 .group:hover .group-hover\:visible {
   visibility: visible;

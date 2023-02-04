@@ -55,7 +55,7 @@ const FreeVsPro = () => {
 					<h2 className="text-lg sm:text-2xl font-semibold capitalize">
 						{__('Login Me Now Free vs Pro', 'login-me-now')}
 					</h2>
-					<button onClick={onGetLoginMeNowPro} className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none">
+					<button onClick={onGetLoginMeNowPro} className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none">
 						{getLoginMeNowProTitle()}
 					</button>
 				</div>
@@ -107,7 +107,7 @@ const FreeVsPro = () => {
 										))}
 									</tbody>
 								</table>
-								<div className="flex items-center justify-center text-login-me-now hover:text-login-me-now-hover text-base font-medium text-center bg-white py-4 border-t border-t-slate-200">
+								<div className="flex items-center justify-center text-lmn hover:text-lmn-hover text-base font-medium text-center bg-white py-4 border-t border-t-slate-200">
 									<button onClick={redirectUpgradeLoginMeNowProPurchase} className="flex items-center justify-center">
 										<span className="mr-2">
 											{__(
@@ -135,7 +135,7 @@ const FreeVsPro = () => {
 					<div className="max-w-2xl text-center text-base text-slate-600 mb-7">
 						{__("Get access to powerful features for painless WordPress designing, without the high costs. With all the time you will save, it’s a product that pays for itself!", "login-me-now")}
 					</div>
-					<button onClick={onGetLoginMeNowPro} className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none">
+					<button onClick={onGetLoginMeNowPro} className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none">
 						{getLoginMeNowProTitle()}
 					</button>
 				</section>

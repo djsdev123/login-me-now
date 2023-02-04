@@ -44,7 +44,7 @@ const FlushLocalFonts = () => {
 				<div className="mt-2 sm:mt-0">
 					<button
 						type="button"
-						className="inline-flex px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none"
+						className="inline-flex px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none"
 						onClick={ regenerateLocalFontAssets }
 					>
 						{__("Flush Local Font Files", "login-me-now")}

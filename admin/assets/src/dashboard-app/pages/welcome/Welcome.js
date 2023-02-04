@@ -87,7 +87,7 @@ const Welcome = () => {
 													{__('PRO', 'login-me-now')}
 												</span>)
 												:
-												(<span className="ml-2 h-full inline-flex leading-[1rem] flex-shrink-0 py-[0rem] px-1.5 text-[0.625rem] text-login-me-now bg-blue-50 border border-blue-50 rounded-[0.1875rem] font-medium -tablet:mt:10">
+												(<span className="ml-2 h-full inline-flex leading-[1rem] flex-shrink-0 py-[0rem] px-1.5 text-[0.625rem] text-lmn bg-blue-50 border border-blue-50 rounded-[0.1875rem] font-medium -tablet:mt:10">
 													{__('FREE', 'login-me-now')}
 												</span>)
 											}
@@ -103,7 +103,7 @@ const Welcome = () => {
 										<span className="relative z-0 inline-flex flex-col sm:flex-row justify-start w-full">
 											<button
 												type="button"
-												className="sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none mr-4 mb-2 sm:mb-0"
+												className="sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0"
 												onClick={onInstallExtension}
 											>
 												{__(
@@ -164,7 +164,7 @@ const Welcome = () => {
 									</span>
 									{!lmn_admin.pro_available && (
 										<a
-											className="lg:flex-shrink-0 text-sm font-medium text-login-me-now focus:text-login-me-now focus-visible:text-login-me-now-hover active:text-login-me-now-hover hover:text-login-me-now-hover no-underline"
+											className="lg:flex-shrink-0 text-sm font-medium text-lmn focus:text-lmn focus-visible:text-lmn-hover active:text-lmn-hover hover:text-lmn-hover no-underline"
 											href={lmn_admin.upgrade_url}
 											target="_blank"
 											rel="noreferrer"
@@ -223,8 +223,8 @@ const Welcome = () => {
 											)}
 										</p>
 										<a
-											className="text-sm text-login-me-now focus:text-login-me-now focus-visible:text-login-me-now-hover active:text-login-me-now-hover hover:text-login-me-now-hover no-underline"
-											href="https://wplogin-me-now.com/support/?utm_source=wp&utm_medium=dashboard"
+											className="text-sm text-lmn focus:text-lmn focus-visible:text-lmn-hover active:text-lmn-hover hover:text-lmn-hover no-underline"
+											href="https://halalbrains.com/support/?utm_source=wp&utm_medium=dashboard"
 											target="_blank"
 											rel="noreferrer"
 										>
@@ -274,7 +274,7 @@ const Welcome = () => {
 											)}
 										</p>
 										<a
-											className="text-sm text-login-me-now focus:text-login-me-now focus-visible:text-login-me-now-hover active:text-login-me-now-hover hover:text-login-me-now-hover no-underline"
+											className="text-sm text-lmn focus:text-lmn focus-visible:text-lmn-hover active:text-lmn-hover hover:text-lmn-hover no-underline"
 											href="https://wordpress.org/support/plugin/login-me-now/reviews/?rate=5#new-post"
 											target="_blank"
 											rel="noreferrer"

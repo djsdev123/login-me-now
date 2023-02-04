@@ -9011,7 +9011,7 @@ function MainNav() {
       pathname: 'admin.php',
       search: `?page=${menu.slug}${'' !== menu.path ? '&path=' + menu.path : ''}`
     },
-    className: `${activePage === menu.slug && activePath === menu.path ? 'mb-4 sm:mb-0 border-login-me-now text-login-me-now active:text-login-me-now focus:text-login-me-now focus-visible:text-login-me-now-hover hover:text-login-me-now-hover inline-flex items-center px-1 border-b-2 text-sm leading-[0.875rem] font-medium' : 'mb-4 sm:mb-0 border-transparent text-slate-600 active:text-login-me-now focus-visible:border-slate-300 focus-visible:text-slate-800 hover:border-slate-300 hover:text-slate-800 inline-flex items-center px-1 border-b-2 text-sm leading-[0.875rem] font-medium'}`
+    className: `${activePage === menu.slug && activePath === menu.path ? 'mb-4 sm:mb-0 border-lmn text-lmn active:text-lmn focus:text-lmn focus-visible:text-lmn-hover hover:text-lmn-hover inline-flex items-center px-1 border-b-2 text-sm leading-[0.875rem] font-medium' : 'mb-4 sm:mb-0 border-transparent text-slate-600 active:text-lmn focus-visible:border-slate-300 focus-visible:text-slate-800 hover:border-slate-300 hover:text-slate-800 inline-flex items-center px-1 border-b-2 text-sm leading-[0.875rem] font-medium'}`
   }, menu.name))))), lmn_admin.show_self_branding && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "absolute bottom-2 lg:inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto ml-auto lg:ml-6 sm:pr-0"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -9298,7 +9298,7 @@ const FreeVsPro = () => {
     className: "text-lg sm:text-2xl font-semibold capitalize"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Login Me Now Free vs Pro', 'login-me-now')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: onGetLoginMeNowPro,
-    className: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none"
+    className: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none"
   }, getLoginMeNowProTitle())), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mt-8 flex flex-col"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -9335,7 +9335,7 @@ const FreeVsPro = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex justify-center font-medium"
   }, checkStatus(feature.pro))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex items-center justify-center text-login-me-now hover:text-login-me-now-hover text-base font-medium text-center bg-white py-4 border-t border-t-slate-200"
+    className: "flex items-center justify-center text-lmn hover:text-lmn-hover text-base font-medium text-center bg-white py-4 border-t border-t-slate-200"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: redirectUpgradeLoginMeNowProPurchase,
     className: "flex items-center justify-center"
@@ -9353,7 +9353,7 @@ const FreeVsPro = () => {
     className: "max-w-2xl text-center text-base text-slate-600 mb-7"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Get access to powerful features for painless WordPress designing, without the high costs. With all the time you will save, it’s a product that pays for itself!", "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: onGetLoginMeNowPro,
-    className: "inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none"
+    className: "inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none"
   }, getLoginMeNowProTitle()))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (FreeVsPro);
@@ -9652,7 +9652,7 @@ const FlushLocalFonts = () => {
     className: "mt-2 sm:mt-0"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
-    className: "inline-flex px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none",
+    className: "inline-flex px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none",
     onClick: regenerateLocalFontAssets
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Flush Local Font Files", "login-me-now"), 'loading' === regenerateAssetsState && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "animate-spin -mr-1 ml-3 h-5 w-5 text-white",
@@ -9743,13 +9743,13 @@ const LoadFontsLocally = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Load Google Fonts Locally', 'login-me-now')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Switch, {
     checked: enableLoadFontsLocallyStatus,
     onChange: updateLoadFontsLocallyStatus,
-    className: classNames(enableLoadFontsLocallyStatus ? 'bg-login-me-now' : 'bg-slate-200', 'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-login-me-now focus:ring-offset-2')
+    className: classNames(enableLoadFontsLocallyStatus ? 'bg-lmn' : 'bg-slate-200', 'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-lmn focus:ring-offset-2')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
     className: "pointer-events-none absolute h-full w-full rounded-md bg-white"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
-    className: classNames(enableLoadFontsLocallyStatus ? 'bg-login-me-now' : 'bg-gray-200', 'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out')
+    className: classNames(enableLoadFontsLocallyStatus ? 'bg-lmn' : 'bg-gray-200', 'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out')
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
     className: classNames(enableLoadFontsLocallyStatus ? 'translate-x-5' : 'translate-x-0', 'toggle-bubble pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-gray-200 bg-white shadow ring-0 transition-transform duration-200 ease-in-out')
@@ -9829,13 +9829,13 @@ const PreloadLocalFonts = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Preload Local Fonts', 'login-me-now')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Switch, {
     checked: enablePreloadLocalFontsStatus,
     onChange: updatePreloadLocalFontsStatus,
-    className: classNames(enablePreloadLocalFontsStatus ? 'bg-login-me-now' : 'bg-slate-200', 'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-login-me-now focus:ring-offset-2')
+    className: classNames(enablePreloadLocalFontsStatus ? 'bg-lmn' : 'bg-slate-200', 'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-lmn focus:ring-offset-2')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
     className: "pointer-events-none absolute h-full w-full rounded-md bg-white"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
-    className: classNames(enablePreloadLocalFontsStatus ? 'bg-login-me-now' : 'bg-gray-200', 'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out')
+    className: classNames(enablePreloadLocalFontsStatus ? 'bg-lmn' : 'bg-gray-200', 'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out')
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
     className: classNames(enablePreloadLocalFontsStatus ? 'translate-x-5' : 'translate-x-0', 'toggle-bubble pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-gray-200 bg-white shadow ring-0 transition-transform duration-200 ease-in-out')
@@ -9930,7 +9930,7 @@ const Settings = () => {
       search: `?page=${lmn_admin.home_slug}&path=settings&settings=${item.slug}`
     },
     key: item.name,
-    className: classNames(activeSettingsNavigationTab === item.slug ? 'border-login-me-now text-login-me-now focus:text-login-me-now-hover active:text-login-me-now hover:text-login-me-now-hover stroke-login-me-now fill-login-me-now focus:stroke-login-me-now focus:fill-login-me-now hover:stroke-login-me-now hover:fill-login-me-now' : 'border-white text-slate-800 stroke-slate-800 fill-slate-800 focus:text-slate-900 focus:border-slate-200 focus:stroke-slate-900 focus:fill-slate-900 hover:text-slate-900 hover:border-slate-200 hover:stroke-slate-900 hover:fill-slate-900', 'border-l-4 group cursor-pointer py-3 pl-5 flex items-center text-base font-medium'),
+    className: classNames(activeSettingsNavigationTab === item.slug ? 'border-lmn text-lmn focus:text-lmn-hover active:text-lmn hover:text-lmn-hover stroke-lmn fill-lmn focus:stroke-lmn focus:fill-lmn hover:stroke-lmn hover:fill-lmn' : 'border-white text-slate-800 stroke-slate-800 fill-slate-800 focus:text-slate-900 focus:border-slate-200 focus:stroke-slate-900 focus:fill-slate-900 hover:text-slate-900 hover:border-slate-200 hover:stroke-slate-900 hover:fill-slate-900', 'border-l-4 group cursor-pointer py-3 pl-5 flex items-center text-base font-medium'),
     onClick: () => {
       dispatch({
         type: 'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB',
@@ -10129,13 +10129,13 @@ const Logs = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Logs', 'login-me-now')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Switch, {
     checked: enableLogsStatus,
     onChange: updateLogsStatus,
-    className: classNames(enableLogsStatus ? 'bg-login-me-now' : 'bg-slate-200', 'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-login-me-now focus:ring-offset-2')
+    className: classNames(enableLogsStatus ? 'bg-lmn' : 'bg-slate-200', 'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-lmn focus:ring-offset-2')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
     className: "pointer-events-none absolute h-full w-full rounded-md bg-white"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
-    className: classNames(enableLogsStatus ? 'bg-login-me-now' : 'bg-gray-200', 'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out')
+    className: classNames(enableLogsStatus ? 'bg-lmn' : 'bg-gray-200', 'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out')
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
     className: classNames(enableLogsStatus ? 'translate-x-5' : 'translate-x-0', 'toggle-bubble pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-gray-200 bg-white shadow ring-0 transition-transform duration-200 ease-in-out')
@@ -10278,13 +10278,13 @@ const ExtensionCard = props => {
         }
       });
     },
-    className: classNames(moduleActivationStatus ? 'bg-login-me-now' : 'bg-slate-200', 'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-login-me-now focus:ring-offset-2')
+    className: classNames(moduleActivationStatus ? 'bg-lmn' : 'bg-slate-200', 'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-lmn focus:ring-offset-2')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
     className: "pointer-events-none absolute h-full w-full rounded-md bg-white"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
-    className: classNames(moduleActivationStatus ? 'bg-login-me-now' : 'bg-gray-200', 'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out')
+    className: classNames(moduleActivationStatus ? 'bg-lmn' : 'bg-gray-200', 'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out')
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     "aria-hidden": "true",
     className: classNames(moduleActivationStatus ? 'translate-x-5' : 'translate-x-0', 'toggle-bubble pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-gray-200 bg-white shadow ring-0 transition-transform duration-200 ease-in-out')
@@ -10525,14 +10525,14 @@ const Welcome = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`Welcome to ${lmn_admin.product_name}`, "login-me-now")), lmn_admin.pro_available ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "ml-2 h-full inline-flex leading-[1rem] font-medium flex-shrink-0 py-[0rem] px-1.5 text-[0.625rem] text-white bg-slate-800 border border-slate-800 rounded-[0.1875rem] -tablet:mt:10"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('PRO', 'login-me-now')) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "ml-2 h-full inline-flex leading-[1rem] flex-shrink-0 py-[0rem] px-1.5 text-[0.625rem] text-login-me-now bg-blue-50 border border-blue-50 rounded-[0.1875rem] font-medium -tablet:mt:10"
+    className: "ml-2 h-full inline-flex leading-[1rem] flex-shrink-0 py-[0rem] px-1.5 text-[0.625rem] text-lmn bg-blue-50 border border-blue-50 rounded-[0.1875rem] font-medium -tablet:mt:10"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('FREE', 'login-me-now'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "text-base leading-[1.625rem] text-slate-600 pb-7"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`${lmn_admin.product_name} is fast, fully customizable & beautiful WordPress theme suitable for blog, personal portfolio, business website and WooCommerce storefront. It is very lightweight and offers unparalleled speed.`, "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "relative z-0 inline-flex flex-col sm:flex-row justify-start w-full"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
-    className: "sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-login-me-now focus-visible:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none mr-4 mb-2 sm:mb-0",
+    className: "sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0",
     onClick: onInstallExtension
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Install Chrome Extension", "login-me-now"))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "grid grid-cols-1 gap-4 lg:col-span-2 h-full"
@@ -10561,7 +10561,7 @@ const Welcome = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "font-semibold text-xl leading-6 text-slate-800 mb-4 sm:mb-0"
   }, lmn_admin.pro_available ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`${lmn_admin.plugin_name} Features`, "login-me-now") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`Do more with ${lmn_admin.plugin_name} Features`, "login-me-now")), !lmn_admin.pro_available && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    className: "lg:flex-shrink-0 text-sm font-medium text-login-me-now focus:text-login-me-now focus-visible:text-login-me-now-hover active:text-login-me-now-hover hover:text-login-me-now-hover no-underline",
+    className: "lg:flex-shrink-0 text-sm font-medium text-lmn focus:text-lmn focus-visible:text-lmn-hover active:text-lmn-hover hover:text-lmn-hover no-underline",
     href: lmn_admin.upgrade_url,
     target: "_blank",
     rel: "noreferrer",
@@ -10593,8 +10593,8 @@ const Welcome = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("PRO", "login-me-now"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "text-slate-500 text-sm pb-5 pr-12"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("We aim to answer all priority support requests within 2-3 hours.", "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    className: "text-sm text-login-me-now focus:text-login-me-now focus-visible:text-login-me-now-hover active:text-login-me-now-hover hover:text-login-me-now-hover no-underline",
-    href: "https://wplogin-me-now.com/support/?utm_source=wp&utm_medium=dashboard",
+    className: "text-sm text-lmn focus:text-lmn focus-visible:text-lmn-hover active:text-lmn-hover hover:text-lmn-hover no-underline",
+    href: "https://halalbrains.com/support/?utm_source=wp&utm_medium=dashboard",
     target: "_blank",
     rel: "noreferrer"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Learn More →", "login-me-now"))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
@@ -10635,7 +10635,7 @@ const Welcome = () => {
   }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Based on 5k+ reviews", "login-me-now"), " ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "text-slate-500 text-sm pb-5"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("We love to hear from you, we would appreciate every single review.", "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    className: "text-sm text-login-me-now focus:text-login-me-now focus-visible:text-login-me-now-hover active:text-login-me-now-hover hover:text-login-me-now-hover no-underline",
+    className: "text-sm text-lmn focus:text-lmn focus-visible:text-lmn-hover active:text-lmn-hover hover:text-lmn-hover no-underline",
     href: "https://wordpress.org/support/plugin/login-me-now/reviews/?rate=5#new-post",
     target: "_blank",
     rel: "noreferrer"

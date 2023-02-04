@@ -90,7 +90,7 @@ const UpgradeNotices = () => {
 				</h3>
 				<button
 					type="button"
-					className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-login-me-now transition focus:bg-login-me-now-hover hover:bg-login-me-now-hover focus:outline-none h-9"
+					className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn transition focus:bg-lmn-hover hover:bg-lmn-hover focus:outline-none h-9"
 					onClick={onGetLoginMeNowPro}
 				>
 					{ getLoginMeNowProTitle() }
@@ -103,7 +103,7 @@ const UpgradeNotices = () => {
 						"login-me-now"
 					)
 				}
-				<span onClick={updateUpgradeNoticesVisibility} className='cursor-pointer text-login-me-now focus:text-login-me-now-hover active:text-login-me-now-hover hover:text-login-me-now-hover' rel="noreferrer">
+				<span onClick={updateUpgradeNoticesVisibility} className='cursor-pointer text-lmn focus:text-lmn-hover active:text-lmn-hover hover:text-lmn-hover' rel="noreferrer">
 					{ 'updating' === upgradeNoticesState ? __( 'updating...', 'login-me-now' ) : __( 'here.', 'login-me-now' ) }
 				</span>
 			</p>

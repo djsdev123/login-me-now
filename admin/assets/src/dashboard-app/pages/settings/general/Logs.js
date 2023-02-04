@@ -51,15 +51,15 @@ const Logs = () => {
 					checked={enableLogsStatus}
 					onChange={updateLogsStatus}
 					className={classNames(
-						enableLogsStatus ? 'bg-login-me-now' : 'bg-slate-200',
-						'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-login-me-now focus:ring-offset-2'
+						enableLogsStatus ? 'bg-lmn' : 'bg-slate-200',
+						'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-lmn focus:ring-offset-2'
 					)}
 				>
 					<span aria-hidden="true" className="pointer-events-none absolute h-full w-full rounded-md bg-white" />
 					<span
 						aria-hidden="true"
 						className={classNames(
-							enableLogsStatus ? 'bg-login-me-now' : 'bg-gray-200',
+							enableLogsStatus ? 'bg-lmn' : 'bg-gray-200',
 							'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out'
 						)}
 					/>

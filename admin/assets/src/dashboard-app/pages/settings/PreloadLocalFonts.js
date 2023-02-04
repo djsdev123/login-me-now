@@ -39,7 +39,7 @@ const PreloadLocalFonts = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully saved!', 'astra' ) } );
+			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully saved!', 'login-me-now' ) } );
 		} );
 	};
 
@@ -47,7 +47,7 @@ const PreloadLocalFonts = () => {
 		<section className={ `astra-dep-field-${ enableLoadFontsLocally } block border-b border-solid border-slate-200 px-8 py-8 justify-between` }>
 			<div className='mr-16 w-full flex items-center'>
 				<h3 className="p-0 flex-1 justify-right inline-flex text-xl leading-6 font-semibold text-slate-800">
-					{ __( 'Preload Local Fonts', 'astra' ) }
+					{ __( 'Preload Local Fonts', 'login-me-now' ) }
 				</h3>
 				<Switch
 					checked={ enablePreloadLocalFontsStatus }
@@ -75,7 +75,7 @@ const PreloadLocalFonts = () => {
 				</Switch>
 			</div>
 			<p className="mt-2 w-9/12 text-sm text-slate-500 tablet:w-full">
-				{ __( 'This option will load the font files right away on page load. Preloading Local Fonts can speeds up your website even further.', 'astra' ) }
+				{ __( 'This option will load the font files right away on page load. Preloading Local Fonts can speeds up your website even further.', 'login-me-now' ) }
 			</p>
 		</section>
 	);

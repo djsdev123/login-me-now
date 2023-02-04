@@ -13,7 +13,7 @@ const FlushLocalFonts = () => {
 		setRegenerateAssetsState( 'loading' );
 		const formData = new window.FormData();
 
-		formData.append( 'action', 'astra_regenerate_fonts_folder' );
+		formData.append( 'action', 'login_me_now_regenerate_fonts_folder' );
 		formData.append( 'security', lmn_admin.update_nonce );
 
 		apiFetch( {
@@ -22,7 +22,7 @@ const FlushLocalFonts = () => {
 			body: formData,
 		} ).then( ( data ) => {
 			if ( data.success ) {
-				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Assets Regenerated!', 'astra' ) } );
+				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Assets Regenerated!', 'login-me-now' ) } );
 			} else {
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: data.data.message } );
 			}
@@ -35,10 +35,10 @@ const FlushLocalFonts = () => {
 			<div className="w-full flex flex-col sm:flex-row justify-between">
 				<div>
 					<h3 className="p-0 text-xl leading-6 font-semibold text-slate-800">
-						{__("Flush Local Fonts Cache", "astra")}
+						{__("Flush Local Fonts Cache", "login-me-now")}
 					</h3>
 					<p className="mt-2 text-sm text-slate-600">
-						{ __( 'Click the button to reset the local fonts cache.', 'astra' ) }
+						{ __( 'Click the button to reset the local fonts cache.', 'login-me-now' ) }
 					</p>
 				</div>
 				<div className="mt-2 sm:mt-0">
@@ -47,7 +47,7 @@ const FlushLocalFonts = () => {
 						className="inline-flex px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-astra focus-visible:bg-astra-hover hover:bg-astra-hover focus:outline-none"
 						onClick={ regenerateLocalFontAssets }
 					>
-						{__("Flush Local Font Files", "astra")}
+						{__("Flush Local Font Files", "login-me-now")}
 						{ 'loading' === regenerateAssetsState && (
 							<svg className="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
 								<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>

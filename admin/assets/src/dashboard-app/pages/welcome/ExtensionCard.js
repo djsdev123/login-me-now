@@ -74,7 +74,7 @@ const ExtensionCard = (props) => {
 									role="tooltip"
 									className="text-left inline-block z-10 h-fit px-2.5 py-1.5 text-[0.75rem] leading-[1rem] text-white bg-slate-800 rounded-sm shadow-sm opacity-1 tooltip"
 								>
-									{__(`${title} plugin needs to be installed / activated to enable this module.`, 'astra')}
+									{__(`${title} plugin needs to be installed / activated to enable this module.`, 'login-me-now')}
 								</div>
 								<div
 									className="ml-8 mr-auto w-2 h-2 flex -mt-1 rotate-45 bg-slate-800 overflow-hidden"
@@ -102,7 +102,7 @@ const ExtensionCard = (props) => {
 						(lmn_admin.pro_available && !condition) ? 'relative inline-flex flex-shrink-0 py-[0rem] px-1.5 opacity-30 pointer-events-none' : 'relative inline-flex flex-shrink-0 py-[0rem] px-1.5'
 					)}
 				>
-					{!lmn_admin.pro_available && __('PRO', 'astra')}
+					{!lmn_admin.pro_available && __('PRO', 'login-me-now')}
 					{(lmn_admin.pro_available && 'white-label' !== slug) &&
 						<Switch
 							checked={moduleActivationStatus}
@@ -122,8 +122,8 @@ const ExtensionCard = (props) => {
 
 								const formData = new window.FormData();
 
-								formData.append('action', 'astra_addon_update_module_status');
-								formData.append('security', astra_addon_admin.update_nonce);
+								formData.append('action', 'login_me_now_addon_update_module_status');
+								formData.append('security', login_me_now_addon_admin.update_nonce);
 								formData.append('module_status', moduleStatus); // activate/deactivate.
 								formData.append('module_id', moduleId);
 
@@ -133,12 +133,12 @@ const ExtensionCard = (props) => {
 									body: formData,
 								}).then((data) => {
 									if (data.success) {
-										dispatch({ type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: moduleStatus === 'activate' ? __('Successfully Activated!', 'astra') : __('Successfully Deactivated!', 'astra') });
+										dispatch({ type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: moduleStatus === 'activate' ? __('Successfully Activated!', 'login-me-now') : __('Successfully Deactivated!', 'login-me-now') });
 
 										const reFormData = new window.FormData();
 
-										reFormData.append('action', 'astra_refresh_assets_files');
-										reFormData.append('security', astra_addon_admin.update_nonce);
+										reFormData.append('action', 'login_me_now_refresh_assets_files');
+										reFormData.append('security', login_me_now_addon_admin.update_nonce);
 
 										apiFetch({
 											url: lmn_admin.ajax_url,

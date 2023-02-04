@@ -37,7 +37,7 @@ const LoadFontsLocally = () => {
 			method: 'POST',
 			body: formData,
 		} ).then( () => {
-			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully saved!', 'astra' ) } );
+			dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully saved!', 'login-me-now' ) } );
 		} );
 	};
 
@@ -45,7 +45,7 @@ const LoadFontsLocally = () => {
 		<section className='block border-b border-solid border-slate-200 px-8 py-8 justify-between'>
 			<div className='mr-16 w-full flex items-center'>
 				<h3 className="p-0 flex-1 justify-right inline-flex text-xl leading-6 font-semibold text-slate-800">
-					{ __( 'Load Google Fonts Locally', 'astra' ) }
+					{ __( 'Load Google Fonts Locally', 'login-me-now' ) }
 				</h3>
 				<Switch
 					checked={ enableLoadFontsLocallyStatus }
@@ -73,7 +73,7 @@ const LoadFontsLocally = () => {
 				</Switch>
 			</div>
 			<p className="mt-2 w-9/12 text-sm text-slate-500 tablet:w-full">
-				{ __( 'Enable this option to download Google fonts and save them on your server. This can be great for improving speed of your website and to comply with GDPR laws.', 'astra' ) }
+				{ __( 'Enable this option to download Google fonts and save them on your server. This can be great for improving speed of your website and to comply with GDPR laws.', 'login-me-now' ) }
 			</p>
 		</section>
 	);

@@ -22,10 +22,10 @@ const Settings = () => {
 	const initialStateSetFlag = useSelector( ( state ) => state.initialStateSetFlag );
 
 	const navigation = wp.hooks.applyFilters(
-		'astra_dashboard.settings_navigation',
+		'login_me_now_dashboard.settings_navigation',
 		[
-			{ name: __( 'General', 'astra' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
-			{ name: __( 'Browser Extension', 'astra' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
+			{ name: __( 'General', 'login-me-now' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
+			{ name: __( 'Browser Extension', 'login-me-now' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
 		]
 	);
 

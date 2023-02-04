@@ -27,7 +27,7 @@ const Welcome = () => {
 
 		if (lmn_admin.pro_installed_status) {
 			const formData = new window.FormData();
-			formData.append('action', 'astra_recommended_plugin_activate');
+			formData.append('action', 'login_me_now_recommended_plugin_activate');
 			formData.append('security', lmn_admin.plugin_manager_nonce);
 			formData.append('init', 'astra-addon/astra-addon.php');
 			e.target.innerText = lmn_admin.plugin_activating_text;
@@ -58,7 +58,7 @@ const Welcome = () => {
 	return (
 		<main className="py-[2.43rem]">
 			<div className="max-w-3xl mx-auto px-6 lg:max-w-7xl">
-				<h1 className="sr-only"> Astra </h1>
+				<h1 className="sr-only"> Login Me Now </h1>
 
 				{/* Banner section */}
 				{lmn_admin.show_self_branding && (
@@ -177,7 +177,7 @@ const Welcome = () => {
 								</div>
 
 								{wp.hooks.applyFilters(
-									`astra_dashboard.pro_extensions`,
+									`login_me_now_dashboard.pro_extensions`,
 									<ProModules />
 								)}
 							</div>
@@ -189,7 +189,7 @@ const Welcome = () => {
 							</h2>
 							<div className="ast-welcome-screen rounded-md bg-white overflow-hidden shadow-sm flex flex-col justify-center h-full">
 								{wp.hooks.applyFilters(
-									`astra_dashboard.welcome_screen_after_integrations`,
+									`login_me_now_dashboard.welcome_screen_after_integrations`,
 									<span />
 								)}
 							</div>

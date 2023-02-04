@@ -1,12 +1,12 @@
 /**
  * Admin Icons
  *
- * @package Astra
+ * @package Login Me Now
  */
 
 import { createElement as el } from '@wordpress/element';
 
-const Astra_Admin_Icons = {
+const Login_Me_Now_Admin_Icons = {
 	'play': el(
 		'svg',
 		{ width: 20, height: 20, viewBox: '0 0 20 20', fill: 'none' },
@@ -9179,4 +9179,4 @@ const Astra_Admin_Icons = {
 	),
 };
 
-export default Astra_Admin_Icons;
+export default Login_Me_Now_Admin_Icons;

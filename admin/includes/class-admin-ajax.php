@@ -73,12 +73,12 @@ class Admin_Ajax {
 			'invalid'    => __( 'No post data found!', 'login-me-now' ),
 		);
 
-		add_action( 'wp_ajax_ast_disable_pro_notices', array( $this, 'disable_astra_pro_notices' ) );
-		add_action( 'wp_ajax_astra_recommended_plugin_install', 'wp_ajax_install_plugin' );
+		add_action( 'wp_ajax_ast_disable_pro_notices', array( $this, 'disable_login_me_now_pro_notices' ) );
+		add_action( 'wp_ajax_login_me_now_recommended_plugin_install', 'wp_ajax_install_plugin' );
 		add_action( 'wp_ajax_ast_migrate_to_builder', array( $this, 'migrate_to_builder' ) );
 		add_action( 'wp_ajax_login_me_now_update_admin_setting', array( $this, 'login_me_now_update_admin_setting' ) );
-		add_action( 'wp_ajax_astra_recommended_plugin_activate', array( $this, 'required_plugin_activate' ) );
-		add_action( 'wp_ajax_astra_recommended_plugin_deactivate', array( $this, 'required_plugin_deactivate' ) );
+		add_action( 'wp_ajax_login_me_now_recommended_plugin_activate', array( $this, 'required_plugin_activate' ) );
+		add_action( 'wp_ajax_login_me_now_recommended_plugin_deactivate', array( $this, 'required_plugin_deactivate' ) );
 	}
 
 	/**
@@ -87,9 +87,9 @@ class Admin_Ajax {
 	 * @return array
 	 * @since 1.0.0
 	 */
-	public function astra_admin_settings_typewise() {
+	public function login_me_now_admin_settings_typewise() {
 		return apply_filters(
-			'astra_admin_settings_datatypes',
+			'login_me_now_admin_settings_datatypes',
 			array(
 				'self_hosted_gfonts'    => 'bool',
 				'logs'                  => 'bool',
@@ -100,11 +100,11 @@ class Admin_Ajax {
 	}
 
 	/**
-	 * Disable pro upgrade notice from all over in Astra.
+	 * Disable pro upgrade notice from all over in Login Me Now.
 	 *
 	 * @since 1.0.0
 	 */
-	public function disable_astra_pro_notices() {
+	public function disable_login_me_now_pro_notices() {
 
 		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
 
@@ -134,7 +134,7 @@ class Admin_Ajax {
 		/** @psalm-suppress PossiblyInvalidArgument */// phpcs:ignore Generic.Commenting.DocComment.MissingShort
 
 		$migrate = ( 'true' === $migrate ) ? true : false;
-		astra_update_option( 'ast-disable-upgrade-notices', $migrate );
+		login_me_now_update_option( 'ast-disable-upgrade-notices', $migrate );
 
 		wp_send_json_success();
 	}
@@ -170,12 +170,12 @@ class Admin_Ajax {
 		/** @psalm-suppress PossiblyInvalidArgument */// phpcs:ignore Generic.Commenting.DocComment.MissingShort
 		$migrate = ( 'true' === $migrate ) ? true : false;
 		/** @psalm-suppress InvalidArgument */// phpcs:ignore Generic.Commenting.DocComment.MissingShort
-		$migration_flag = astra_get_option( 'v3-option-migration', false );
-		astra_update_option( 'is-header-footer-builder', $migrate );
+		$migration_flag = lmn_get_option( 'v3-option-migration', false );
+		login_me_now_update_option( 'is-header-footer-builder', $migrate );
 
 		if ( $migrate && false === $migration_flag ) {
 			require_once LOGIN_ME_NOW_BASE_DIR . 'inc/theme-update/astra-builder-migration-updater.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-			astra_header_builder_migration();
+			login_me_now_header_builder_migration();
 		}
 
 		wp_send_json_success();
@@ -208,7 +208,7 @@ class Admin_Ajax {
 			wp_send_json_error( $response_data );
 		}
 
-		$get_bool_settings = $this->astra_admin_settings_typewise();
+		$get_bool_settings = $this->login_me_now_admin_settings_typewise();
 		/** @psalm-suppress PossiblyInvalidArgument */// phpcs:ignore Generic.Commenting.DocComment.MissingShort
 		$sub_option_key = isset( $_POST['key'] ) ? sanitize_text_field( wp_unslash( $_POST['key'] ) ) : '';
 		/** @psalm-suppress PossiblyInvalidArgument */// phpcs:ignore Generic.Commenting.DocComment.MissingShort

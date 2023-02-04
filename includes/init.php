@@ -5,6 +5,7 @@
  * @version 1.0.0
  */
 
+require_once LOGIN_ME_NOW_BASE_DIR . 'includes/functions.php';
 require_once LOGIN_ME_NOW_BASE_DIR . 'includes/class-after-activation.php';
 require_once LOGIN_ME_NOW_BASE_DIR . 'includes/class-tokens-table.php';
 require_once LOGIN_ME_NOW_BASE_DIR . 'includes/class-helper.php';

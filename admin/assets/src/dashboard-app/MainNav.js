@@ -8,23 +8,23 @@ export default function MainNav() {
 
 	navMenus = [
 		{
-			name: __('Welcome', 'astra'),
+			name: __('Welcome', 'login-me-now'),
 			slug: lmn_admin.home_slug,
 			path: '',
 		},
 		{
-			name: __('Settings', 'astra'),
+			name: __('Settings', 'login-me-now'),
 			slug: lmn_admin.home_slug,
 			path: 'settings',
 		},
 		{
-			name: __('Free vs Pro', 'astra'),
+			name: __('Free vs Pro', 'login-me-now'),
 			slug: lmn_admin.home_slug,
 			path: 'free-vs-pro',
 		},
 	];
 
-	const menus = wp.hooks.applyFilters('astra_dashboard.main_navigation', navMenus);
+	const menus = wp.hooks.applyFilters('login_me_now_dashboard.main_navigation', navMenus);
 
 	const query = new URLSearchParams(useLocation()?.search);
 	const activePage = query.get('page')
@@ -74,16 +74,16 @@ export default function MainNav() {
 							<div className="flex items-center text-[0.625rem] sm:text-sm font-medium leading-[1.375rem] text-slate-400 mr-1 sm:mr-3 divide-x divide-slate-200 gap-3 pl-1 sm:pl-3">
 								<div className="flex items-center">
 									<span>{lmn_admin.version}</span>
-									<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium border border-slate-400 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('CORE', 'astra')} </span>
+									<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium border border-slate-400 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('CORE', 'login-me-now')} </span>
 								</div>
 								{lmn_admin.pro_available && (
 									<div className="flex items-center pl-3">
 										<span>{lmn_admin.plugin_ver}</span>
-										<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium text-white border border-slate-800 bg-slate-800 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('PRO', 'astra')} </span>
+										<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium text-white border border-slate-800 bg-slate-800 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('PRO', 'login-me-now')} </span>
 									</div>
 								)}
 								{wp.hooks.applyFilters(
-									"astra_dashboard.after_navigation_version",
+									"login_me_now_dashboard.after_navigation_version",
 									<span />
 								)}
 							</div>
@@ -94,16 +94,16 @@ export default function MainNav() {
 							<div className="flex items-center whitespace-nowrap text-sm font-medium leading-[1.375rem] text-slate-400 mr-8 divide-x divide-slate-200 gap-3">
 								<div className="flex items-center">
 									<span>{lmn_admin.version}</span>
-									<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium border border-slate-400 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('CORE', 'astra')} </span>
+									<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium border border-slate-400 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('CORE', 'login-me-now')} </span>
 								</div>
 								{lmn_admin.pro_available && (
 									<div className="flex items-center pl-3">
 										<span>{lmn_admin.plugin_ver}</span>
-										<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium text-white border border-slate-800 bg-slate-800 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('PRO', 'astra')} </span>
+										<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium text-white border border-slate-800 bg-slate-800 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('PRO', 'login-me-now')} </span>
 									</div>
 								)}
 								{wp.hooks.applyFilters(
-									"astra_dashboard.after_navigation_version",
+									"login_me_now_dashboard.after_navigation_version",
 									<span />
 								)}
 							</div>

@@ -3,8 +3,8 @@ import ExtensionCard from '@DashboardApp/pages/welcome/ExtensionCard';
 
 const ProModules = () => {
 
-	const astraExtensions = lmn_admin.extensions;
-	const renderBlockCards = Object.entries( astraExtensions ).map( ( [ index, module ] ) => {
+	const lmnExtensions = lmn_admin.extensions;
+	const renderBlockCards = Object.entries( lmnExtensions ).map( ( [ index, module ] ) => {
 		return ( <ExtensionCard key={ index } slug={ index } moduleInfo={ module } /> );
 	} );
 

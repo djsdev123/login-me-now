@@ -1,5 +1,5 @@
 const globalDataReducer = (state = {}, action) => {
-	let actionType = wp.hooks.applyFilters('astra_dashboard/data_reducer_action', action.type);
+	let actionType = wp.hooks.applyFilters('login_me_now_dashboard/data_reducer_action', action.type);
 	switch (actionType) {
 		case 'UPDATE_INITIAL_STATE':
 			return {

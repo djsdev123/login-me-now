@@ -4,7 +4,7 @@ Tags: one click login, password less login, direct dashboard, direct access
 Requires at least: 5.6
 Tested up to: 6.1.1
 Requires PHP: 7.1
-Stable tag: 0.93
+Stable tag: 1.0.0
 License: GPLv3 or Any Later Version
 
 Login Me Now - A simple and user-friendly plugin to Login Directly to Dashboard from Chrome Extension

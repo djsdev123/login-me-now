@@ -67,16 +67,16 @@ class API_Init extends WP_REST_Controller {
 	 * @var string $option_name DB option name.
 	 * @since 1.0.0
 	 */
-	private static $option_name = 'astra_admin_settings';
+	private static $option_name = 'login_me_now_admin_settings';
 
 	/**
 	 * Admin settings dataset
 	 *
 	 * @access private
-	 * @var array $astra_admin_settings Settings array.
+	 * @var array $login_me_now_admin_settings Settings array.
 	 * @since 1.0.0
 	 */
-	private static $astra_admin_settings = array();
+	private static $login_me_now_admin_settings = array();
 
 	/**
 	 * Constructor
@@ -84,44 +84,44 @@ class API_Init extends WP_REST_Controller {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-		self::$astra_admin_settings = get_option( self::$option_name, array() );
+		self::$login_me_now_admin_settings = get_option( self::$option_name, array() );
 
 		// REST API extensions init.
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 
-		add_action( 'astra_get_knowledge_base_data', array( $this, 'astra_kb_data_scheduler' ) );
-		add_filter( 'init', array( $this, 'astra_run_scheduled_docs_job' ) );
+		add_action( 'login_me_now_get_knowledge_base_data', array( $this, 'login_me_now_kb_data_scheduler' ) );
+		add_filter( 'init', array( $this, 'login_me_now_run_scheduled_docs_job' ) );
 	}
 
 	/**
-	 * Astra's REST knowledge base data.
+	 * Login Me Now's REST knowledge base data.
 	 *
 	 * @since 1.0.0
 	 * @return mixed
 	 */
-	public static function astra_get_knowledge_base_data() {
+	public static function login_me_now_get_knowledge_base_data() {
 		return json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://wpastra.com/wp-json/powerful-docs/v1/get-docs' ) ) );
 	}
 
 	/**
-	 * Perform scheduler for Astra knowledge base data retriever for processing further in admin dashboard.
+	 * Perform scheduler for Login Me Now knowledge base data retriever for processing further in admin dashboard.
 	 *
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function astra_kb_data_scheduler() {
-		update_option( 'astra_docs_data', self::astra_get_knowledge_base_data() );
+	public function login_me_now_kb_data_scheduler() {
+		update_option( 'login_me_now_docs_data', self::login_me_now_get_knowledge_base_data() );
 	}
 
 	/**
-	 * Run scheduled job for Astra knowledge base data.
+	 * Run scheduled job for Login Me Now knowledge base data.
 	 *
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function astra_run_scheduled_docs_job() {
-		if ( ! wp_next_scheduled( 'astra_get_knowledge_base_data' ) && ! wp_installing() ) {
-			wp_schedule_event( time(), 'daily', 'astra_get_knowledge_base_data' );
+	public function login_me_now_run_scheduled_docs_job() {
+		if ( ! wp_next_scheduled( 'login_me_now_get_knowledge_base_data' ) && ! wp_installing() ) {
+			wp_schedule_event( time(), 'daily', 'login_me_now_get_knowledge_base_data' );
 		}
 	}
 
@@ -155,10 +155,10 @@ class API_Init extends WP_REST_Controller {
 	 * @since 1.0.0
 	 */
 	public function get_admin_settings( $request ) {
-		$db_option = get_option( 'astra_admin_settings', array() );
+		$db_option = get_option( 'login_me_now_admin_settings', array() );
 
 		$defaults = apply_filters(
-			'astra_dashboard_rest_options',
+			'login_me_now_dashboard_rest_options',
 			array(
 				'self_hosted_gfonts'  => self::get_admin_settings_option( 'self_hosted_gfonts', false ),
 				'logs'                => self::get_admin_settings_option( 'logs', false ),
@@ -180,7 +180,7 @@ class API_Init extends WP_REST_Controller {
 	 */
 	public function get_permissions_check( $request ) {
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
-			return new WP_Error( 'astra_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'astra' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'login_me_now_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'astra' ), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;
@@ -196,7 +196,7 @@ class API_Init extends WP_REST_Controller {
 	 * @since 1.0.0
 	 */
 	public static function get_admin_settings_option( $key, $default = false ) {
-		$value = isset( self::$astra_admin_settings[$key] ) ? self::$astra_admin_settings[$key] : $default;
+		$value = isset( self::$login_me_now_admin_settings[$key] ) ? self::$login_me_now_admin_settings[$key] : $default;
 
 		return $value;
 	}
@@ -211,9 +211,9 @@ class API_Init extends WP_REST_Controller {
 	 * @since 1.0.0
 	 */
 	public static function update_admin_settings_option( $key, $value ) {
-		$astra_admin_updated_settings       = get_option( self::$option_name, array() );
-		$astra_admin_updated_settings[$key] = $value;
-		update_option( self::$option_name, $astra_admin_updated_settings );
+		$login_me_now_admin_updated_settings       = get_option( self::$option_name, array() );
+		$login_me_now_admin_updated_settings[$key] = $value;
+		update_option( self::$option_name, $login_me_now_admin_updated_settings );
 	}
 }
 

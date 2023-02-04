@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 import globalDataReducer from './globalDataReducer';
 
-const initialState = wp.hooks.applyFilters('astra_dashboard/datastore', {
+const initialState = wp.hooks.applyFilters('login_me_now_dashboard/datastore', {
 	initialStateSetFlag: false,
 	enableLoadFontsLocally: false,
 	enableLogs: true,

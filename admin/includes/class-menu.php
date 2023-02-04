@@ -108,7 +108,7 @@ class Menu {
 	}
 
 	/**
-	 *  Initialize after Astra gets loaded.
+	 *  Initialize after Login Me Now gets loaded.
 	 *
 	 * @since 1.0.0
 	 */
@@ -135,7 +135,7 @@ class Menu {
 			return;
 		}
 
-		$astra_icon = apply_filters( 'menu_icon', 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0iI2E3YWFhZCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMCAyMEMxNS41MjI4IDIwIDIwIDE1LjUyMjggMjAgMTBDMjAgNC40NzcxNSAxNS41MjI4IDAgMTAgMEM0LjQ3NzE1IDAgMCA0LjQ3NzE1IDAgMTBDMCAxNS41MjI4IDQuNDc3MTUgMjAgMTAgMjBaTTUuODczMDQgMTEuMTY0MUM3LjIwMjM0IDguNDQyNzggOC41MzE4MSA1LjcyMTEyIDkuODYxMjcgMy4wMDAzOEwxMS4yNTUyIDUuNzA3NTlDMTAuMjA2NCA3Ljc2MjQ0IDkuMTU3NSA5LjgxNjg1IDguMTA4NzggMTEuODcwOEw2LjUxMTkgMTQuOTk4NUg0TDUuODczMDQgMTEuMTY0MVpNMTAuMDQ2NCAxMi44MzM5TDEyLjQ2NTUgNy45NjE2NUMxMi45OTMzIDkuMDEyOTIgMTMuNTIxMyAxMC4wNjQyIDE0LjA0OTQgMTEuMTE1NkMxNC42OTk2IDEyLjQxMDEgMTUuMzQ5OSAxMy43MDQ4IDE2IDE1SDEzLjMwMjVMMTIuODM5MyAxMy45NjY2TDEyLjM3MjIgMTIuOTI0NUgxMC4wNDY0SDkuOTk5NzZMMTAuMDQ2NCAxMi44MzM5WiIgZmlsbD0iI2E3YWFhZCIvPgo8L3N2Zz4K' );
+		$login_me_now_icon = apply_filters( 'menu_icon', 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0iI2E3YWFhZCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMCAyMEMxNS41MjI4IDIwIDIwIDE1LjUyMjggMjAgMTBDMjAgNC40NzcxNSAxNS41MjI4IDAgMTAgMEM0LjQ3NzE1IDAgMCA0LjQ3NzE1IDAgMTBDMCAxNS41MjI4IDQuNDc3MTUgMjAgMTAgMjBaTTUuODczMDQgMTEuMTY0MUM3LjIwMjM0IDguNDQyNzggOC41MzE4MSA1LjcyMTEyIDkuODYxMjcgMy4wMDAzOEwxMS4yNTUyIDUuNzA3NTlDMTAuMjA2NCA3Ljc2MjQ0IDkuMTU3NSA5LjgxNjg1IDguMTA4NzggMTEuODcwOEw2LjUxMTkgMTQuOTk4NUg0TDUuODczMDQgMTEuMTY0MVpNMTAuMDQ2NCAxMi44MzM5TDEyLjQ2NTUgNy45NjE2NUMxMi45OTMzIDkuMDEyOTIgMTMuNTIxMyAxMC4wNjQyIDE0LjA0OTQgMTEuMTE1NkMxNC42OTk2IDEyLjQxMDEgMTUuMzQ5OSAxMy43MDQ4IDE2IDE1SDEzLjMwMjVMMTIuODM5MyAxMy45NjY2TDEyLjM3MjIgMTIuOTI0NUgxMC4wNDY0SDkuOTk5NzZMMTAuMDQ2NCAxMi44MzM5WiIgZmlsbD0iI2E3YWFhZCIvPgo8L3N2Zz4K' );
 		$priority   = apply_filters( 'menu_priority', 59 );
 
 		add_menu_page(
@@ -144,7 +144,7 @@ class Menu {
 			$capability,
 			self::$plugin_slug,
 			array( $this, 'render_admin_dashboard' ),
-			$astra_icon,
+			$login_me_now_icon,
 			$priority
 		);
 
@@ -307,11 +307,11 @@ class Menu {
 				'typography'       => array(
 					'title'     => __( 'Email Magic Number', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => astra_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => astra_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -320,11 +320,11 @@ class Menu {
 				'opt_login'        => array(
 					'title'     => __( 'OTP Login', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => astra_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => astra_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/typography-module/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -333,11 +333,11 @@ class Menu {
 				'spacing'          => array(
 					'title'     => __( 'Google Login', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => astra_get_pro_url( 'https://wpastra.com/docs/spacing-addon-overview/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/spacing-addon-overview/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => astra_get_pro_url( 'https://wpastra.com/docs/spacing-addon-overview/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/spacing-addon-overview/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -346,11 +346,11 @@ class Menu {
 				'blog-pro'         => array(
 					'title'     => __( 'Facebook Login', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => astra_get_pro_url( 'https://wpastra.com/docs/blog-pro-overview/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/blog-pro-overview/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => astra_get_pro_url( 'https://wpastra.com/docs/blog-pro-overview/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/blog-pro-overview/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -359,11 +359,11 @@ class Menu {
 				'header-sections'  => array(
 					'title'     => __( 'Github Login', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => astra_get_pro_url( 'https://wpastra.com/docs/header-sections-pro/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
+					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/header-sections-pro/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => astra_get_pro_url( 'https://wpastra.com/docs/header-sections-pro/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
+							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/header-sections-pro/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -372,11 +372,11 @@ class Menu {
 				'sticky-header'    => array(
 					'title'     => __( 'User Switching', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => astra_get_pro_url( 'https://wpastra.com/docs/sticky-header-pro/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/sticky-header-pro/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => astra_get_pro_url( 'https://wpastra.com/docs/sticky-header-pro/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/sticky-header-pro/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),
@@ -385,11 +385,11 @@ class Menu {
 				'site-layouts'     => array(
 					'title'     => __( 'Login and Registration Popup', 'login-me-now' ),
 					'class'     => 'ast-addon',
-					'title_url' => astra_get_pro_url( 'https://wpastra.com/docs/site-layout-overview/', 'wp', 'dashboard' ),
+					'title_url' => lmn_get_pro_url( 'https://wpastra.com/docs/site-layout-overview/', 'wp', 'dashboard' ),
 					'links'     => array(
 						array(
 							'link_class'   => 'ast-learn-more',
-							'link_url'     => astra_get_pro_url( 'https://wpastra.com/docs/site-layout-overview/', 'wp', 'dashboard' ),
+							'link_url'     => lmn_get_pro_url( 'https://wpastra.com/docs/site-layout-overview/', 'wp', 'dashboard' ),
 							'link_text'    => __( 'Upcoming', 'login-me-now' ),
 							'target_blank' => true,
 						),

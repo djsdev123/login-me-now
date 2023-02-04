@@ -39,9 +39,9 @@ const UpgradeNotices = () => {
 			body: formData,
 		} ).then( (data) => {
 			if ( data.success ) {
-				let payloadStatus = __( 'Deactivated!', 'astra' );
+				let payloadStatus = __( 'Deactivated!', 'login-me-now' );
 				if( assetStatus ) {
-					payloadStatus = __( 'Activated!', 'astra' );
+					payloadStatus = __( 'Activated!', 'login-me-now' );
 				}
 				dispatch( { type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: payloadStatus } );
 				setUpgradeNoticesState( false );
@@ -52,7 +52,7 @@ const UpgradeNotices = () => {
 	const onGetAstraPro = ( e ) => {
 		if( lmn_admin.pro_installed_status ) {
 			const formData = new window.FormData();
-			formData.append( 'action', 'astra_recommended_plugin_activate' );
+			formData.append( 'action', 'login_me_now_recommended_plugin_activate' );
 			formData.append( 'security', lmn_admin.plugin_manager_nonce );
 			formData.append( 'init', 'astra-addon/astra-addon.php' );
 			e.target.innerText = lmn_admin.plugin_activating_text;
@@ -79,14 +79,14 @@ const UpgradeNotices = () => {
 	};
 
 	const getAstraProTitle = () => {
-		return lmn_admin.pro_installed_status ? __( 'Activate Now', 'astra' ) : __( 'Upgrade Now', 'astra' );
+		return lmn_admin.pro_installed_status ? __( 'Activate Now', 'login-me-now' ) : __( 'Upgrade Now', 'login-me-now' );
 	}
 
 	return (
 		<section className='block px-8 py-8 justify-between'>
 			<div className='mr-16 w-full flex flex-col sm:flex-row sm:items-center'>
 				<h3 className="p-0 flex-1 justify-right inline-flex text-xl leading-8 font-semibold text-slate-800">
-					{ __( 'Build Better Websites with Astra Pro', 'astra' ) }
+					{ __( 'Build Better Websites with Login Me Now Pro', 'login-me-now' ) }
 				</h3>
 				<button
 					type="button"
@@ -100,11 +100,11 @@ const UpgradeNotices = () => {
 				{
 					__(
 						`Access powerful features for painless WordPress design without the high costs. Powerful tools, premium support, limitless opportunity with Pro! Toggle upgrade notices on or off `,
-						"astra"
+						"login-me-now"
 					)
 				}
 				<span onClick={updateUpgradeNoticesVisibility} className='cursor-pointer text-astra focus:text-astra-hover active:text-astra-hover hover:text-astra-hover' rel="noreferrer">
-					{ 'updating' === upgradeNoticesState ? __( 'updating...', 'astra' ) : __( 'here.', 'astra' ) }
+					{ 'updating' === upgradeNoticesState ? __( 'updating...', 'login-me-now' ) : __( 'here.', 'login-me-now' ) }
 				</span>
 			</p>
 		</section>

@@ -16,7 +16,7 @@ export default function SettingsSavedNotification() {
 	const status = query.get("status") ? query.get("status") : "";
 
 	if ( '' !== status && 'imported' === status ) {
-		dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully imported!', 'astra' ) } );
+		dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully imported!', 'login-me-now' ) } );
 		setTimeout( ()=>{
 			window.location = lmn_admin.login_me_now_base_url;
 		}, 1000 );
@@ -62,7 +62,7 @@ export default function SettingsSavedNotification() {
 												dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: '' } );
 											}}
 										>
-											<span className="sr-only"> { __( 'Close ', 'astra' ) } </span>
+											<span className="sr-only"> { __( 'Close ', 'login-me-now' ) } </span>
 											<XIcon className="h-5 w-5" aria-hidden="true" />
 										</button>
 									</div>

@@ -8,7 +8,7 @@ import Logs from './general/Logs';
 
 function SettingsWrapper({ state }) {
 	const wrappers = wp.hooks.applyFilters(
-		'astra_dashboard.settings_tab_wrappers',
+		'login_me_now_dashboard.settings_tab_wrappers',
 		{
 			'global-settings': <> <Logs /> </>,
 			'fonts-performance': <> <LoadFontsLocally /> <PreloadLocalFonts /> <FlushLocalFonts /> </>,
@@ -25,9 +25,9 @@ const ContainerSettings = () => {
 	return (
 		<>
 			<div className='lg:col-span-9 border-l'>
-				{wp.hooks.applyFilters(`astra_dashboard.settings_screen_before_${activeSettingsNavigationTab}`, <span />)}
+				{wp.hooks.applyFilters(`login_me_now_dashboard.settings_screen_before_${activeSettingsNavigationTab}`, <span />)}
 				<SettingsWrapper state={activeSettingsNavigationTab}></SettingsWrapper>
-				{wp.hooks.applyFilters(`astra_dashboard.settings_screen_after_${activeSettingsNavigationTab}`, <span />)}
+				{wp.hooks.applyFilters(`login_me_now_dashboard.settings_screen_after_${activeSettingsNavigationTab}`, <span />)}
 			</div>
 		</>
 	);

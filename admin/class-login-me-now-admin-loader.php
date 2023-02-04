@@ -62,12 +62,14 @@ class Login_Me_Now_Admin_Loader {
 	 * @since 1.0.0
 	 */
 	public function includes() {
+		/* Tokens Table */
+		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-tokens-table.php';
+		/* After Plugin Activation */
+		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-after-activation.php';
 		/* Setup API */
 		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-api-init.php';
-
 		/* Ajax init */
 		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-admin-ajax.php';
-
 		/* Setup Menu */
 		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-menu.php';
 	}

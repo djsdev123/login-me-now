@@ -88,9 +88,6 @@ class API_Init extends WP_REST_Controller {
 
 		// REST API extensions init.
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-
-		add_action( 'login_me_now_get_knowledge_base_data', array( $this, 'login_me_now_kb_data_scheduler' ) );
-		add_filter( 'init', array( $this, 'login_me_now_run_scheduled_docs_job' ) );
 	}
 
 	/**
@@ -101,28 +98,6 @@ class API_Init extends WP_REST_Controller {
 	 */
 	public static function login_me_now_get_knowledge_base_data() {
 		return json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://halalbrains.com/wp-json/powerful-docs/v1/get-docs' ) ) );
-	}
-
-	/**
-	 * Perform scheduler for Login Me Now knowledge base data retriever for processing further in admin dashboard.
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public function login_me_now_kb_data_scheduler() {
-		update_option( 'login_me_now_docs_data', self::login_me_now_get_knowledge_base_data() );
-	}
-
-	/**
-	 * Run scheduled job for Login Me Now knowledge base data.
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public function login_me_now_run_scheduled_docs_job() {
-		if ( ! wp_next_scheduled( 'login_me_now_get_knowledge_base_data' ) && ! wp_installing() ) {
-			wp_schedule_event( time(), 'daily', 'login_me_now_get_knowledge_base_data' );
-		}
 	}
 
 	/**

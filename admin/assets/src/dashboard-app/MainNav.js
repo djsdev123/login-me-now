@@ -24,6 +24,10 @@ export default function MainNav() {
 		},
 	];
 
+	const onInstallExtension = () => {
+		window.open(lmn_admin.extension_url, "_blank");
+	};
+
 	const menus = wp.hooks.applyFilters('login_me_now_dashboard.main_navigation', navMenus);
 
 	const query = new URLSearchParams(useLocation()?.search);
@@ -72,26 +76,18 @@ export default function MainNav() {
 					{lmn_admin.show_self_branding && (
 						<div className="absolute bottom-2 lg:inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto ml-auto lg:ml-6 sm:pr-0">
 							<div className="flex items-center text-[0.625rem] sm:text-sm font-medium leading-[1.375rem] text-slate-400 mr-1 sm:mr-3 divide-x divide-slate-200 gap-3 pl-1 sm:pl-3">
-								<div className="flex items-center">
-									<span>{lmn_admin.version}</span>
-									<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium border border-slate-400 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('CORE', 'login-me-now')} </span>
+							<div className="flex items-center">
+									<button
+										type="button"
+										className="sm:inline-flex items-center px-4 py-2 border border-lmn text-sm font-medium rounded-md shadow-sm text-black hover:text-white bg-white focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0"
+										onClick={onInstallExtension}
+									>
+										{__(
+											"Install Chrome Extension",
+											"login-me-now"
+										)}
+									</button>
 								</div>
-								{lmn_admin.pro_available && (
-									<div className="flex items-center pl-3">
-										<span>{lmn_admin.plugin_ver}</span>
-										<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium text-white border border-slate-800 bg-slate-800 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('PRO', 'login-me-now')} </span>
-									</div>
-								)}
-								{wp.hooks.applyFilters(
-									"login_me_now_dashboard.after_navigation_version",
-									<span />
-								)}
-							</div>
-						</div>
-					)}
-					{!lmn_admin.show_self_branding && (
-						<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-							<div className="flex items-center whitespace-nowrap text-sm font-medium leading-[1.375rem] text-slate-400 mr-8 divide-x divide-slate-200 gap-3">
 								<div className="flex items-center">
 									<span>{lmn_admin.version}</span>
 									<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium border border-slate-400 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('CORE', 'login-me-now')} </span>

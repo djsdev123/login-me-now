@@ -8981,6 +8981,9 @@ function MainNav() {
     slug: lmn_admin.home_slug,
     path: 'free-vs-pro'
   }];
+  const onInstallExtension = () => {
+    window.open(lmn_admin.extension_url, "_blank");
+  };
   const menus = wp.hooks.applyFilters('login_me_now_dashboard.main_navigation', navMenus);
   const query = new URLSearchParams((_useLocation = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useLocation)()) === null || _useLocation === void 0 ? void 0 : _useLocation.search);
   const activePage = query.get('page') ? query.get('page') : lmn_admin.home_slug;
@@ -9018,17 +9021,11 @@ function MainNav() {
     className: "flex items-center text-[0.625rem] sm:text-sm font-medium leading-[1.375rem] text-slate-400 mr-1 sm:mr-3 divide-x divide-slate-200 gap-3 pl-1 sm:pl-3"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex items-center"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, lmn_admin.version), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium border border-slate-400 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"
-  }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('CORE', 'login-me-now'), " ")), lmn_admin.pro_available && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex items-center pl-3"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, lmn_admin.plugin_ver), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium text-white border border-slate-800 bg-slate-800 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"
-  }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('PRO', 'login-me-now'), " ")), wp.hooks.applyFilters("login_me_now_dashboard.after_navigation_version", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null)))), !lmn_admin.show_self_branding && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex items-center whitespace-nowrap text-sm font-medium leading-[1.375rem] text-slate-400 mr-8 divide-x divide-slate-200 gap-3"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    type: "button",
+    className: "sm:inline-flex items-center px-4 py-2 border border-lmn text-sm font-medium rounded-md shadow-sm text-black hover:text-white bg-white focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0",
+    onClick: onInstallExtension
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Install Chrome Extension", "login-me-now"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex items-center"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, lmn_admin.version), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium border border-slate-400 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"
@@ -10465,7 +10462,7 @@ const Welcome = () => {
   var _useLocation;
   const query = new URLSearchParams((_useLocation = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useLocation)()) === null || _useLocation === void 0 ? void 0 : _useLocation.search);
   const allowAutoPlay = "1" === query.get("login-me-now-activation-redirect") ? 1 : 0;
-  const onInstallExtension = () => {
+  const onGenerateToken = () => {
     window.open(lmn_admin.extension_url, "_blank");
   };
   const getLoginMeNowProTitle = () => {
@@ -10533,8 +10530,8 @@ const Welcome = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
     className: "sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0",
-    onClick: onInstallExtension
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Install Chrome Extension", "login-me-now"))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onClick: onGenerateToken
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Generate Token Now", "login-me-now"))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "grid grid-cols-1 gap-4 lg:col-span-2 h-full"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "login-me-now-video-container"

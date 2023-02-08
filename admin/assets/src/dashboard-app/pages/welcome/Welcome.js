@@ -13,7 +13,7 @@ const Welcome = () => {
 	const allowAutoPlay =
 		"1" === query.get("login-me-now-activation-redirect") ? 1 : 0;
 
-	const onInstallExtension = () => {
+	const onGenerateToken = () => {
 		window.open(lmn_admin.extension_url, "_blank");
 	};
 
@@ -104,10 +104,10 @@ const Welcome = () => {
 											<button
 												type="button"
 												className="sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0"
-												onClick={onInstallExtension}
+												onClick={onGenerateToken}
 											>
 												{__(
-													"Install Chrome Extension",
+													"Generate Token Now",
 													"login-me-now"
 												)}
 											</button>

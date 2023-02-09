@@ -4,17 +4,45 @@ import ProModules from "@DashboardApp/pages/welcome/ProModules";
 import apiFetch from '@wordpress/api-fetch';
 import VideoPopup from "./VideoPopup";
 import { useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import MagicLinkPopup from "./MagicLinkPopup";
 
 const classNames = (...classes) => classes.filter(Boolean).join(" ");
 
 const Welcome = () => {
 	const query = new URLSearchParams(useLocation()?.search);
+	const dispatch = useDispatch();
 
 	const allowAutoPlay =
 		"1" === query.get("login-me-now-activation-redirect") ? 1 : 0;
 
-	const onGenerateToken = () => {
-		window.open(lmn_admin.extension_url, "_blank");
+	const onGenerateToken = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+
+		const formData = new window.FormData();
+		formData.append('action', 'login_me_now_generate_token');
+		formData.append('security', lmn_admin.generate_token_nonce);
+		e.target.innerText = lmn_admin.generating_token_text;
+
+		apiFetch({
+			url: lmn_admin.ajax_url,
+			method: 'POST',
+			body: formData,
+		}).then((data) => {
+			if (data.success) {
+				dispatch( {type: 'GENERATE_MAGIC_LINK_POPUP', payload: __( 'Magic Link Created Successfully', 'login-me-now' ) } );
+
+				e.target.innerText = data.data.magic_number;
+
+				console.log(data);
+				// window.open(lmn_admin.login_me_now_base_url, '_self');
+			}
+		});
+
+		console.log(e)
+
+		// window.open(lmn_admin.extension_url, "_blank");
 	};
 
 	const getLoginMeNowProTitle = () => {
@@ -55,7 +83,10 @@ const Welcome = () => {
 		setVideoPopup(!videoPopup);
 	};
 
-	return (
+	return (<>
+		<MagicLinkPopup/>
+		<p>
+		</p>
 		<main className="py-[2.43rem]">
 			<div className="max-w-3xl mx-auto px-6 lg:max-w-7xl">
 				<h1 className="sr-only"> Login Me Now </h1>
@@ -107,7 +138,7 @@ const Welcome = () => {
 												onClick={onGenerateToken}
 											>
 												{__(
-													"Generate Token Now",
+													"Generate Magic Number",
 													"login-me-now"
 												)}
 											</button>
@@ -290,6 +321,7 @@ const Welcome = () => {
 			</div>
 			<VideoPopup allowAutoPlay={allowAutoPlay} videoPopup={videoPopup} toggleVideoPopup={toggleVideoPopup} />
 		</main>
+	</>
 	);
 };
 

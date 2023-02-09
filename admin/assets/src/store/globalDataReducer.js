@@ -40,6 +40,11 @@ const globalDataReducer = (state = {}, action) => {
 				...state,
 				settingsSavedNotification: action.payload,
 			};
+		case 'GENERATE_MAGIC_LINK_POPUP':
+			return {
+				...state,
+				magicLinkPopup: action.payload,
+			};
 		default:
 			return state;
 	}

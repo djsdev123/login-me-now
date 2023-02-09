@@ -9,6 +9,7 @@ const initialState = wp.hooks.applyFilters('login_me_now_dashboard/datastore', {
 	enableWhiteLabel: false,
 	enableBeta: 'disable',
 	settingsSavedNotification: '',
+	magicLinkPopup: '',
 	blocksStatuses: [],
 	enableFileGeneration: 'disable',
 	activeSettingsNavigationTab: '',

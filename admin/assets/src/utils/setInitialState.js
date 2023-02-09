@@ -6,6 +6,7 @@ const setInitialState = (store) => {
 	}).then((data) => {
 		const initialState = {
 			settingsSavedNotification: '',
+			magicLinkPopup: '',
 			initialStateSetFlag: true,
 			activeSettingsNavigationTab: 'global-settings',
 			enableLoadFontsLocally: data.self_hosted_gfonts,

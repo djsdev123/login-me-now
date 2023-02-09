@@ -73,11 +73,10 @@ class Admin_Ajax {
 			'invalid'    => __( 'No post data found!', 'login-me-now' ),
 		);
 
-		add_action( 'wp_ajax_ast_disable_pro_notices', array( $this, 'disable_login_me_now_pro_notices' ) );
-		add_action( 'wp_ajax_login_me_now_recommended_plugin_install', 'wp_ajax_install_plugin' );
 		add_action( 'wp_ajax_login_me_now_update_admin_setting', array( $this, 'login_me_now_update_admin_setting' ) );
 		add_action( 'wp_ajax_login_me_now_recommended_plugin_activate', array( $this, 'required_plugin_activate' ) );
-		add_action( 'wp_ajax_login_me_now_recommended_plugin_deactivate', array( $this, 'required_plugin_deactivate' ) );
+
+		add_action( 'wp_ajax_login_me_now_generate_token', array( $this, 'login_me_now_generate_token' ) );
 	}
 
 	/**
@@ -90,52 +89,11 @@ class Admin_Ajax {
 		return apply_filters(
 			'login_me_now_admin_settings_datatypes',
 			array(
-				'self_hosted_gfonts'    => 'bool',
-				'logs'                  => 'bool',
-				'preload_local_fonts'   => 'bool',
-				'use_old_header_footer' => 'bool',
+				'self_hosted_gfonts'  => 'bool',
+				'logs'                => 'bool',
+				'preload_local_fonts' => 'bool',
 			)
 		);
-	}
-
-	/**
-	 * Disable pro upgrade notice from all over in Login Me Now.
-	 *
-	 * @since 1.0.0
-	 */
-	public function disable_login_me_now_pro_notices() {
-
-		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
-
-		if ( empty( $_POST ) ) {
-			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		/**
-		 * Nonce verification.
-		 */
-		if ( ! check_ajax_referer( 'login_me_now_update_admin_setting', 'security', false ) ) {
-			$response_data = array( 'message' => $this->get_error_msg( 'nonce' ) );
-			wp_send_json_error( $response_data );
-		}
-
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( __( 'You don\'t have the access', 'login-me-now' ) );
-		}
-
-		/** @psalm-suppress PossiblyInvalidArgument */// phpcs:ignore Generic.Commenting.DocComment.MissingShort
-		$migrate = isset( $_POST['status'] ) ? sanitize_key( $_POST['status'] ) : '';
-		/** @psalm-suppress PossiblyInvalidArgument */// phpcs:ignore Generic.Commenting.DocComment.MissingShort
-
-		$migrate = ( 'true' === $migrate ) ? true : false;
-		login_me_now_update_option( 'ast-disable-upgrade-notices', $migrate );
-
-		wp_send_json_success();
 	}
 
 	/**
@@ -215,7 +173,7 @@ class Admin_Ajax {
 	/**
 	 * Required Plugin Activate
 	 *
-	 * @since 1.2.4
+	 * @since 1.0.0
 	 */
 	public function required_plugin_activate() {
 
@@ -275,11 +233,11 @@ class Admin_Ajax {
 	}
 
 	/**
-	 * Required Plugin Activate
+	 * Generate Token
 	 *
-	 * @since 1.2.4
+	 * @since 1.0.0
 	 */
-	public function required_plugin_deactivate() {
+	public function login_me_now_generate_token() {
 
 		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
 
@@ -295,41 +253,32 @@ class Admin_Ajax {
 		/**
 		 * Nonce verification.
 		 */
-		if ( ! check_ajax_referer( 'login_me_now_plugin_manager_nonce', 'security', false ) ) {
+		if ( ! check_ajax_referer( 'login_me_now_generate_token_nonce', 'security', false ) ) {
 			$response_data = array( 'message' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
 
-		/** @psalm-suppress PossiblyInvalidArgument */// phpcs:ignore Generic.Commenting.DocComment.MissingShort
-		if ( ! current_user_can( 'install_plugins' ) || ! isset( $_POST['init'] ) || ! sanitize_text_field( wp_unslash( $_POST['init'] ) ) ) {
-			/** @psalm-suppress PossiblyInvalidArgument */// phpcs:ignore Generic.Commenting.DocComment.MissingShort
+		/**
+		 * Generate the token.
+		 */
+		$user_id = get_current_user_id();
+		$number  = ( new Magic_Number() )->get_shareable_link( $user_id );
+
+		if ( is_wp_error( $number ) ) {
 			wp_send_json_error(
 				array(
 					'success' => false,
-					'message' => __( 'No plugin specified', 'login-me-now' ),
-				)
-			);
-		}
-
-		/** @psalm-suppress PossiblyInvalidArgument */// phpcs:ignore Generic.Commenting.DocComment.MissingShort
-		$plugin_init = ( isset( $_POST['init'] ) ) ? sanitize_text_field( wp_unslash( $_POST['init'] ) ) : '';
-		/** @psalm-suppress PossiblyInvalidArgument */// phpcs:ignore Generic.Commenting.DocComment.MissingShort
-
-		$deactivate = deactivate_plugins( $plugin_init, true, false );
-
-		if ( is_wp_error( $deactivate ) ) {
-			wp_send_json_error(
-				array(
-					'success' => false,
-					'message' => $deactivate->get_error_message(),
+					'message' => $number->get_error_message(),
 				)
 			);
 		}
 
 		wp_send_json_success(
 			array(
-				'success' => true,
-				'message' => __( 'Plugin Successfully Deactivated', 'login-me-now' ),
+				'success'      => true,
+				'message'      => __( 'Magic Number Successfully Generated', 'login-me-now' ),
+				'magic_number' => $number,
+
 			)
 		);
 	}

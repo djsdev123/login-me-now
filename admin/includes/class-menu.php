@@ -136,7 +136,7 @@ class Menu {
 		}
 
 		$login_me_now_icon = apply_filters( 'menu_icon', 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0iI2E3YWFhZCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMCAyMEMxNS41MjI4IDIwIDIwIDE1LjUyMjggMjAgMTBDMjAgNC40NzcxNSAxNS41MjI4IDAgMTAgMEM0LjQ3NzE1IDAgMCA0LjQ3NzE1IDAgMTBDMCAxNS41MjI4IDQuNDc3MTUgMjAgMTAgMjBaTTUuODczMDQgMTEuMTY0MUM3LjIwMjM0IDguNDQyNzggOC41MzE4MSA1LjcyMTEyIDkuODYxMjcgMy4wMDAzOEwxMS4yNTUyIDUuNzA3NTlDMTAuMjA2NCA3Ljc2MjQ0IDkuMTU3NSA5LjgxNjg1IDguMTA4NzggMTEuODcwOEw2LjUxMTkgMTQuOTk4NUg0TDUuODczMDQgMTEuMTY0MVpNMTAuMDQ2NCAxMi44MzM5TDEyLjQ2NTUgNy45NjE2NUMxMi45OTMzIDkuMDEyOTIgMTMuNTIxMyAxMC4wNjQyIDE0LjA0OTQgMTEuMTE1NkMxNC42OTk2IDEyLjQxMDEgMTUuMzQ5OSAxMy43MDQ4IDE2IDE1SDEzLjMwMjVMMTIuODM5MyAxMy45NjY2TDEyLjM3MjIgMTIuOTI0NUgxMC4wNDY0SDkuOTk5NzZMMTAuMDQ2NCAxMi44MzM5WiIgZmlsbD0iI2E3YWFhZCIvPgo8L3N2Zz4K' );
-		$priority   = apply_filters( 'menu_priority', 59 );
+		$priority          = apply_filters( 'menu_priority', 59 );
 
 		add_menu_page(
 			self::$page_title,
@@ -247,12 +247,14 @@ class Menu {
 			'update_nonce'           => wp_create_nonce( 'login_me_now_update_admin_setting' ),
 			'extensions'             => self::get_pro_extensions(),
 			'plugin_manager_nonce'   => wp_create_nonce( 'login_me_now_plugin_manager_nonce' ),
+			'generate_token_nonce'   => wp_create_nonce( 'login_me_now_generate_token_nonce' ),
 			'plugin_installer_nonce' => wp_create_nonce( 'updates' ),
 			'free_vs_pro_link'       => admin_url( 'admin.php?page=' . self::$plugin_slug . '&path=free-vs-pro' ),
 			'plugin_installed_text'  => __( 'Installed', 'login-me-now' ),
 			'plugin_activating_text' => __( 'Activating', 'login-me-now' ),
 			'plugin_activated_text'  => __( 'Activated', 'login-me-now' ),
 			'plugin_activate_text'   => __( 'Activate', 'login-me-now' ),
+			'generating_token_text'  => __( 'Generating Magic Number...', 'login-me-now' ),
 			'upgrade_notice'         => true,
 		);
 

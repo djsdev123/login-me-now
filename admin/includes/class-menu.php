@@ -183,7 +183,7 @@ class Menu {
 	 * @return void
 	 */
 	public function logs_callback() {
-		Helper::get_template_part( 'menu-page/token-status' );
+		Helper::get_template_part( 'menu-page/all-logs' );
 	}
 
 	/**
@@ -230,7 +230,7 @@ class Menu {
 			'current_user'           => ! empty( wp_get_current_user()->user_firstname ) ? ucfirst( wp_get_current_user()->user_firstname ) : ucfirst( wp_get_current_user()->display_name ),
 			'admin_base_url'         => admin_url(),
 			'plugin_dir'             => LOGIN_ME_NOW_BASE_URL,
-			'plugin_ver'             => defined( 'LOGIN_ME_NOW_EXT_VER' ) ? LOGIN_ME_NOW_EXT_VER : '',
+			'plugin_ver'             => defined( 'LOGIN_ME_NOW_EXT_VER' ) ? '' : '',
 			'version'                => LOGIN_ME_NOW_VERSION,
 			'pro_available'          => defined( 'LOGIN_ME_NOW_EXT_VER' ) ? true : false,
 			'pro_installed_status'   => 'installed' === self::get_plugin_status( 'astra-addon/astra-addon.php' ) ? true : false,
@@ -243,11 +243,11 @@ class Menu {
 			'upgrade_url'            => LOGIN_ME_NOW_PRO_UPGRADE_URL,
 			'extension_url'          => 'https://chrome.google.com/webstore/detail/login-me-now/kkkofomlfhbepmpiplggmfpomdnkljoh/?sourch=wp-dashboard',
 			'login_me_now_base_url'  => admin_url( 'admin.php?page=' . self::$plugin_slug ),
-			'logo_url'               => apply_filters( 'login_me_now_admin_menu_icon', LOGIN_ME_NOW_BASE_URL . 'admin/assets/images/icon.svg' ),
+			'logo_url'               => apply_filters( 'login_me_now_admin_menu_icon', LOGIN_ME_NOW_BASE_URL . 'admin/assets/images/icon.png' ),
 			'update_nonce'           => wp_create_nonce( 'login_me_now_update_admin_setting' ),
 			'extensions'             => self::get_pro_extensions(),
 			'plugin_manager_nonce'   => wp_create_nonce( 'login_me_now_plugin_manager_nonce' ),
-			'generate_token_nonce'   => wp_create_nonce( 'login_me_now_generate_token_nonce' ),
+			'generate_token_nonce'   => wp_create_nonce( 'login_me_now_generate_onetime_link_nonce' ),
 			'plugin_installer_nonce' => wp_create_nonce( 'updates' ),
 			'free_vs_pro_link'       => admin_url( 'admin.php?page=' . self::$plugin_slug . '&path=free-vs-pro' ),
 			'plugin_installed_text'  => __( 'Installed', 'login-me-now' ),

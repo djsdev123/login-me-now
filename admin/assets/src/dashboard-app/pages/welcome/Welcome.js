@@ -4,7 +4,7 @@ import ProModules from "@DashboardApp/pages/welcome/ProModules";
 import apiFetch from '@wordpress/api-fetch';
 import VideoPopup from "./VideoPopup";
 import { useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import MagicLinkPopup from "./MagicLinkPopup";
 
 const classNames = (...classes) => classes.filter(Boolean).join(" ");
@@ -21,9 +21,8 @@ const Welcome = () => {
 		e.stopPropagation();
 
 		const formData = new window.FormData();
-		formData.append('action', 'login_me_now_generate_token');
+		formData.append('action', 'login_me_now_generate_onetime_link');
 		formData.append('security', lmn_admin.generate_token_nonce);
-		e.target.innerText = lmn_admin.generating_token_text;
 
 		apiFetch({
 			url: lmn_admin.ajax_url,
@@ -31,18 +30,9 @@ const Welcome = () => {
 			body: formData,
 		}).then((data) => {
 			if (data.success) {
-				dispatch( {type: 'GENERATE_MAGIC_LINK_POPUP', payload: __( 'Magic Link Created Successfully', 'login-me-now' ) } );
-
-				e.target.innerText = data.data.magic_number;
-
-				console.log(data);
-				// window.open(lmn_admin.login_me_now_base_url, '_self');
+				dispatch( {type: 'GENERATE_MAGIC_LINK_POPUP', payload: { ... data.data }} );
 			}
 		});
-
-		console.log(e)
-
-		// window.open(lmn_admin.extension_url, "_blank");
 	};
 
 	const getLoginMeNowProTitle = () => {
@@ -138,7 +128,7 @@ const Welcome = () => {
 												onClick={onGenerateToken}
 											>
 												{__(
-													"Generate Magic Number",
+													"Generate Onetime Magic Link",
 													"login-me-now"
 												)}
 											</button>

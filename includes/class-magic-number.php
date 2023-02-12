@@ -35,7 +35,7 @@ class Magic_Number {
 
 		$link = sprintf( '%s%s', site_url( '/?lmn=' ), $number );
 
-		return $link;
+		return array( 'link' => $link, 'number' => $number );
 	}
 
 	/**

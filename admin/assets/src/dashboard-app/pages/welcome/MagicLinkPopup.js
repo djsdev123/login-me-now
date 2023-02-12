@@ -20,6 +20,8 @@ export default function MagicLinkPopup() {
 		}
 	}, [magicLinkPopup] );
 
+	console.log(magicLinkPopup);
+
 	return (
 		<>
 			{ /* Global notification live region, render this permanently at the end of the document */ }
@@ -43,12 +45,12 @@ export default function MagicLinkPopup() {
 										<CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true" />
 									</div>
 									<div className="ml-3 w-0 flex-1 pt-0.5">
-										<p className="text-sm font-medium text-gray-900">{ magicLinkPopup }</p>
+										<p className="text-sm font-medium text-gray-900">{ magicLinkPopup.message }</p>
 										<p className='pt-3'>Magic Link</p>
-										<code className='text-sm font-medium'>http://login-me-now.local/?lmn=6948258332436179</code>
+										<code className='text-sm font-medium'>{ magicLinkPopup.magic_link }</code>
 
 										<p className='pt-3'>Magic Number</p>
-										<code className='text-sm font-medium'>6948258332436179</code>
+										<code className='text-sm font-medium'>{ magicLinkPopup.magic_number }</code>
 									</div>
 									<div className="ml-4 flex-shrink-0 flex">
 										<button

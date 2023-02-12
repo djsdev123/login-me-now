@@ -17,11 +17,11 @@ export default function MainNav() {
 			slug: lmn_admin.home_slug,
 			path: 'settings',
 		},
-		{
-			name: __('Free vs Pro', 'login-me-now'),
-			slug: lmn_admin.home_slug,
-			path: 'free-vs-pro',
-		},
+		// {
+		// 	name: __('Free vs Pro', 'login-me-now'),
+		// 	slug: lmn_admin.home_slug,
+		// 	path: 'free-vs-pro',
+		// },
 	];
 
 	const onInstallExtension = () => {

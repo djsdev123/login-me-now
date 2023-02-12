@@ -76,7 +76,7 @@ class Admin_Ajax {
 		add_action( 'wp_ajax_login_me_now_update_admin_setting', array( $this, 'login_me_now_update_admin_setting' ) );
 		add_action( 'wp_ajax_login_me_now_recommended_plugin_activate', array( $this, 'required_plugin_activate' ) );
 
-		add_action( 'wp_ajax_login_me_now_generate_token', array( $this, 'login_me_now_generate_token' ) );
+		add_action( 'wp_ajax_login_me_now_generate_onetime_link', array( $this, 'login_me_now_generate_onetime_link' ) );
 	}
 
 	/**
@@ -237,7 +237,7 @@ class Admin_Ajax {
 	 *
 	 * @since 1.0.0
 	 */
-	public function login_me_now_generate_token() {
+	public function login_me_now_generate_onetime_link() {
 
 		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
 
@@ -253,7 +253,7 @@ class Admin_Ajax {
 		/**
 		 * Nonce verification.
 		 */
-		if ( ! check_ajax_referer( 'login_me_now_generate_token_nonce', 'security', false ) ) {
+		if ( ! check_ajax_referer( 'login_me_now_generate_onetime_link_nonce', 'security', false ) ) {
 			$response_data = array( 'message' => $this->get_error_msg( 'nonce' ) );
 			wp_send_json_error( $response_data );
 		}
@@ -262,22 +262,25 @@ class Admin_Ajax {
 		 * Generate the token.
 		 */
 		$user_id = get_current_user_id();
-		$number  = ( new Magic_Number() )->get_shareable_link( $user_id );
+		$magic   = ( new Magic_Number() )->get_shareable_link( $user_id );
 
-		if ( is_wp_error( $number ) ) {
+		if ( is_wp_error( $magic ) ) {
 			wp_send_json_error(
 				array(
 					'success' => false,
-					'message' => $number->get_error_message(),
+					'message' => $magic->get_error_message(),
 				)
 			);
 		}
 
+		( new Logs_Table )->insert( $user_id, "Generated onetime link #{$magic['number']}" );
+
 		wp_send_json_success(
 			array(
 				'success'      => true,
-				'message'      => __( 'Magic Number Successfully Generated', 'login-me-now' ),
-				'magic_number' => $number,
+				'message'      => __( 'Successfully Generated', 'login-me-now' ),
+				'magic_number' => $magic['number'],
+				'magic_link'   => $magic['link'],
 
 			)
 		);

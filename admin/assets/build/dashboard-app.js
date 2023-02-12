@@ -8976,11 +8976,14 @@ function MainNav() {
     name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'login-me-now'),
     slug: lmn_admin.home_slug,
     path: 'settings'
-  }, {
-    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Free vs Pro', 'login-me-now'),
-    slug: lmn_admin.home_slug,
-    path: 'free-vs-pro'
-  }];
+  }
+  // {
+  // 	name: __('Free vs Pro', 'login-me-now'),
+  // 	slug: lmn_admin.home_slug,
+  // 	path: 'free-vs-pro',
+  // },
+  ];
+
   const onInstallExtension = () => {
     window.open(lmn_admin.extension_url, "_blank");
   };
@@ -9074,9 +9077,9 @@ function SettingsRoute() {
         case 'settings':
           routePage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_settings_Settings__WEBPACK_IMPORTED_MODULE_4__["default"], null);
           break;
-        case 'free-vs-pro':
-          routePage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_free_vs_pro_FreeVsPro__WEBPACK_IMPORTED_MODULE_3__["default"], null);
-          break;
+        // case 'free-vs-pro':
+        // 	routePage = <FreeVsPro />;
+        // 	break;
         default:
           routePage = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_welcome_Welcome__WEBPACK_IMPORTED_MODULE_2__["default"], null);
           break;
@@ -9556,6 +9559,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DashboardApp_pages_settings_PreloadLocalFonts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @DashboardApp/pages/settings/PreloadLocalFonts */ "./assets/src/dashboard-app/pages/settings/PreloadLocalFonts.js");
 /* harmony import */ var _DashboardApp_pages_settings_FlushLocalFonts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @DashboardApp/pages/settings/FlushLocalFonts */ "./assets/src/dashboard-app/pages/settings/FlushLocalFonts.js");
 /* harmony import */ var _general_Logs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./general/Logs */ "./assets/src/dashboard-app/pages/settings/general/Logs.js");
+/* harmony import */ var _general_LogsExpiration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./general/LogsExpiration */ "./assets/src/dashboard-app/pages/settings/general/LogsExpiration.js");
+
 
 
 
@@ -9568,7 +9573,7 @@ function SettingsWrapper(_ref) {
     state
   } = _ref;
   const wrappers = wp.hooks.applyFilters('login_me_now_dashboard.settings_tab_wrappers', {
-    'global-settings': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_general_Logs__WEBPACK_IMPORTED_MODULE_6__["default"], null), " "),
+    'global-settings': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_general_Logs__WEBPACK_IMPORTED_MODULE_6__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_general_LogsExpiration__WEBPACK_IMPORTED_MODULE_7__["default"], null), " "),
     'fonts-performance': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_settings_LoadFontsLocally__WEBPACK_IMPORTED_MODULE_3__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_settings_PreloadLocalFonts__WEBPACK_IMPORTED_MODULE_4__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_settings_FlushLocalFonts__WEBPACK_IMPORTED_MODULE_5__["default"], null), " ")
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, wrappers[state]);
@@ -10144,6 +10149,87 @@ const Logs = () => {
 
 /***/ }),
 
+/***/ "./assets/src/dashboard-app/pages/settings/general/LogsExpiration.js":
+/*!***************************************************************************!*\
+  !*** ./assets/src/dashboard-app/pages/settings/general/LogsExpiration.js ***!
+  \***************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/listbox/listbox.js");
+
+
+
+
+const expirationOptions = [{
+  id: 7,
+  name: 'for 7 Days'
+}, {
+  id: 30,
+  name: 'for 30 Days'
+}, {
+  id: 60,
+  name: 'for 60 Days'
+}, {
+  id: 90,
+  name: 'for 90 Days'
+}];
+const LogsExpiration = () => {
+  const updateLogsExpiration = () => {
+    let assetStatus;
+    if (enableLogs === false) {
+      assetStatus = true;
+    } else {
+      assetStatus = false;
+    }
+    dispatch({
+      type: 'UPDATE_ENABLE_LOGS',
+      payload: assetStatus
+    });
+    const formData = new window.FormData();
+    formData.append('action', 'login_me_now_update_admin_setting');
+    formData.append('security', lmn_admin.update_nonce);
+    formData.append('key', 'logs');
+    formData.append('value', assetStatus);
+    apiFetch({
+      url: lmn_admin.ajax_url,
+      method: 'POST',
+      body: formData
+    }).then(() => {
+      dispatch({
+        type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION',
+        payload: __('Successfully saved!', 'login-me-now')
+      });
+    });
+  };
+  const enableLogs = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(state => state.enableLogs);
+  const enableLogsStatus = false === enableLogs ? false : true;
+  const [selectedPerson] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(expirationOptions[0]);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
+    className: `login-me-now-dep-field-${enableLogsStatus} text-sm block border-b border-solid border-slate-200 px-8 py-8 justify-between`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mr-16 w-full flex items-center"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Listbox, {
+    value: enableLogsStatus,
+    onChange: updateLogsExpiration
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Listbox.Button, null, selectedPerson.name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Listbox.Options, {
+    className: "bg-slate-10"
+  }, expirationOptions.map(option => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Listbox.Option, {
+    key: option.id,
+    value: option,
+    className: "text-sm text-slate-500 relative cursor-pointer select-none py-1 pr-1 mb-1"
+  }, option.name)))));
+};
+/* harmony default export */ __webpack_exports__["default"] = (LogsExpiration);
+
+/***/ }),
+
 /***/ "./assets/src/dashboard-app/pages/welcome/ExtensionCard.js":
 /*!*****************************************************************!*\
   !*** ./assets/src/dashboard-app/pages/welcome/ExtensionCard.js ***!
@@ -10333,6 +10419,7 @@ function MagicLinkPopup() {
       }, 120000);
     }
   }, [magicLinkPopup]);
+  console.log(magicLinkPopup);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     "aria-live": "assertive",
     className: "fixed inset-10 z-10 flex px-4 py-6 pointer-events-none sm:p-6 sm:items-start"
@@ -10362,15 +10449,15 @@ function MagicLinkPopup() {
     className: "ml-3 w-0 flex-1 pt-0.5"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "text-sm font-medium text-gray-900"
-  }, magicLinkPopup), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, magicLinkPopup.message), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "pt-3"
   }, "Magic Link"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("code", {
     className: "text-sm font-medium"
-  }, "http://login-me-now.local/?lmn=6948258332436179"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, magicLinkPopup.magic_link), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "pt-3"
   }, "Magic Number"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("code", {
     className: "text-sm font-medium"
-  }, "6948258332436179")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, magicLinkPopup.magic_number)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "ml-4 flex-shrink-0 flex"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
@@ -10570,9 +10657,8 @@ const Welcome = () => {
     e.preventDefault();
     e.stopPropagation();
     const formData = new window.FormData();
-    formData.append('action', 'login_me_now_generate_token');
+    formData.append('action', 'login_me_now_generate_onetime_link');
     formData.append('security', lmn_admin.generate_token_nonce);
-    e.target.innerText = lmn_admin.generating_token_text;
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
       url: lmn_admin.ajax_url,
       method: 'POST',
@@ -10581,19 +10667,13 @@ const Welcome = () => {
       if (data.success) {
         dispatch({
           type: 'GENERATE_MAGIC_LINK_POPUP',
-          payload: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Magic Link Created Successfully', 'login-me-now')
+          payload: {
+            ...data.data
+          }
         });
-        e.target.innerText = data.data.magic_number;
-        console.log(data);
-        // window.open(lmn_admin.login_me_now_base_url, '_self');
       }
     });
-
-    console.log(e);
-
-    // window.open(lmn_admin.extension_url, "_blank");
   };
-
   const getLoginMeNowProTitle = () => {
     return lmn_admin.pro_installed_status ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Activate Now', 'login-me-now') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Upgrade Now', 'login-me-now');
   };
@@ -10660,7 +10740,7 @@ const Welcome = () => {
     type: "button",
     className: "sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0",
     onClick: onGenerateToken
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Generate Magic Number", "login-me-now"))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Generate Onetime Magic Link", "login-me-now"))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "grid grid-cols-1 gap-4 lg:col-span-2 h-full"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "login-me-now-video-container"
@@ -18658,6 +18738,43 @@ let u=(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);function c(){le
 
 /***/ }),
 
+/***/ "./node_modules/@headlessui/react/dist/components/listbox/listbox.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@headlessui/react/dist/components/listbox/listbox.js ***!
+  \***************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Listbox": function() { return /* binding */ pt; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var _hooks_use_disposables_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../hooks/use-disposables.js */ "./node_modules/@headlessui/react/dist/hooks/use-disposables.js");
+/* harmony import */ var _hooks_use_id_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../hooks/use-id.js */ "./node_modules/@headlessui/react/dist/hooks/use-id.js");
+/* harmony import */ var _hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../hooks/use-iso-morphic-effect.js */ "./node_modules/@headlessui/react/dist/hooks/use-iso-morphic-effect.js");
+/* harmony import */ var _hooks_use_computed_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../hooks/use-computed.js */ "./node_modules/@headlessui/react/dist/hooks/use-computed.js");
+/* harmony import */ var _hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../hooks/use-sync-refs.js */ "./node_modules/@headlessui/react/dist/hooks/use-sync-refs.js");
+/* harmony import */ var _utils_render_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/render.js */ "./node_modules/@headlessui/react/dist/utils/render.js");
+/* harmony import */ var _utils_match_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/match.js */ "./node_modules/@headlessui/react/dist/utils/match.js");
+/* harmony import */ var _utils_disposables_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../utils/disposables.js */ "./node_modules/@headlessui/react/dist/utils/disposables.js");
+/* harmony import */ var _keyboard_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../keyboard.js */ "./node_modules/@headlessui/react/dist/components/keyboard.js");
+/* harmony import */ var _utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/calculate-active-index.js */ "./node_modules/@headlessui/react/dist/utils/calculate-active-index.js");
+/* harmony import */ var _utils_bugs_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../utils/bugs.js */ "./node_modules/@headlessui/react/dist/utils/bugs.js");
+/* harmony import */ var _utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/focus-management.js */ "./node_modules/@headlessui/react/dist/utils/focus-management.js");
+/* harmony import */ var _internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../internal/open-closed.js */ "./node_modules/@headlessui/react/dist/internal/open-closed.js");
+/* harmony import */ var _hooks_use_resolve_button_type_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../hooks/use-resolve-button-type.js */ "./node_modules/@headlessui/react/dist/hooks/use-resolve-button-type.js");
+/* harmony import */ var _hooks_use_outside_click_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../hooks/use-outside-click.js */ "./node_modules/@headlessui/react/dist/hooks/use-outside-click.js");
+/* harmony import */ var _internal_hidden_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../internal/hidden.js */ "./node_modules/@headlessui/react/dist/internal/hidden.js");
+/* harmony import */ var _utils_form_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/form.js */ "./node_modules/@headlessui/react/dist/utils/form.js");
+/* harmony import */ var _utils_owner_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../utils/owner.js */ "./node_modules/@headlessui/react/dist/utils/owner.js");
+/* harmony import */ var _hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../hooks/use-event.js */ "./node_modules/@headlessui/react/dist/hooks/use-event.js");
+/* harmony import */ var _hooks_use_controllable_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../hooks/use-controllable.js */ "./node_modules/@headlessui/react/dist/hooks/use-controllable.js");
+var ye=(n=>(n[n.Open=0]="Open",n[n.Closed=1]="Closed",n))(ye||{}),xe=(n=>(n[n.Single=0]="Single",n[n.Multi=1]="Multi",n))(xe||{}),Oe=(n=>(n[n.Pointer=0]="Pointer",n[n.Other=1]="Other",n))(Oe||{}),me=(r=>(r[r.OpenListbox=0]="OpenListbox",r[r.CloseListbox=1]="CloseListbox",r[r.SetDisabled=2]="SetDisabled",r[r.SetOrientation=3]="SetOrientation",r[r.GoToOption=4]="GoToOption",r[r.Search=5]="Search",r[r.ClearSearch=6]="ClearSearch",r[r.RegisterOption=7]="RegisterOption",r[r.UnregisterOption=8]="UnregisterOption",r))(me||{});function j(t,i=n=>n){let n=t.activeOptionIndex!==null?t.options[t.activeOptionIndex]:null,e=(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.sortByDomNode)(i(t.options.slice()),u=>u.dataRef.current.domRef.current),o=n?e.indexOf(n):null;return o===-1&&(o=null),{options:e,activeOptionIndex:o}}let ge={[1](t){return t.disabled||t.listboxState===1?t:{...t,activeOptionIndex:null,listboxState:1}},[0](t){if(t.disabled||t.listboxState===0)return t;let i=t.activeOptionIndex,{value:n,mode:e,compare:o}=t.propsRef.current,u=t.options.findIndex(l=>{let s=l.dataRef.current.value;return (0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(e,{[1]:()=>n.some(r=>o(r,s)),[0]:()=>o(n,s)})});return u!==-1&&(i=u),{...t,listboxState:0,activeOptionIndex:i}},[2](t,i){return t.disabled===i.disabled?t:{...t,disabled:i.disabled}},[3](t,i){return t.orientation===i.orientation?t:{...t,orientation:i.orientation}},[4](t,i){var o;if(t.disabled||t.listboxState===1)return t;let n=j(t),e=(0,_utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__.calculateActiveIndex)(i,{resolveItems:()=>n.options,resolveActiveIndex:()=>n.activeOptionIndex,resolveId:u=>u.id,resolveDisabled:u=>u.dataRef.current.disabled});return{...t,...n,searchQuery:"",activeOptionIndex:e,activationTrigger:(o=i.trigger)!=null?o:1}},[5]:(t,i)=>{if(t.disabled||t.listboxState===1)return t;let e=t.searchQuery!==""?0:1,o=t.searchQuery+i.value.toLowerCase(),l=(t.activeOptionIndex!==null?t.options.slice(t.activeOptionIndex+e).concat(t.options.slice(0,t.activeOptionIndex+e)):t.options).find(d=>{var r;return!d.dataRef.current.disabled&&((r=d.dataRef.current.textValue)==null?void 0:r.startsWith(o))}),s=l?t.options.indexOf(l):-1;return s===-1||s===t.activeOptionIndex?{...t,searchQuery:o}:{...t,searchQuery:o,activeOptionIndex:s,activationTrigger:1}},[6](t){return t.disabled||t.listboxState===1||t.searchQuery===""?t:{...t,searchQuery:""}},[7]:(t,i)=>{let n={id:i.id,dataRef:i.dataRef},e=j(t,o=>[...o,n]);if(t.activeOptionIndex===null){let{value:o,mode:u,compare:l}=t.propsRef.current,s=i.dataRef.current.value;(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(u,{[1]:()=>o.some(r=>l(r,s)),[0]:()=>l(o,s)})&&(e.activeOptionIndex=e.options.indexOf(n))}return{...t,...e}},[8]:(t,i)=>{let n=j(t,e=>{let o=e.findIndex(u=>u.id===i.id);return o!==-1&&e.splice(o,1),e});return{...t,...n,activationTrigger:1}}},K=(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)(null);K.displayName="ListboxContext";function w(t){let i=(0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(K);if(i===null){let n=new Error(`<${t} /> is missing a parent <Listbox /> component.`);throw Error.captureStackTrace&&Error.captureStackTrace(n,w),n}return i}function Re(t,i){return (0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(i.type,ge,t,i)}let ve=react__WEBPACK_IMPORTED_MODULE_0__.Fragment,Le=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.forwardRefWithAs)(function(i,n){let{value:e,defaultValue:o,name:u,onChange:l,by:s=(p,T)=>p===T,disabled:d=!1,horizontal:r=!1,multiple:x=!1,...S}=i;const g=r?"horizontal":"vertical";let O=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_5__.useSyncRefs)(n),[m,f]=(0,_hooks_use_controllable_js__WEBPACK_IMPORTED_MODULE_6__.useControllable)(e,l,o),b=(0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(Re,{listboxState:1,propsRef:{current:{value:m,onChange:f,mode:x?1:0,compare:(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(typeof s=="string"?(p,T)=>{let C=s;return(p==null?void 0:p[C])===(T==null?void 0:T[C])}:s)}},labelRef:(0,react__WEBPACK_IMPORTED_MODULE_0__.createRef)(),buttonRef:(0,react__WEBPACK_IMPORTED_MODULE_0__.createRef)(),optionsRef:(0,react__WEBPACK_IMPORTED_MODULE_0__.createRef)(),disabled:d,orientation:g,options:[],searchQuery:"",activeOptionIndex:null,activationTrigger:1}),[{listboxState:a,propsRef:c,optionsRef:P,buttonRef:D},M]=b;c.current.value=m,c.current.mode=x?1:0,(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_8__.useIsoMorphicEffect)(()=>{c.current.onChange=p=>(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(c.current.mode,{[0](){return f(p)},[1](){let T=c.current.value.slice(),{compare:C}=c.current,W=T.findIndex(X=>C(X,p));return W===-1?T.push(p):T.splice(W,1),f(T)}})},[f,c]),(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_8__.useIsoMorphicEffect)(()=>M({type:2,disabled:d}),[d]),(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_8__.useIsoMorphicEffect)(()=>M({type:3,orientation:g}),[g]),(0,_hooks_use_outside_click_js__WEBPACK_IMPORTED_MODULE_9__.useOutsideClick)([D,P],(p,T)=>{var C;M({type:1}),(0,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.isFocusableElement)(T,_utils_focus_management_js__WEBPACK_IMPORTED_MODULE_1__.FocusableMode.Loose)||(p.preventDefault(),(C=D.current)==null||C.focus())},a===0);let N=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({open:a===0,disabled:d,value:m}),[a,d,m]),R={ref:O};return react__WEBPACK_IMPORTED_MODULE_0__.createElement(K.Provider,{value:b},react__WEBPACK_IMPORTED_MODULE_0__.createElement(_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.OpenClosedProvider,{value:(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(a,{[0]:_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.State.Open,[1]:_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.State.Closed})},u!=null&&m!=null&&(0,_utils_form_js__WEBPACK_IMPORTED_MODULE_11__.objectToFormEntries)({[u]:m}).map(([p,T])=>react__WEBPACK_IMPORTED_MODULE_0__.createElement(_internal_hidden_js__WEBPACK_IMPORTED_MODULE_12__.Hidden,{features:_internal_hidden_js__WEBPACK_IMPORTED_MODULE_12__.Features.Hidden,...(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.compact)({key:p,as:"input",type:"hidden",hidden:!0,readOnly:!0,name:p,value:T})})),(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.render)({ourProps:R,theirProps:S,slot:N,defaultTag:ve,name:"Listbox"})))}),Se="button",Ae=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.forwardRefWithAs)(function(i,n){var f;let[e,o]=w("Listbox.Button"),u=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_5__.useSyncRefs)(e.buttonRef,n),l=`headlessui-listbox-button-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_13__.useId)()}`,s=(0,_hooks_use_disposables_js__WEBPACK_IMPORTED_MODULE_14__.useDisposables)(),d=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(b=>{switch(b.key){case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.Space:case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.Enter:case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.ArrowDown:b.preventDefault(),o({type:0}),s.nextFrame(()=>{e.propsRef.current.value||o({type:4,focus:_utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__.Focus.First})});break;case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.ArrowUp:b.preventDefault(),o({type:0}),s.nextFrame(()=>{e.propsRef.current.value||o({type:4,focus:_utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__.Focus.Last})});break}}),r=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(b=>{switch(b.key){case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.Space:b.preventDefault();break}}),x=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(b=>{if((0,_utils_bugs_js__WEBPACK_IMPORTED_MODULE_16__.isDisabledReactIssue7711)(b.currentTarget))return b.preventDefault();e.listboxState===0?(o({type:1}),s.nextFrame(()=>{var a;return(a=e.buttonRef.current)==null?void 0:a.focus({preventScroll:!0})})):(b.preventDefault(),o({type:0}))}),S=(0,_hooks_use_computed_js__WEBPACK_IMPORTED_MODULE_17__.useComputed)(()=>{if(!!e.labelRef.current)return[e.labelRef.current.id,l].join(" ")},[e.labelRef.current,l]),g=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({open:e.listboxState===0,disabled:e.disabled,value:e.propsRef.current.value}),[e]),O=i,m={ref:u,id:l,type:(0,_hooks_use_resolve_button_type_js__WEBPACK_IMPORTED_MODULE_18__.useResolveButtonType)(i,e.buttonRef),"aria-haspopup":!0,"aria-controls":(f=e.optionsRef.current)==null?void 0:f.id,"aria-expanded":e.disabled?void 0:e.listboxState===0,"aria-labelledby":S,disabled:e.disabled,onKeyDown:d,onKeyUp:r,onClick:x};return (0,_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.render)({ourProps:m,theirProps:O,slot:g,defaultTag:Se,name:"Listbox.Button"})}),he="label",Pe=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.forwardRefWithAs)(function(i,n){let[e]=w("Listbox.Label"),o=`headlessui-listbox-label-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_13__.useId)()}`,u=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_5__.useSyncRefs)(e.labelRef,n),l=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(()=>{var x;return(x=e.buttonRef.current)==null?void 0:x.focus({preventScroll:!0})}),s=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({open:e.listboxState===0,disabled:e.disabled}),[e]);return (0,_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.render)({ourProps:{ref:u,id:o,onClick:l},theirProps:i,slot:s,defaultTag:he,name:"Listbox.Label"})}),Ce="ul",De=_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.Features.RenderStrategy|_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.Features.Static,Me=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.forwardRefWithAs)(function(i,n){var b;let[e,o]=w("Listbox.Options"),u=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_5__.useSyncRefs)(e.optionsRef,n),l=`headlessui-listbox-options-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_13__.useId)()}`,s=(0,_hooks_use_disposables_js__WEBPACK_IMPORTED_MODULE_14__.useDisposables)(),d=(0,_hooks_use_disposables_js__WEBPACK_IMPORTED_MODULE_14__.useDisposables)(),r=(0,_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.useOpenClosed)(),x=(()=>r!==null?r===_internal_open_closed_js__WEBPACK_IMPORTED_MODULE_10__.State.Open:e.listboxState===0)();(0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(()=>{var c;let a=e.optionsRef.current;!a||e.listboxState===0&&a!==((c=(0,_utils_owner_js__WEBPACK_IMPORTED_MODULE_19__.getOwnerDocument)(a))==null?void 0:c.activeElement)&&a.focus({preventScroll:!0})},[e.listboxState,e.optionsRef]);let S=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(a=>{switch(d.dispose(),a.key){case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.Space:if(e.searchQuery!=="")return a.preventDefault(),a.stopPropagation(),o({type:5,value:a.key});case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.Enter:if(a.preventDefault(),a.stopPropagation(),e.activeOptionIndex!==null){let{dataRef:c}=e.options[e.activeOptionIndex];e.propsRef.current.onChange(c.current.value)}e.propsRef.current.mode===0&&(o({type:1}),(0,_utils_disposables_js__WEBPACK_IMPORTED_MODULE_20__.disposables)().nextFrame(()=>{var c;return(c=e.buttonRef.current)==null?void 0:c.focus({preventScroll:!0})}));break;case (0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(e.orientation,{vertical:_keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.ArrowDown,horizontal:_keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.ArrowRight}):return a.preventDefault(),a.stopPropagation(),o({type:4,focus:_utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__.Focus.Next});case (0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(e.orientation,{vertical:_keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.ArrowUp,horizontal:_keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.ArrowLeft}):return a.preventDefault(),a.stopPropagation(),o({type:4,focus:_utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__.Focus.Previous});case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.Home:case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.PageUp:return a.preventDefault(),a.stopPropagation(),o({type:4,focus:_utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__.Focus.First});case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.End:case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.PageDown:return a.preventDefault(),a.stopPropagation(),o({type:4,focus:_utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__.Focus.Last});case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.Escape:return a.preventDefault(),a.stopPropagation(),o({type:1}),s.nextFrame(()=>{var c;return(c=e.buttonRef.current)==null?void 0:c.focus({preventScroll:!0})});case _keyboard_js__WEBPACK_IMPORTED_MODULE_15__.Keys.Tab:a.preventDefault(),a.stopPropagation();break;default:a.key.length===1&&(o({type:5,value:a.key}),d.setTimeout(()=>o({type:6}),350));break}}),g=(0,_hooks_use_computed_js__WEBPACK_IMPORTED_MODULE_17__.useComputed)(()=>{var a,c,P;return(P=(a=e.labelRef.current)==null?void 0:a.id)!=null?P:(c=e.buttonRef.current)==null?void 0:c.id},[e.labelRef.current,e.buttonRef.current]),O=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({open:e.listboxState===0}),[e]),m=i,f={"aria-activedescendant":e.activeOptionIndex===null||(b=e.options[e.activeOptionIndex])==null?void 0:b.id,"aria-multiselectable":e.propsRef.current.mode===1?!0:void 0,"aria-labelledby":g,"aria-orientation":e.orientation,id:l,onKeyDown:S,role:"listbox",tabIndex:0,ref:u};return (0,_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.render)({ourProps:f,theirProps:m,slot:O,defaultTag:Ce,features:De,visible:x,name:"Listbox.Options"})}),Ee="li",Ie=(0,_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.forwardRefWithAs)(function(i,n){let{disabled:e=!1,value:o,...u}=i,[l,s]=w("Listbox.Option"),d=`headlessui-listbox-option-${(0,_hooks_use_id_js__WEBPACK_IMPORTED_MODULE_13__.useId)()}`,r=l.activeOptionIndex!==null?l.options[l.activeOptionIndex].id===d:!1,{value:x,compare:S}=l.propsRef.current,g=(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(l.propsRef.current.mode,{[1]:()=>x.some(R=>S(R,o)),[0]:()=>S(x,o)}),O=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null),m=(0,_hooks_use_sync_refs_js__WEBPACK_IMPORTED_MODULE_5__.useSyncRefs)(n,O);(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_8__.useIsoMorphicEffect)(()=>{if(l.listboxState!==0||!r||l.activationTrigger===0)return;let R=(0,_utils_disposables_js__WEBPACK_IMPORTED_MODULE_20__.disposables)();return R.requestAnimationFrame(()=>{var p,T;(T=(p=O.current)==null?void 0:p.scrollIntoView)==null||T.call(p,{block:"nearest"})}),R.dispose},[O,r,l.listboxState,l.activationTrigger,l.activeOptionIndex]);let f=(0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)({disabled:e,value:o,domRef:O});(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_8__.useIsoMorphicEffect)(()=>{f.current.disabled=e},[f,e]),(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_8__.useIsoMorphicEffect)(()=>{f.current.value=o},[f,o]),(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_8__.useIsoMorphicEffect)(()=>{var R,p;f.current.textValue=(p=(R=O.current)==null?void 0:R.textContent)==null?void 0:p.toLowerCase()},[f,O]);let b=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(()=>l.propsRef.current.onChange(o));(0,_hooks_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_8__.useIsoMorphicEffect)(()=>(s({type:7,id:d,dataRef:f}),()=>s({type:8,id:d})),[f,d]);let a=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(R=>{if(e)return R.preventDefault();b(),l.propsRef.current.mode===0&&(s({type:1}),(0,_utils_disposables_js__WEBPACK_IMPORTED_MODULE_20__.disposables)().nextFrame(()=>{var p;return(p=l.buttonRef.current)==null?void 0:p.focus({preventScroll:!0})}))}),c=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(()=>{if(e)return s({type:4,focus:_utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__.Focus.Nothing});s({type:4,focus:_utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__.Focus.Specific,id:d})}),P=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(()=>{e||r||s({type:4,focus:_utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__.Focus.Specific,id:d,trigger:0})}),D=(0,_hooks_use_event_js__WEBPACK_IMPORTED_MODULE_7__.useEvent)(()=>{e||!r||s({type:4,focus:_utils_calculate_active_index_js__WEBPACK_IMPORTED_MODULE_3__.Focus.Nothing})}),M=(0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(()=>({active:r,selected:g,disabled:e}),[r,g,e]);return (0,_utils_render_js__WEBPACK_IMPORTED_MODULE_4__.render)({ourProps:{id:d,ref:m,role:"option",tabIndex:e===!0?void 0:-1,"aria-disabled":e===!0?!0:void 0,"aria-selected":g,disabled:void 0,onClick:a,onFocus:c,onPointerMove:P,onMouseMove:P,onPointerLeave:D,onMouseLeave:D},theirProps:u,slot:M,defaultTag:Ee,name:"Listbox.Option"})}),pt=Object.assign(Le,{Button:Ae,Label:Pe,Options:Me,Option:Ie});
+
+
+/***/ }),
+
 /***/ "./node_modules/@headlessui/react/dist/components/portal/portal.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/@headlessui/react/dist/components/portal/portal.js ***!
@@ -18757,6 +18874,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_disposables_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/disposables.js */ "./node_modules/@headlessui/react/dist/utils/disposables.js");
 /* harmony import */ var _utils_match_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils/match.js */ "./node_modules/@headlessui/react/dist/utils/match.js");
 function f(t,...e){t&&e.length>0&&t.classList.add(...e)}function v(t,...e){t&&e.length>0&&t.classList.remove(...e)}var T=(n=>(n.Ended="ended",n.Cancelled="cancelled",n))(T||{});function c(t,e){let n=(0,_utils_disposables_js__WEBPACK_IMPORTED_MODULE_0__.disposables)();if(!t)return n.dispose;let{transitionDuration:d,transitionDelay:o}=getComputedStyle(t),[s,u]=[d,o].map(i=>{let[a=0]=i.split(",").filter(Boolean).map(r=>r.includes("ms")?parseFloat(r):parseFloat(r)*1e3).sort((r,l)=>l-r);return a});if(s+u!==0){let i=[];i.push(n.addEventListener(t,"transitionrun",a=>{a.target===a.currentTarget&&(i.splice(0).forEach(r=>r()),i.push(n.addEventListener(t,"transitionend",r=>{r.target===r.currentTarget&&(e("ended"),i.splice(0).forEach(l=>l()))}),n.addEventListener(t,"transitioncancel",r=>{r.target===r.currentTarget&&(e("cancelled"),i.splice(0).forEach(l=>l()))})))}))}else e("ended");return n.add(()=>e("cancelled")),n.dispose}function C(t,e,n,d){let o=n?"enter":"leave",s=(0,_utils_disposables_js__WEBPACK_IMPORTED_MODULE_0__.disposables)(),u=d!==void 0?(0,_utils_once_js__WEBPACK_IMPORTED_MODULE_1__.once)(d):()=>{};o==="enter"&&(t.removeAttribute("hidden"),t.style.display="");let m=(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(o,{enter:()=>e.enter,leave:()=>e.leave}),i=(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(o,{enter:()=>e.enterTo,leave:()=>e.leaveTo}),a=(0,_utils_match_js__WEBPACK_IMPORTED_MODULE_2__.match)(o,{enter:()=>e.enterFrom,leave:()=>e.leaveFrom});return v(t,...e.enter,...e.enterTo,...e.enterFrom,...e.leave,...e.leaveFrom,...e.leaveTo,...e.entered),f(t,...m,...a),s.nextFrame(()=>{v(t,...a),f(t,...i),c(t,r=>(r==="ended"&&(v(t,...m),f(t,...e.entered)),u(r)))}),s.dispose}
+
+
+/***/ }),
+
+/***/ "./node_modules/@headlessui/react/dist/hooks/use-computed.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@headlessui/react/dist/hooks/use-computed.js ***!
+  \*******************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useComputed": function() { return /* binding */ i; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var _use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./use-iso-morphic-effect.js */ "./node_modules/@headlessui/react/dist/hooks/use-iso-morphic-effect.js");
+/* harmony import */ var _use_latest_value_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./use-latest-value.js */ "./node_modules/@headlessui/react/dist/hooks/use-latest-value.js");
+function i(e,o){let[u,t]=(0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(e),r=(0,_use_latest_value_js__WEBPACK_IMPORTED_MODULE_1__.useLatestValue)(e);return (0,_use_iso_morphic_effect_js__WEBPACK_IMPORTED_MODULE_2__.useIsoMorphicEffect)(()=>t(r.current),[r,t,...o]),u}
 
 
 /***/ }),
@@ -19199,6 +19335,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isDisabledReactIssue7711": function() { return /* binding */ r; }
 /* harmony export */ });
 function r(n){let e=n.parentElement,l=null;for(;e&&!(e instanceof HTMLFieldSetElement);)e instanceof HTMLLegendElement&&(l=e),e=e.parentElement;let t=(e==null?void 0:e.getAttribute("disabled"))==="";return t&&i(l)?!1:t}function i(n){if(!n)return!1;let e=n.previousElementSibling;for(;e!==null;){if(e instanceof HTMLLegendElement)return!1;e=e.previousElementSibling}return!0}
+
+
+/***/ }),
+
+/***/ "./node_modules/@headlessui/react/dist/utils/calculate-active-index.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@headlessui/react/dist/utils/calculate-active-index.js ***!
+  \*****************************************************************************/
+/***/ (function(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Focus": function() { return /* binding */ a; },
+/* harmony export */   "calculateActiveIndex": function() { return /* binding */ x; }
+/* harmony export */ });
+function f(r){throw new Error("Unexpected object: "+r)}var a=(e=>(e[e.First=0]="First",e[e.Previous=1]="Previous",e[e.Next=2]="Next",e[e.Last=3]="Last",e[e.Specific=4]="Specific",e[e.Nothing=5]="Nothing",e))(a||{});function x(r,n){let t=n.resolveItems();if(t.length<=0)return null;let l=n.resolveActiveIndex(),s=l!=null?l:-1,d=(()=>{switch(r.focus){case 0:return t.findIndex(e=>!n.resolveDisabled(e));case 1:{let e=t.slice().reverse().findIndex((i,c,u)=>s!==-1&&u.length-c-1>=s?!1:!n.resolveDisabled(i));return e===-1?e:t.length-1-e}case 2:return t.findIndex((e,i)=>i<=s?!1:!n.resolveDisabled(e));case 3:{let e=t.slice().reverse().findIndex(i=>!n.resolveDisabled(i));return e===-1?e:t.length-1-e}case 4:return t.findIndex(e=>n.resolveId(e)===r.id);case 5:return null;default:f(r)}})();return d===-1?l:d}
 
 
 /***/ }),

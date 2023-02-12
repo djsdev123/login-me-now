@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.90
- * @version 0.93
+ * @version 1.0.0
  */
 
 namespace Login_Me_Now;
@@ -176,6 +176,8 @@ class JWT_Auth {
 
 		/** Store the token ref in user meta using the $issuedAt, so we can block the token if needed */
 		Tokens_Table::insert( $user->data->ID, $issuedAt, $expire, 'active' );
+
+		( new Logs_Table )->insert( $user->data->ID, "Generated reusable link #{$issuedAt}" );
 
 		if ( ! $additional_data ) {
 			return $token;

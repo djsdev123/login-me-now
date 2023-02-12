@@ -2,25 +2,25 @@
 /**
  * @author  HeyMehedi
  * @since   0.93
- * @version 0.93
+ * @version 1.0.0
  */
 
 namespace Login_Me_Now;
 
 /**
- * Database related methods and actions
+ * Tokens related methods and actions
  *
  * @since 0.93
  */
 class Tokens_Table {
 	/**
-	 * Create plugin tables if not exist
+	 * Create tokens table if not exist
 	 *
 	 * @since 0.93
 	 *
 	 * @return void
 	 */
-	public function create_tables() {
+	public function create_table() {
 		global $wpdb;
 
 		$collate = '';

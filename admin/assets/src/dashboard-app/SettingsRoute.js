@@ -20,9 +20,9 @@ function SettingsRoute() {
 				case 'settings':
 					routePage = <Settings />;
 					break;
-				case 'free-vs-pro':
-					routePage = <FreeVsPro />;
-					break;
+				// case 'free-vs-pro':
+				// 	routePage = <FreeVsPro />;
+				// 	break;
 				default:
 					routePage = <Welcome />;
 					break;

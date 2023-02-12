@@ -10,7 +10,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
 ?>
 <div class="lmn-menu-page-wrapper">
 	<div id="lmn-menu-page">

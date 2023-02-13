@@ -9,8 +9,8 @@ module.exports = {
 		extend: {
 			colors: {
 				lmn: {
-					DEFAULT: '#4EC8EA',
-					hover: '#96D6C8',
+					DEFAULT: '#263F94',
+					hover: '#70BDEA',
 				},
 			},
 			blur: {

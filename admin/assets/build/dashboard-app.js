@@ -9026,7 +9026,7 @@ function MainNav() {
     className: "flex items-center"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
-    className: "sm:inline-flex items-center px-4 py-2 border border-lmn text-sm font-medium rounded-md shadow-sm text-black hover:text-white bg-white focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0",
+    className: "sm:inline-flex items-center px-4 py-2 border border-lmn-hover text-sm font-medium rounded-md shadow-sm text-black hover:text-white bg-white focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0",
     onClick: onInstallExtension
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Install Chrome Extension", "login-me-now"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex items-center"

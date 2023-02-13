@@ -62,6 +62,10 @@ class Logs_Table {
 	 * @return void
 	 */
 	public static function insert( Int $user_id, String $message ) {
+		if ( ! lmn_get_option( 'logs', true ) ) {
+			return;
+		}
+		
 		global $wpdb;
 
 		$ip = get_ip_address();

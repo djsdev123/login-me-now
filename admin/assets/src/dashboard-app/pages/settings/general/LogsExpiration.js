@@ -52,7 +52,7 @@ ul#headlessui-listbox-options-5 {
 } */}
       <Listbox onChange={updateLogsExpiration}>
 
-        <Listbox.Button>{ __('Store log data for ', 'login-me-now') + ' ' + currentOption.name}</Listbox.Button>
+        <Listbox.Button>{ __('Store Log Data for ', 'login-me-now') + ' ' + currentOption.name}</Listbox.Button>
 
         <Listbox.Options className='bg-slate-10 pt-3 divide-y divide-dashed'>
           

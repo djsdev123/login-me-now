@@ -10216,7 +10216,7 @@ const LogsExpiration = () => {
     className: "mr-16 w-full flex items-center"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox, {
     onChange: updateLogsExpiration
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox.Button, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Store log data for ', 'login-me-now') + ' ' + currentOption.name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox.Options, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox.Button, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Store Log Data for ', 'login-me-now') + ' ' + currentOption.name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox.Options, {
     className: "bg-slate-10 pt-3 divide-y divide-dashed"
   }, expirationOptions.map(option => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox.Option, {
     key: option.days,

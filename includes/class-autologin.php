@@ -57,7 +57,7 @@ class AutoLogin {
 
 		delete_transient( $number );
 
-		( new Logs_Table )->insert( $user_id, "Logged in using reusable onetime link #{$number}" );
+		( new Logs_Table )->insert( $user_id, "Logged in using onetime link #{$number}" );
 		$this->now( $user_id );
 	}
 

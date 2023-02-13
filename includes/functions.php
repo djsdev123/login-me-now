@@ -14,15 +14,8 @@
  */
 function lmn_get_option( $option, $default = '' ) {
 
-	/**
-	 * Filter the options array for Settings.
-	 *
-	 * @since  1.0.0
-	 * @var Array
-	 */
-	$options = apply_filters( 'lmn_get_option_array', $option, $default );
-
-	$value = ( isset( $options[$option] ) && '' !== $options[$option] ) ? $options[$option] : $default;
+	$options = get_option( 'login_me_now_admin_settings', array() );
+	$value   = ( isset( $options[$option] ) && '' !== $options[$option] ) ? $options[$option] : array();
 
 	/**
 	 * Dynamic filter lmn_get_option_$option.
@@ -32,7 +25,7 @@ function lmn_get_option( $option, $default = '' ) {
 	 * @var Mixed.
 	 */
 
-	return apply_filters( "lmn_get_option_{$option}", $value, $option, $default );
+	return apply_filters( "lmn_get_option_{$option}", $value, $option, $options );
 }
 
 /**

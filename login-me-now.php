@@ -30,6 +30,6 @@ require_once LOGIN_ME_NOW_BASE_DIR . 'vendor/autoload.php';
 /**
  * Load necessary classes
  */
-require_once LOGIN_ME_NOW_BASE_DIR . 'admin/class-login-me-now-admin-loader.php';
 require_once LOGIN_ME_NOW_BASE_DIR . 'includes/init.php';
+require_once LOGIN_ME_NOW_BASE_DIR . 'admin/class-login-me-now-admin-loader.php';
 require_once LOGIN_ME_NOW_BASE_DIR . 'routes/init.php';

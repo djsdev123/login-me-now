@@ -92,6 +92,7 @@ class Admin_Ajax {
 				'self_hosted_gfonts'  => 'bool',
 				'logs'                => 'bool',
 				'preload_local_fonts' => 'bool',
+				'logs_expiration'     => 'integer',
 			)
 		);
 	}

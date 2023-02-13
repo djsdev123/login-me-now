@@ -30,6 +30,11 @@ const globalDataReducer = (state = {}, action) => {
 				...state,
 				enableLogs: action.payload,
 			};
+		case 'UPDATE_LOGS_EXPIRATION':
+			return {
+				...state,
+				logsExpiration: action.payload,
+			};
 		case 'UPDATE_ENABLE_PRELOAD_LOCAL_FONTS':
 			return {
 				...state,

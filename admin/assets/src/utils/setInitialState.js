@@ -11,6 +11,7 @@ const setInitialState = (store) => {
 			activeSettingsNavigationTab: 'global-settings',
 			enableLoadFontsLocally: data.self_hosted_gfonts,
 			enableLogs: data.logs,
+			logsExpiration: data.logs_expiration,
 			enablePreloadLocalFonts: data.preload_local_fonts,
 			blocksStatuses: data.pro_addons,
 		};

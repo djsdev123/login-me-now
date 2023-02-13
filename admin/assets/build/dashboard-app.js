@@ -10159,71 +10159,69 @@ const Logs = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/listbox/listbox.js");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/listbox/listbox.js");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 
 const expirationOptions = [{
-  id: 7,
-  name: 'for 7 Days'
+  days: 7,
+  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('7 Days', 'login-me-now')
 }, {
-  id: 30,
-  name: 'for 30 Days'
+  days: 30,
+  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('30 Days', 'login-me-now')
 }, {
-  id: 60,
-  name: 'for 60 Days'
+  days: 60,
+  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('60 Days', 'login-me-now')
 }, {
-  id: 90,
-  name: 'for 90 Days'
+  days: 90,
+  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('90 Days', 'login-me-now')
 }];
 const LogsExpiration = () => {
-  const updateLogsExpiration = () => {
-    let assetStatus;
-    if (enableLogs === false) {
-      assetStatus = true;
-    } else {
-      assetStatus = false;
-    }
+  const enableLogs = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state.enableLogs);
+  const enableLogsStatus = false === enableLogs ? false : true;
+  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
+  const updateLogsExpiration = days => {
     dispatch({
-      type: 'UPDATE_ENABLE_LOGS',
-      payload: assetStatus
+      type: 'UPDATE_LOGS_EXPIRATION',
+      payload: days
     });
     const formData = new window.FormData();
     formData.append('action', 'login_me_now_update_admin_setting');
     formData.append('security', lmn_admin.update_nonce);
-    formData.append('key', 'logs');
-    formData.append('value', assetStatus);
-    apiFetch({
+    formData.append('key', 'logs_expiration');
+    formData.append('value', days);
+    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
       url: lmn_admin.ajax_url,
       method: 'POST',
       body: formData
     }).then(() => {
       dispatch({
         type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION',
-        payload: __('Successfully saved!', 'login-me-now')
+        payload: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Successfully saved!', 'login-me-now')
       });
     });
   };
-  const enableLogs = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(state => state.enableLogs);
-  const enableLogsStatus = false === enableLogs ? false : true;
-  const [selectedPerson] = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(expirationOptions[0]);
+  let days = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state.logsExpiration);
+  const currentOption = expirationOptions.find(option => option.days == days);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     className: `login-me-now-dep-field-${enableLogsStatus} text-sm block border-b border-solid border-slate-200 px-8 py-8 justify-between`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mr-16 w-full flex items-center"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Listbox, {
-    value: enableLogsStatus,
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox, {
     onChange: updateLogsExpiration
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Listbox.Button, null, selectedPerson.name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Listbox.Options, {
-    className: "bg-slate-10"
-  }, expirationOptions.map(option => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Listbox.Option, {
-    key: option.id,
-    value: option,
-    className: "text-sm text-slate-500 relative cursor-pointer select-none py-1 pr-1 mb-1"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox.Button, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Store log data for ', 'login-me-now') + ' ' + currentOption.name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox.Options, {
+    className: "bg-slate-10 pt-3 divide-y divide-dashed"
+  }, expirationOptions.map(option => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox.Option, {
+    key: option.days,
+    value: option.days,
+    className: "text-sm text-slate-500 relative cursor-pointer select-none py-2 pr-1 mb-1"
   }, option.name)))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (LogsExpiration);
@@ -10897,6 +10895,11 @@ const globalDataReducer = function () {
         ...state,
         enableLogs: action.payload
       };
+    case 'UPDATE_LOGS_EXPIRATION':
+      return {
+        ...state,
+        logsExpiration: action.payload
+      };
     case 'UPDATE_ENABLE_PRELOAD_LOCAL_FONTS':
       return {
         ...state,
@@ -10936,6 +10939,7 @@ const initialState = wp.hooks.applyFilters('login_me_now_dashboard/datastore', {
   initialStateSetFlag: false,
   enableLoadFontsLocally: false,
   enableLogs: true,
+  logsExpiration: 7,
   enablePreloadLocalFonts: false,
   enableWhiteLabel: false,
   enableBeta: 'disable',
@@ -10980,6 +10984,7 @@ const setInitialState = store => {
       activeSettingsNavigationTab: 'global-settings',
       enableLoadFontsLocally: data.self_hosted_gfonts,
       enableLogs: data.logs,
+      logsExpiration: data.logs_expiration,
       enablePreloadLocalFonts: data.preload_local_fonts,
       blocksStatuses: data.pro_addons
     };

@@ -74,6 +74,8 @@ class Login_Me_Now_Admin_Loader {
 		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-admin-ajax.php';
 		/* Setup Menu */
 		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-menu.php';
+		/* CRON Jobs */
+		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-cron-jobs.php';
 	}
 }
 

@@ -13,6 +13,7 @@ namespace Login_Me_Now;
  * @since 1.0.0
  */
 class Logs_Table {
+
 	/**
 	 * Create logs table if not exist
 	 *
@@ -65,7 +66,7 @@ class Logs_Table {
 		if ( ! lmn_get_option( 'logs', true ) ) {
 			return;
 		}
-		
+
 		global $wpdb;
 
 		$ip = get_ip_address();
@@ -97,6 +98,27 @@ class Logs_Table {
 
 		return $result;
 	}
-}
 
-new Logs_Table();
+	/**
+	 * Delete logs
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	public static function delete_logs( $days_old ) {
+		global $wpdb;
+
+		$table_name = $wpdb->prefix . 'login_me_now_logs';
+
+		$seven_days_ago = date( 'Y-m-d H:i:s', strtotime( "-$days_old days" ) );
+
+		$wpdb->query(
+			$wpdb->prepare(
+				"DELETE FROM $table_name WHERE created_at < %s",
+				$seven_days_ago
+			)
+		);
+
+	}
+}

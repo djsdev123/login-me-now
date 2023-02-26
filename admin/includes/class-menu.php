@@ -294,108 +294,28 @@ class Menu {
 			'login_me_now_feature_list',
 			array(
 				'email-magic-link' => array(
-					'title'     => __( 'Email Magic Link', 'login-me-now' ),
-					'class'     => 'ast-addon',
-					'title_url' => '#',
-					'links'     => array(
-						array(
-							'link_class'   => 'ast-learn-more',
-							'link_url'     => '#',
-							'link_text'    => __( 'Upcoming', 'login-me-now' ),
-							'target_blank' => true,
-						),
-					),
+					'title' => __( 'Email Magic Link', 'login-me-now' ),
+					'desc'  => __( "Sends a unique, time-limited link to the user's email address, which, when clicked, securely logs the user in without the need for a password.", 'login-me-now' ),
 				),
-				'typography'       => array(
-					'title'     => __( 'Email Magic Number', 'login-me-now' ),
-					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/typography-module/', 'wp', 'dashboard' ),
-					'links'     => array(
-						array(
-							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/typography-module/', 'wp', 'dashboard' ),
-							'link_text'    => __( 'Upcoming', 'login-me-now' ),
-							'target_blank' => true,
-						),
-					),
+				'google-login'     => array(
+					'title' => __( 'Log in with Google', 'login-me-now' ),
+					'desc'  => __( "Let user to login to WordPress dashboard using Google account. Users can sign into your website without having to create an account.", 'login-me-now' ),
 				),
-				'opt_login'        => array(
-					'title'     => __( 'OTP Login', 'login-me-now' ),
-					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/typography-module/', 'wp', 'dashboard' ),
-					'links'     => array(
-						array(
-							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/typography-module/', 'wp', 'dashboard' ),
-							'link_text'    => __( 'Upcoming', 'login-me-now' ),
-							'target_blank' => true,
-						),
-					),
+				'facebook-login'   => array(
+					'title' => __( 'Log in with Facebook', 'login-me-now' ),
+					'desc'  => __( "Let user to login to WordPress dashboard using Facebook account. Users can sign into your website without having to create an account.", 'login-me-now' ),
 				),
-				'spacing'          => array(
-					'title'     => __( 'Google Login', 'login-me-now' ),
-					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/spacing-addon-overview/', 'wp', 'dashboard' ),
-					'links'     => array(
-						array(
-							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/spacing-addon-overview/', 'wp', 'dashboard' ),
-							'link_text'    => __( 'Upcoming', 'login-me-now' ),
-							'target_blank' => true,
-						),
-					),
+				'github-login'     => array(
+					'title' => __( 'Log in with GitHub', 'login-me-now' ),
+					'desc'  => __( "Let user to login to WordPress dashboard using Github account. Users can sign into your website without having to create an account.", 'login-me-now' ),
 				),
-				'blog-pro'         => array(
-					'title'     => __( 'Facebook Login', 'login-me-now' ),
-					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/blog-pro-overview/', 'wp', 'dashboard' ),
-					'links'     => array(
-						array(
-							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/blog-pro-overview/', 'wp', 'dashboard' ),
-							'link_text'    => __( 'Upcoming', 'login-me-now' ),
-							'target_blank' => true,
-						),
-					),
+				'otp-login'        => array(
+					'title' => __( 'OTP Login', 'login-me-now' ),
+					'desc'  => __( "OTP is more secure than a static password, especially a user-created password, which can be weak and/or reused across multiple accounts.", 'login-me-now' ),
 				),
-				'header-sections'  => array(
-					'title'     => __( 'Github Login', 'login-me-now' ),
-					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/header-sections-pro/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
-					'links'     => array(
-						array(
-							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/header-sections-pro/', 'astra-dashboard', 'learn-more', 'welcome-page' ),
-							'link_text'    => __( 'Upcoming', 'login-me-now' ),
-							'target_blank' => true,
-						),
-					),
-				),
-				'sticky-header'    => array(
-					'title'     => __( 'User Switching', 'login-me-now' ),
-					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/sticky-header-pro/', 'wp', 'dashboard' ),
-					'links'     => array(
-						array(
-							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/sticky-header-pro/', 'wp', 'dashboard' ),
-							'link_text'    => __( 'Upcoming', 'login-me-now' ),
-							'target_blank' => true,
-						),
-					),
-				),
-				'site-layouts'     => array(
-					'title'     => __( 'Login and Registration Popup', 'login-me-now' ),
-					'class'     => 'ast-addon',
-					'title_url' => lmn_get_pro_url( 'https://halalbrains.com/docs/site-layout-overview/', 'wp', 'dashboard' ),
-					'links'     => array(
-						array(
-							'link_class'   => 'ast-learn-more',
-							'link_url'     => lmn_get_pro_url( 'https://halalbrains.com/docs/site-layout-overview/', 'wp', 'dashboard' ),
-							'link_text'    => __( 'Upcoming', 'login-me-now' ),
-							'target_blank' => true,
-						),
-					),
+				'user-switching'   => array(
+					'title' => __( 'User Switching', 'login-me-now' ),
+					'desc'  => __( 'Quickly swap between user accounts in WordPress at the click of a button. You’ll be instantly logged out and logged in as your desired user', 'login-me-noq' ),
 				),
 			)
 		);

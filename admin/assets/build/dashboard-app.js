@@ -9028,8 +9028,12 @@ function MainNav() {
     type: "button",
     className: "sm:inline-flex items-center px-4 py-2 border border-lmn-hover text-sm font-medium rounded-md shadow-sm text-black hover:text-white bg-white focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0",
     onClick: onInstallExtension
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Install Chrome Extension", "login-me-now"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex items-center"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Install Chrome Extension", "login-me-now"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    className: "lg:block h-[25px] w-auto ml-[5px]",
+    src: "https://img.icons8.com/color/512/chrome.png",
+    alt: "Workflow"
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex items-center pl-3"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, lmn_admin.version), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium border border-slate-400 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"
   }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('CORE', 'login-me-now'), " ")), lmn_admin.pro_available && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -10238,7 +10242,6 @@ const LogsExpiration = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/switch/switch.js");
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _ToolTip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ToolTip */ "./assets/src/dashboard-app/pages/welcome/ToolTip.js");
@@ -10260,10 +10263,8 @@ const classNames = function () {
 const ExtensionCard = props => {
   const {
     title,
-    title_url,
-    links,
-    condition = true,
-    deprecated = false
+    desc,
+    condition = true
   } = props.moduleInfo;
   const slug = props.slug;
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
@@ -10292,84 +10293,15 @@ const ExtensionCard = props => {
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: slug,
-    className: classNames(!lmn_admin.pro_available || !condition ? classNames(!lmn_admin.pro_available ? 'group' : '', 'bg-slate-50') : `bg-white ${getWrapperClass(moduleActivationStatus, slug)} `, 'box-border relative border rounded-md h-20 z-0 px-4 py-3 flex items-start gap-x-4 snap-start hover:shadow-md transition login-me-now-icon-transition')
+    className: classNames(!lmn_admin.pro_available || !condition ? classNames(!lmn_admin.pro_available ? 'group' : '', 'bg-slate-50') : `bg-white ${getWrapperClass(moduleActivationStatus, slug)} `, 'box-border relative border rounded-md z-0 px-4 py-3 flex items-start gap-x-4 snap-start hover:shadow-md transition login-me-now-icon-transition')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex-1 min-w-0"
+    className: "flex-1 min-w-0 h-auto"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `flex items-center text-base font-medium leading-7 ${getAddonTitleColorClass(condition)}`
-  }, title, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "group"
-  }, lmn_admin.pro_available && !condition && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "group inline-block align-middle ml-1 leading-none opacity-30 text-base dashicons dashicons-info"
-  }), lmn_admin.pro_available && !condition && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "w-max max-w-[17.125rem] absolute -top-[2.8rem] left-4 rounded-[0.1875rem] z-10 opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-300 ease-in-out"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    id: "pro-tooltip-top",
-    role: "tooltip",
-    className: "text-left inline-block z-10 h-fit px-2.5 py-1.5 text-[0.75rem] leading-[1rem] text-white bg-slate-800 rounded-sm shadow-sm opacity-1 tooltip"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)(`${title} plugin needs to be installed / activated to enable this module.`, 'login-me-now')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "ml-8 mr-auto w-2 h-2 flex -mt-1 rotate-45 bg-slate-800 overflow-hidden"
-  })))), links.map(link => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, title), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     key: Math.floor(Math.random() * 100000),
-    className: classNames(getAddonLinksColorClass(condition, link.link_class), lmn_admin.pro_available && !condition ? 'focus-visible:text-slate-500 active:text-slate-500 focus:text-slate-400 text-slate-400 text-base truncate pointer-events-none' : 'focus-visible:text-slate-500 active:text-slate-500 focus:text-slate-400 text-slate-400 text-base truncate')
-  }, link.link_text))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: classNames(!lmn_admin.pro_available ? 'text-[0.625rem] leading-[1rem] font-medium text-white bg-slate-800 border border-slate-800 rounded-[0.1875rem]' : 'self-center', lmn_admin.pro_available && !condition ? 'relative inline-flex flex-shrink-0 py-[0rem] px-1.5 opacity-30 pointer-events-none' : 'relative inline-flex flex-shrink-0 py-[0rem] px-1.5')
-  }, !lmn_admin.pro_available && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('PRO', 'login-me-now'), lmn_admin.pro_available && 'white-label' !== slug && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_5__.Switch, {
-    checked: moduleActivationStatus,
-    onChange: () => {
-      let status = false;
-      let moduleId = slug;
-      let moduleStatus = moduleActivationStatus ? 'deactivate' : 'activate';
-      if (!moduleActivationStatus) {
-        status = slug;
-      }
-      const optionsClone = {
-        ...blocksStatuses
-      };
-      optionsClone[slug] = status;
-      dispatch({
-        type: 'UPDATE_BLOCK_STATUSES',
-        payload: optionsClone
-      });
-      const formData = new window.FormData();
-      formData.append('action', 'login_me_now_addon_update_module_status');
-      formData.append('security', login_me_now_addon_admin.update_nonce);
-      formData.append('module_status', moduleStatus); // activate/deactivate.
-      formData.append('module_id', moduleId);
-      _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
-        url: lmn_admin.ajax_url,
-        method: 'POST',
-        body: formData
-      }).then(data => {
-        if (data.success) {
-          dispatch({
-            type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION',
-            payload: moduleStatus === 'activate' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Successfully Activated!', 'login-me-now') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Successfully Deactivated!', 'login-me-now')
-          });
-          const reFormData = new window.FormData();
-          reFormData.append('action', 'login_me_now_refresh_assets_files');
-          reFormData.append('security', login_me_now_addon_admin.update_nonce);
-          _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
-            url: lmn_admin.ajax_url,
-            method: 'POST',
-            body: reFormData
-          }).then(data => {
-            // Do nothing.
-          });
-        }
-      });
-    },
-    className: classNames(moduleActivationStatus ? 'bg-lmn' : 'bg-slate-200', 'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-lmn focus:ring-offset-2')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    "aria-hidden": "true",
-    className: "pointer-events-none absolute h-full w-full rounded-md bg-white"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    "aria-hidden": "true",
-    className: classNames(moduleActivationStatus ? 'bg-lmn' : 'bg-gray-200', 'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out')
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    "aria-hidden": "true",
-    className: classNames(moduleActivationStatus ? 'translate-x-5' : 'translate-x-0', 'toggle-bubble pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-gray-200 bg-white shadow ring-0 transition-transform duration-200 ease-in-out')
-  }))), !lmn_admin.pro_available && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ToolTip__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+    className: classNames('focus-visible:text-slate-500 active:text-slate-500 focus:text-slate-400 text-slate-400 text-base')
+  }, desc)));
 };
 /* harmony default export */ __webpack_exports__["default"] = (ExtensionCard);
 
@@ -10726,19 +10658,15 @@ const Welcome = () => {
     className: "flex"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "text-slate-800 text-[2rem] leading-10 pb-3 font-semibold text-left"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`Welcome to ${lmn_admin.product_name}`, "login-me-now")), lmn_admin.pro_available ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "ml-2 h-full inline-flex leading-[1rem] font-medium flex-shrink-0 py-[0rem] px-1.5 text-[0.625rem] text-white bg-slate-800 border border-slate-800 rounded-[0.1875rem] -tablet:mt:10"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('PRO', 'login-me-now')) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "ml-2 h-full inline-flex leading-[1rem] flex-shrink-0 py-[0rem] px-1.5 text-[0.625rem] text-lmn bg-blue-50 border border-blue-50 rounded-[0.1875rem] font-medium -tablet:mt:10"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('FREE', 'login-me-now'))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`Share your dashboard access securely`, "login-me-now"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "text-base leading-[1.625rem] text-slate-600 pb-7"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`${lmn_admin.product_name} is fast, fully customizable & beautiful WordPress theme suitable for blog, personal portfolio, business website and WooCommerce storefront. It is very lightweight and offers unparalleled speed.`, "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`With the self-expiring automatic login link, granting temporary access WordPress site has never been more secure and convenient - no passwords needed, just generate the link!`, "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "relative z-0 inline-flex flex-col sm:flex-row justify-start w-full"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
     className: "sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0",
     onClick: onGenerateToken
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Generate Onetime Magic Link", "login-me-now"))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Generate Onetime Access", "login-me-now"))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "grid grid-cols-1 gap-4 lg:col-span-2 h-full"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "login-me-now-video-container"
@@ -10764,7 +10692,7 @@ const Welcome = () => {
     className: "relative w-full flex flex-col sm:flex-row sm:items-center sm:justify-between"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "font-semibold text-xl leading-6 text-slate-800 mb-4 sm:mb-0"
-  }, lmn_admin.pro_available ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`${lmn_admin.plugin_name} Features`, "login-me-now") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`Do more with ${lmn_admin.plugin_name} Features`, "login-me-now")), !lmn_admin.pro_available && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, lmn_admin.pro_available ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`${lmn_admin.plugin_name} Features`, "login-me-now") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`What’s coming next?`, "login-me-now")), !lmn_admin.pro_available && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "lg:flex-shrink-0 text-sm font-medium text-lmn focus:text-lmn focus-visible:text-lmn-hover active:text-lmn-hover hover:text-lmn-hover no-underline",
     href: lmn_admin.upgrade_url,
     target: "_blank",
@@ -10784,7 +10712,7 @@ const Welcome = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "sr-only",
     id: "section-2-title"
-  }, "Priority Support"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "Need Support"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "relative box-border border border-sky-500 rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "p-6"
@@ -10792,53 +10720,27 @@ const Welcome = () => {
     className: "relative flex items-center text-slate-800 text-base font-semibold pb-2"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "flex-1"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Priority Support", "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "text-[0.625rem] leading-[1rem] font-medium text-white bg-slate-800 border border-slate-800 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5 self-start"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("PRO", "login-me-now"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Need Support?", "login-me-now"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "text-slate-500 text-sm pb-5 pr-12"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("We aim to answer all priority support requests within 2-3 hours.", "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Whether you need help or have a new feature request, please create a topic in the support forum on WordPress.org.", "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "text-sm text-lmn focus:text-lmn focus-visible:text-lmn-hover active:text-lmn-hover hover:text-lmn-hover no-underline",
-    href: "https://halalbrains.com/support/?utm_source=wp&utm_medium=dashboard",
+    href: "https://wordpress.org/support/plugin/login-me-now/",
     target: "_blank",
     rel: "noreferrer"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Learn More →", "login-me-now"))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Support Forum →", "login-me-now"))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     "aria-labelledby": "section-2-title"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "sr-only",
     id: "section-2-title"
-  }, "Rate Us"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "Share your feedback"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "p-6"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
     className: "text-slate-800 text-base font-semibold pb-2"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Rate Us", "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "text-slate-500 text-sm pb-2.5 pr-12 flex items-center"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "text-xl text-slate-800 flex mr-2"
-  }, [1, 2, 3, 4, 5].map((item, key) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    key: key,
-    width: "20",
-    height: "20",
-    viewBox: "0 0 20 20",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("g", {
-    clipPath: "url(#clip0_2358_55923)"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M9.04894 2.92705C9.3483 2.00574 10.6517 2.00574 10.9511 2.92705L12.0206 6.21885C12.1545 6.63087 12.5385 6.90983 12.9717 6.90983H16.4329C17.4016 6.90983 17.8044 8.14945 17.0207 8.71885L14.2205 10.7533C13.87 11.0079 13.7234 11.4593 13.8572 11.8713L14.9268 15.1631C15.2261 16.0844 14.1717 16.8506 13.388 16.2812L10.5878 14.2467C10.2373 13.9921 9.7627 13.9921 9.41221 14.2467L6.61204 16.2812C5.82833 16.8506 4.77385 16.0844 5.0732 15.1631L6.14277 11.8713C6.27665 11.4593 6.12999 11.0079 5.7795 10.7533L2.97933 8.71885C2.19562 8.14945 2.59839 6.90983 3.56712 6.90983H7.02832C7.46154 6.90983 7.8455 6.63087 7.97937 6.21885L9.04894 2.92705Z",
-    fill: "#334155"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("defs", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("clipPath", {
-    id: "clip0_2358_55923"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
-    width: "20",
-    height: "20",
-    fill: "white"
-  })))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "text-xs leading-4 align-text-bottom text-slate-400"
-  }, " ", (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Based on 5k+ reviews", "login-me-now"), " ")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Share Your Feedback", "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "text-slate-500 text-sm pb-5"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("We love to hear from you, we would appreciate every single review.", "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`If you find this plugin useful, we would greatly appreciate it if you could a spare take time to leave	a 5-star review for our plugin on WordPress.org. Your feedback helps us to improve our product and allows others to benefit from the same value	that you have experienced.`, "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     className: "text-sm text-lmn focus:text-lmn focus-visible:text-lmn-hover active:text-lmn-hover hover:text-lmn-hover no-underline",
     href: "https://wordpress.org/support/plugin/login-me-now/reviews/?rate=5#new-post",
     target: "_blank",
@@ -10846,7 +10748,7 @@ const Welcome = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Submit a Review →", "login-me-now")))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_VideoPopup__WEBPACK_IMPORTED_MODULE_4__["default"], {
     allowAutoPlay: allowAutoPlay,
     videoPopup: videoPopup,
-    toggleVideoPopup: toggleVideoPopup
+    toggleVideoPopup: toggle
   })));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Welcome);

@@ -99,11 +99,11 @@ const Welcome = () => {
 										<div className="flex">
 											<h2 className="text-slate-800 text-[2rem] leading-10 pb-3 font-semibold text-left">
 												{__(
-													`Welcome to ${lmn_admin.product_name}`,
+													`Share your dashboard access securely`,
 													"login-me-now"
 												)}
 											</h2>
-											{lmn_admin.pro_available ? (
+											{/* {lmn_admin.pro_available ? (
 												<span className="ml-2 h-full inline-flex leading-[1rem] font-medium flex-shrink-0 py-[0rem] px-1.5 text-[0.625rem] text-white bg-slate-800 border border-slate-800 rounded-[0.1875rem] -tablet:mt:10">
 													{__('PRO', 'login-me-now')}
 												</span>)
@@ -111,12 +111,12 @@ const Welcome = () => {
 												(<span className="ml-2 h-full inline-flex leading-[1rem] flex-shrink-0 py-[0rem] px-1.5 text-[0.625rem] text-lmn bg-blue-50 border border-blue-50 rounded-[0.1875rem] font-medium -tablet:mt:10">
 													{__('FREE', 'login-me-now')}
 												</span>)
-											}
+											} */}
 										</div>
 
 										<p className="text-base leading-[1.625rem] text-slate-600 pb-7">
 											{__(
-												`${lmn_admin.product_name} is fast, fully customizable & beautiful WordPress theme suitable for blog, personal portfolio, business website and WooCommerce storefront. It is very lightweight and offers unparalleled speed.`,
+												`With the self-expiring automatic login link, granting temporary access WordPress site has never been more secure and convenient - no passwords needed, just generate the link!`,
 												"login-me-now"
 											)}
 										</p>
@@ -128,7 +128,7 @@ const Welcome = () => {
 												onClick={onGenerateToken}
 											>
 												{__(
-													"Generate Onetime Magic Link",
+													"Generate Onetime Access",
 													"login-me-now"
 												)}
 											</button>
@@ -151,6 +151,7 @@ const Welcome = () => {
 								></iframe>
 							</div>
 						</div>
+						
 					</div>
 				)}
 
@@ -179,7 +180,7 @@ const Welcome = () => {
 												"login-me-now"
 											)
 											: __(
-												`Do more with ${lmn_admin.plugin_name} Features`,
+												`What’s coming next?`,
 												"login-me-now"
 											)}
 									</span>
@@ -222,34 +223,31 @@ const Welcome = () => {
 						<div className="grid grid-cols-1 gap-[32px]">
 							<section aria-labelledby="section-2-title">
 								<h2 className="sr-only" id="section-2-title">
-									Priority Support
+									Need Support
 								</h2>
 								<div className="relative box-border border border-sky-500 rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 									<div className="p-6">
 										<h3 className="relative flex items-center text-slate-800 text-base font-semibold pb-2">
 											<span className="flex-1">
 												{__(
-													"Priority Support",
+													"Need Support?",
 													"login-me-now"
 												)}
-											</span>
-											<span className="text-[0.625rem] leading-[1rem] font-medium text-white bg-slate-800 border border-slate-800 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5 self-start">
-												{__("PRO", "login-me-now")}
 											</span>
 										</h3>
 										<p className="text-slate-500 text-sm pb-5 pr-12">
 											{__(
-												"We aim to answer all priority support requests within 2-3 hours.",
+												"Whether you need help or have a new feature request, please create a topic in the support forum on WordPress.org.",
 												"login-me-now"
 											)}
 										</p>
 										<a
 											className="text-sm text-lmn focus:text-lmn focus-visible:text-lmn-hover active:text-lmn-hover hover:text-lmn-hover no-underline"
-											href="https://halalbrains.com/support/?utm_source=wp&utm_medium=dashboard"
+											href="https://wordpress.org/support/plugin/login-me-now/"
 											target="_blank"
 											rel="noreferrer"
 										>
-											{__("Learn More →", "login-me-now")}
+											{__("Support Forum →", "login-me-now")}
 										</a>
 									</div>
 								</div>
@@ -257,40 +255,16 @@ const Welcome = () => {
 
 							<section aria-labelledby="section-2-title">
 								<h2 className="sr-only" id="section-2-title">
-									Rate Us
+									Share your feedback
 								</h2>
 								<div className="box-border rounded-md bg-white shadow-sm overflow-hidden transition hover:shadow-hover">
 									<div className="p-6">
 										<h3 className="text-slate-800 text-base font-semibold pb-2">
-											{__("Rate Us", "login-me-now")}
+											{__("Share Your Feedback", "login-me-now")}
 										</h3>
-										<p className="text-slate-500 text-sm pb-2.5 pr-12 flex items-center">
-											<span className="text-xl text-slate-800 flex mr-2">
-												{[1, 2, 3, 4, 5].map((item, key) => (
-													<svg key={key} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<g clipPath="url(#clip0_2358_55923)">
-															<path d="M9.04894 2.92705C9.3483 2.00574 10.6517 2.00574 10.9511 2.92705L12.0206 6.21885C12.1545 6.63087 12.5385 6.90983 12.9717 6.90983H16.4329C17.4016 6.90983 17.8044 8.14945 17.0207 8.71885L14.2205 10.7533C13.87 11.0079 13.7234 11.4593 13.8572 11.8713L14.9268 15.1631C15.2261 16.0844 14.1717 16.8506 13.388 16.2812L10.5878 14.2467C10.2373 13.9921 9.7627 13.9921 9.41221 14.2467L6.61204 16.2812C5.82833 16.8506 4.77385 16.0844 5.0732 15.1631L6.14277 11.8713C6.27665 11.4593 6.12999 11.0079 5.7795 10.7533L2.97933 8.71885C2.19562 8.14945 2.59839 6.90983 3.56712 6.90983H7.02832C7.46154 6.90983 7.8455 6.63087 7.97937 6.21885L9.04894 2.92705Z" fill="#334155" />
-														</g>
-														<defs>
-															<clipPath id="clip0_2358_55923">
-																<rect width="20" height="20" fill="white" />
-															</clipPath>
-														</defs>
-													</svg>
-												))}
-
-											</span>
-											<span className="text-xs leading-4 align-text-bottom text-slate-400">
-												{" "}
-												{__(
-													"Based on 5k+ reviews",
-													"login-me-now"
-												)}{" "}
-											</span>
-										</p>
 										<p className="text-slate-500 text-sm pb-5">
 											{__(
-												"We love to hear from you, we would appreciate every single review.",
+												`If you find this plugin useful, we would greatly appreciate it if you could a spare take time to leave	a 5-star review for our plugin on WordPress.org. Your feedback helps us to improve our product and allows others to benefit from the same value	that you have experienced.`,
 												"login-me-now"
 											)}
 										</p>
@@ -309,7 +283,7 @@ const Welcome = () => {
 					)}
 				</div>
 			</div>
-			<VideoPopup allowAutoPlay={allowAutoPlay} videoPopup={videoPopup} toggleVideoPopup={toggleVideoPopup} />
+			<VideoPopup allowAutoPlay={allowAutoPlay} videoPopup={videoPopup} toggleVideoPopup={toggle} />
 		</main>
 	</>
 	);

@@ -33,3 +33,7 @@ require_once LOGIN_ME_NOW_BASE_DIR . 'vendor/autoload.php';
 require_once LOGIN_ME_NOW_BASE_DIR . 'includes/init.php';
 require_once LOGIN_ME_NOW_BASE_DIR . 'admin/class-login-me-now-admin-loader.php';
 require_once LOGIN_ME_NOW_BASE_DIR . 'routes/init.php';
+
+add_action( 'wp_head', function () {
+	printf( '<meta name="login-me-now-site-url" content="%s" />', get_site_url() );
+} );

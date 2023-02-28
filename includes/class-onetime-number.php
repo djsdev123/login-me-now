@@ -58,12 +58,9 @@ class Onetime_Number {
 		$saved = set_transient( $number, $user->data->ID, $expire );
 		if ( ! $saved ) {
 			return new WP_Error(
-				"Something wen't wrong, please try again.",
+				__( "Something wen't wrong, please try again.", 'login-me-now' ),
 			);
 		}
-
-		/** Store a log */
-		// Tokens_Table::insert( $user->data->ID, $issuedAt, $expire, 'active' );
 
 		return $number;
 	}

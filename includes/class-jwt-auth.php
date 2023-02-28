@@ -60,6 +60,17 @@ class JWT_Auth {
 	}
 
 	/**
+	 * Random number generate
+	 *
+	 * @return Integer
+	 */
+	private function rand_number() {
+		$number = mt_rand( 1000000000000000, 9999999999999999 );
+
+		return $number;
+	}
+
+	/**
 	 * Get the token in the request body and generate a JWT
 	 *
 	 * @param WP_REST_Request $request
@@ -174,13 +185,12 @@ class JWT_Auth {
 			$algorithm
 		);
 
-		$rand_wait = rand( 0, 5 );
-		sleep( $rand_wait );
+		$rand_number = (Int) $this->rand_number();
 
 		/** Store the token ref in user meta using the $issuedAt, so we can block the token if needed */
-		Tokens_Table::insert( $user->data->ID, $issuedAt, $expire, 'active' );
+		Tokens_Table::insert( $user->data->ID, $rand_number, $expire, 'active' );
 
-		( new Logs_Table )->insert( $user->data->ID, "Generated reusable link #{$issuedAt}" );
+		( new Logs_Table )->insert( $user->data->ID, "Generated reusable link #{$rand_number}" );
 
 		if ( ! $additional_data ) {
 			return $token;

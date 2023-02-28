@@ -65,7 +65,7 @@ use Login_Me_Now\Tokens_Table;
 	$user_info = get_userdata( $token->user_id );
 	printf( '<td>%s</td>', $token->token_id );
 	printf( '<td>%s</td>', $user_info->user_login );
-	printf( '<td>%s</td>', date( 'M d, Y, h:i A', $token->token_id ) );
+	printf( '<td>%s</td>', ! empty( $token->created_at ) ? ( date( 'M d, Y, h:i A', $token->created_at ) ) : __( 'Not set', 'login-me-now' ) );
 	printf( '<td>%s</td>', date( 'M d, Y, h:i A', $token->expire ) );
 	printf( '<td>%s</td>', Helper::generate_status_options( $token->status, $token->id ) );
 	echo '</tr>';}?>

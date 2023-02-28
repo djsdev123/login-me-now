@@ -34,6 +34,7 @@ class After_Activation {
 			$upgraded = get_option( 'login_me_now_upgraded_from_beta' );
 			if ( ! $upgraded ) {
 				$this->update();
+				( new Tokens_Table )->alter_table();
 				update_option( 'login_me_now_upgraded_from_beta', true, false );
 			}
 		}
@@ -72,7 +73,7 @@ class After_Activation {
 
 		/**
 		 * Add the algorithm if not exist
-		 * 
+		 *
 		 * @since 0.93
 		 */
 		$algo = get_option( 'login_me_now_algorithm' );

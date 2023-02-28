@@ -10380,14 +10380,10 @@ function MagicLinkPopup() {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "text-sm font-medium text-gray-900"
   }, magicLinkPopup.message), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "pt-3"
-  }, "Magic Link"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("code", {
-    className: "text-sm font-medium"
-  }, magicLinkPopup.magic_link), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "pt-3"
-  }, "Magic Number"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("code", {
-    className: "text-sm font-medium"
-  }, magicLinkPopup.magic_number)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pt-3 mb-2"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Here you go:', 'login-me-now')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("code", {
+    className: "text-sm font-medium break-all"
+  }, magicLinkPopup.link)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "ml-4 flex-shrink-0 flex"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "bg-white rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
@@ -10583,11 +10579,32 @@ const Welcome = () => {
   const query = new URLSearchParams((_useLocation = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useLocation)()) === null || _useLocation === void 0 ? void 0 : _useLocation.search);
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useDispatch)();
   const allowAutoPlay = "1" === query.get("login-me-now-activation-redirect") ? 1 : 0;
-  const onGenerateToken = e => {
+  const onGenerateOnetimeToken = e => {
     e.preventDefault();
     e.stopPropagation();
     const formData = new window.FormData();
     formData.append('action', 'login_me_now_generate_onetime_link');
+    formData.append('security', lmn_admin.generate_token_nonce);
+    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
+      url: lmn_admin.ajax_url,
+      method: 'POST',
+      body: formData
+    }).then(data => {
+      if (data.success) {
+        dispatch({
+          type: 'GENERATE_MAGIC_LINK_POPUP',
+          payload: {
+            ...data.data
+          }
+        });
+      }
+    });
+  };
+  const onGenerateReusableToken = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    const formData = new window.FormData();
+    formData.append('action', 'login_me_now_generate_reusable_link');
     formData.append('security', lmn_admin.generate_token_nonce);
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
       url: lmn_admin.ajax_url,
@@ -10665,19 +10682,12 @@ const Welcome = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
     className: "sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0",
-    onClick: onGenerateToken
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Generate Onetime Access", "login-me-now"))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "grid grid-cols-1 gap-4 lg:col-span-2 h-full"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "login-me-now-video-container"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("iframe", {
-    className: "login-me-now-video rounded-md",
-    src: `https://www.youtube-nocookie.com/embed/uBNUpyCM8G8?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}&rel=0`,
-    allow: "autoplay",
-    title: "YouTube video player",
-    frameBorder: "0",
-    allowFullScreen: true
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onClick: onGenerateOnetimeToken
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Generate Onetime Access", "login-me-now")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    type: "button",
+    className: "sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0",
+    onClick: onGenerateReusableToken
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Generate Reusable Access", "login-me-now")))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "grid grid-cols-1 gap-[32px] items-start lg:grid-cols-3 lg:gap-[32px] xl:gap-[32px] mt-[32px]"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: classNames(lmn_admin.show_self_branding ? "lg:col-span-2" : "lg:col-span-3", "grid grid-cols-1 gap-[32px]")
@@ -10748,7 +10758,7 @@ const Welcome = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Submit a Review →", "login-me-now")))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_VideoPopup__WEBPACK_IMPORTED_MODULE_4__["default"], {
     allowAutoPlay: allowAutoPlay,
     videoPopup: videoPopup,
-    toggleVideoPopup: toggle
+    toggleVideoPopup: toggleVideoPopup
   })));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Welcome);

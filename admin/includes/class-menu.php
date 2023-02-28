@@ -311,7 +311,7 @@ class Menu {
 				),
 				'otp-login'        => array(
 					'title' => __( 'OTP Login', 'login-me-now' ),
-					'desc'  => __( "OTP is more secure than a static password, especially a user-created password, which can be weak and/or reused across multiple accounts.", 'login-me-now' ),
+					'desc'  => __( "Let user login to the WordPress dashboard using one time password ( OTP ) sent via SMS. The user don't have to know bad and weak passwords, sharing of credentials or reuse of the same password on multiple accounts.", 'login-me-now' ),
 				),
 				'user-switching'   => array(
 					'title' => __( 'User Switching', 'login-me-now' ),

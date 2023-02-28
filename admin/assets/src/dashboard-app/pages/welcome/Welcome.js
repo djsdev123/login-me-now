@@ -16,12 +16,31 @@ const Welcome = () => {
 	const allowAutoPlay =
 		"1" === query.get("login-me-now-activation-redirect") ? 1 : 0;
 
-	const onGenerateToken = (e) => {
+	const onGenerateOnetimeToken = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
 
 		const formData = new window.FormData();
 		formData.append('action', 'login_me_now_generate_onetime_link');
+		formData.append('security', lmn_admin.generate_token_nonce);
+
+		apiFetch({
+			url: lmn_admin.ajax_url,
+			method: 'POST',
+			body: formData,
+		}).then((data) => {
+			if (data.success) {
+				dispatch( {type: 'GENERATE_MAGIC_LINK_POPUP', payload: { ... data.data }} );
+			}
+		});
+	};
+
+	const onGenerateReusableToken = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+
+		const formData = new window.FormData();
+		formData.append('action', 'login_me_now_generate_reusable_link');
 		formData.append('security', lmn_admin.generate_token_nonce);
 
 		apiFetch({
@@ -125,10 +144,20 @@ const Welcome = () => {
 											<button
 												type="button"
 												className="sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0"
-												onClick={onGenerateToken}
+												onClick={onGenerateOnetimeToken}
 											>
 												{__(
 													"Generate Onetime Access",
+													"login-me-now"
+												)}
+											</button>
+											<button
+												type="button"
+												className="sm:inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-lmn focus-visible:bg-lmn-hover hover:bg-lmn-hover focus:outline-none mr-4 mb-2 sm:mb-0"
+												onClick={onGenerateReusableToken}
+											>
+												{__(
+													"Generate Reusable Access",
 													"login-me-now"
 												)}
 											</button>
@@ -138,19 +167,6 @@ const Welcome = () => {
 							</section>
 						</div>
 
-						<div className="grid grid-cols-1 gap-4 lg:col-span-2 h-full">
-							<div className="login-me-now-video-container">
-								{/* Added rel=0 query paramter at the end to disable YouTube recommendations */}
-								<iframe
-									className="login-me-now-video rounded-md"
-									src={`https://www.youtube-nocookie.com/embed/uBNUpyCM8G8?showinfo=0&autoplay=${allowAutoPlay}&mute=${allowAutoPlay}&rel=0`}
-									allow="autoplay"
-									title="YouTube video player"
-									frameBorder="0"
-									allowFullScreen
-								></iframe>
-							</div>
-						</div>
 						
 					</div>
 				)}
@@ -283,7 +299,7 @@ const Welcome = () => {
 					)}
 				</div>
 			</div>
-			<VideoPopup allowAutoPlay={allowAutoPlay} videoPopup={videoPopup} toggleVideoPopup={toggle} />
+			<VideoPopup allowAutoPlay={allowAutoPlay} videoPopup={videoPopup} toggleVideoPopup={toggleVideoPopup} />
 		</main>
 	</>
 	);

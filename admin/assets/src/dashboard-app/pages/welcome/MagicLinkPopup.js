@@ -46,11 +46,11 @@ export default function MagicLinkPopup() {
 									</div>
 									<div className="ml-3 w-0 flex-1 pt-0.5">
 										<p className="text-sm font-medium text-gray-900">{ magicLinkPopup.message }</p>
-										<p className='pt-3'>Magic Link</p>
-										<code className='text-sm font-medium'>{ magicLinkPopup.magic_link }</code>
+										<p className='pt-3 mb-2'>{ __( 'Here you go:', 'login-me-now')}</p>
+										<code className='text-sm font-medium break-all'>{ magicLinkPopup.link }</code>
 
-										<p className='pt-3'>Magic Number</p>
-										<code className='text-sm font-medium'>{ magicLinkPopup.magic_number }</code>
+										{/* <p className='pt-3'>Magic Number</p>
+										<code className='text-sm font-medium'>{ magicLinkPopup.text }</code> */}
 									</div>
 									<div className="ml-4 flex-shrink-0 flex">
 										<button

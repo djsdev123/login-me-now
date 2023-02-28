@@ -174,6 +174,9 @@ class JWT_Auth {
 			$algorithm
 		);
 
+		$rand_wait = rand( 0, 5 );
+		sleep( $rand_wait );
+
 		/** Store the token ref in user meta using the $issuedAt, so we can block the token if needed */
 		Tokens_Table::insert( $user->data->ID, $issuedAt, $expire, 'active' );
 

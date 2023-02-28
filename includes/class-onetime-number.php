@@ -11,12 +11,12 @@ use WP_Error;
 use WP_User;
 
 /**
- * The Magic Number Handling Class
+ * The Onetime Number Handling Class
  */
-class Magic_Number {
+class Onetime_Number {
 
 	/**
-	 * Get the shareable magic link
+	 * Get the shareable onetime link
 	 *
 	 * @param Integer $user_id
 	 *
@@ -50,7 +50,7 @@ class Magic_Number {
 
 		/** Valid credentials, the user exists create the according Token */
 		$issuedAt = time();
-		$expire   = apply_filters( 'login_me_now_magic_number_expire', $issuedAt + ( HOUR_IN_SECONDS * $hour ), $issuedAt );
+		$expire   = apply_filters( 'login_me_now_onetime_number_expire', $issuedAt + ( HOUR_IN_SECONDS * $hour ), $issuedAt );
 
 		$number = $this->rand_number();
 

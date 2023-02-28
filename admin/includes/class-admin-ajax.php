@@ -77,6 +77,7 @@ class Admin_Ajax {
 		add_action( 'wp_ajax_login_me_now_recommended_plugin_activate', array( $this, 'required_plugin_activate' ) );
 
 		add_action( 'wp_ajax_login_me_now_generate_onetime_link', array( $this, 'login_me_now_generate_onetime_link' ) );
+		add_action( 'wp_ajax_login_me_now_generate_reusable_link', array( $this, 'login_me_now_generate_reusable_link' ) );
 	}
 
 	/**
@@ -234,7 +235,7 @@ class Admin_Ajax {
 	}
 
 	/**
-	 * Generate Token
+	 * Generate Onetime Token
 	 *
 	 * @since 1.0.0
 	 */
@@ -263,26 +264,79 @@ class Admin_Ajax {
 		 * Generate the token.
 		 */
 		$user_id = get_current_user_id();
-		$magic   = ( new Magic_Number() )->get_shareable_link( $user_id );
+		$onetime = ( new Onetime_Number() )->get_shareable_link( $user_id );
 
-		if ( is_wp_error( $magic ) ) {
+		if ( is_wp_error( $onetime ) ) {
 			wp_send_json_error(
 				array(
 					'success' => false,
-					'message' => $magic->get_error_message(),
+					'message' => $onetime->get_error_message(),
 				)
 			);
 		}
 
-		( new Logs_Table )->insert( $user_id, "Generated onetime link #{$magic['number']}" );
+		( new Logs_Table )->insert( $user_id, __( "Generated an onetime link", "login-me-now" ) );
 
 		wp_send_json_success(
 			array(
-				'success'      => true,
-				'message'      => __( 'Successfully Generated', 'login-me-now' ),
-				'magic_number' => $magic['number'],
-				'magic_link'   => $magic['link'],
+				'success' => true,
+				'message' => __( 'Onetime Link Successfully Generated', 'login-me-now' ),
+				'text'    => $onetime['number'],
+				'link'    => $onetime['link'],
 
+			)
+		);
+	}
+
+	/**
+	 * Generate Reusable Token
+	 *
+	 * @since 1.0.0
+	 */
+	public function login_me_now_generate_reusable_link() {
+
+		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		if ( empty( $_POST ) ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification.
+		 */
+		if ( ! check_ajax_referer( 'login_me_now_generate_onetime_link_nonce', 'security', false ) ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Generate the token.
+		 */
+		$expiration = 7;
+		$user_id    = get_current_user_id();
+		$reusable   = ( new JWT_Auth() )->get_shareable_link( $user_id, $expiration );
+
+		if ( is_wp_error( $reusable ) ) {
+			wp_send_json_error(
+				array(
+					'success' => false,
+					'message' => $reusable->get_error_message(),
+				)
+			);
+		}
+
+		( new Logs_Table )->insert( $user_id, "Generated a reusable link" );
+
+		wp_send_json_success(
+			array(
+				'success' => true,
+				'message' => __( 'Reusable Link Successfully Generated', 'login-me-now' ),
+				'link'    => $reusable,
 			)
 		);
 	}

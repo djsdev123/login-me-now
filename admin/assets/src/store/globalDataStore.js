@@ -4,8 +4,13 @@ import globalDataReducer from './globalDataReducer';
 const initialState = wp.hooks.applyFilters('login_me_now_dashboard/datastore', {
 	initialStateSetFlag: false,
 	enableLoadFontsLocally: false,
+
 	enableLogs: true,
 	logsExpiration: 7,
+
+	enableOnetimeLinks: true,
+	onetimeLinksExpiration: 8,
+
 	enablePreloadLocalFonts: false,
 	enableWhiteLabel: false,
 	enableBeta: 'disable',

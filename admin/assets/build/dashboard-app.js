@@ -9564,6 +9564,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DashboardApp_pages_settings_FlushLocalFonts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @DashboardApp/pages/settings/FlushLocalFonts */ "./assets/src/dashboard-app/pages/settings/FlushLocalFonts.js");
 /* harmony import */ var _general_Logs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./general/Logs */ "./assets/src/dashboard-app/pages/settings/general/Logs.js");
 /* harmony import */ var _general_LogsExpiration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./general/LogsExpiration */ "./assets/src/dashboard-app/pages/settings/general/LogsExpiration.js");
+/* harmony import */ var _access_links_OnetimeLinks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./access-links/OnetimeLinks */ "./assets/src/dashboard-app/pages/settings/access-links/OnetimeLinks.js");
+/* harmony import */ var _access_links_OnetimeLinksExpiration__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./access-links/OnetimeLinksExpiration */ "./assets/src/dashboard-app/pages/settings/access-links/OnetimeLinksExpiration.js");
+
+
 
 
 
@@ -9578,7 +9582,7 @@ function SettingsWrapper(_ref) {
   } = _ref;
   const wrappers = wp.hooks.applyFilters('login_me_now_dashboard.settings_tab_wrappers', {
     'global-settings': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_general_Logs__WEBPACK_IMPORTED_MODULE_6__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_general_LogsExpiration__WEBPACK_IMPORTED_MODULE_7__["default"], null), " "),
-    'fonts-performance': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_settings_LoadFontsLocally__WEBPACK_IMPORTED_MODULE_3__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_settings_PreloadLocalFonts__WEBPACK_IMPORTED_MODULE_4__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_settings_FlushLocalFonts__WEBPACK_IMPORTED_MODULE_5__["default"], null), " ")
+    'access-links': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_access_links_OnetimeLinks__WEBPACK_IMPORTED_MODULE_8__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_access_links_OnetimeLinksExpiration__WEBPACK_IMPORTED_MODULE_9__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_settings_LoadFontsLocally__WEBPACK_IMPORTED_MODULE_3__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_settings_PreloadLocalFonts__WEBPACK_IMPORTED_MODULE_4__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_DashboardApp_pages_settings_FlushLocalFonts__WEBPACK_IMPORTED_MODULE_5__["default"], null), " ")
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, wrappers[state]);
 }
@@ -9898,9 +9902,9 @@ const Settings = () => {
     slug: 'global-settings',
     icon: _SettingsIcons__WEBPACK_IMPORTED_MODULE_3__["default"]["global-settings"]
   }, {
-    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Browser Extension', 'login-me-now'),
-    slug: 'fonts-performance',
-    icon: _SettingsIcons__WEBPACK_IMPORTED_MODULE_3__["default"]["fonts-performance"]
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Access Links', 'login-me-now'),
+    slug: 'access-links',
+    icon: _SettingsIcons__WEBPACK_IMPORTED_MODULE_3__["default"]["access-links"]
   }]);
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
     // Activate Setting Active Tab from "settingsTab" Hash in the URl is present.
@@ -9963,7 +9967,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 
 const SettingsIcons = {
-  'fonts-performance': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  'access-links': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     className: "flex-shrink-0 mr-4 stroke-inherit",
     width: "18",
     height: "18",
@@ -10065,6 +10069,176 @@ const SettingsSkeleton = () => {
   })))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (SettingsSkeleton);
+
+/***/ }),
+
+/***/ "./assets/src/dashboard-app/pages/settings/access-links/OnetimeLinks.js":
+/*!******************************************************************************!*\
+  !*** ./assets/src/dashboard-app/pages/settings/access-links/OnetimeLinks.js ***!
+  \******************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/switch/switch.js");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+function classNames() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+  return classes.filter(Boolean).join(' ');
+}
+const OnetimeLinks = () => {
+  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
+  const enableOnetimeLinks = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state.enableOnetimeLinks);
+  const enableOnetimeLinksStatus = false === enableOnetimeLinks ? false : true;
+  const updateLogsStatus = () => {
+    let assetStatus;
+    if (enableOnetimeLinks === false) {
+      assetStatus = true;
+    } else {
+      assetStatus = false;
+    }
+    dispatch({
+      type: 'UPDATE_ENABLE_ONETIME_LINKS',
+      payload: assetStatus
+    });
+    const formData = new window.FormData();
+    formData.append('action', 'login_me_now_update_admin_setting');
+    formData.append('security', lmn_admin.update_nonce);
+    formData.append('key', 'onetime_links');
+    formData.append('value', assetStatus);
+    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
+      url: lmn_admin.ajax_url,
+      method: 'POST',
+      body: formData
+    }).then(() => {
+      dispatch({
+        type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION',
+        payload: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Successfully saved!', 'login-me-now')
+      });
+    });
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
+    className: "block border-b border-solid border-slate-200 px-8 py-8 justify-between"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mr-16 w-full flex items-center"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "p-0 flex-1 justify-right inline-flex text-xl leading-6 font-semibold text-slate-800"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Onetime Links', 'login-me-now')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Switch, {
+    checked: enableOnetimeLinksStatus,
+    onChange: updateLogsStatus,
+    className: classNames(enableOnetimeLinksStatus ? 'bg-lmn' : 'bg-slate-200', 'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-lmn focus:ring-offset-2')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    "aria-hidden": "true",
+    className: "pointer-events-none absolute h-full w-full rounded-md bg-white"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    "aria-hidden": "true",
+    className: classNames(enableOnetimeLinksStatus ? 'bg-lmn' : 'bg-gray-200', 'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    "aria-hidden": "true",
+    className: classNames(enableOnetimeLinksStatus ? 'translate-x-5' : 'translate-x-0', 'toggle-bubble pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-gray-200 bg-white shadow ring-0 transition-transform duration-200 ease-in-out')
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "mt-2 w-9/12 text-sm text-slate-500 tablet:w-full"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enable this option to allow to use onetime the link.', 'login-me-now')));
+};
+/* harmony default export */ __webpack_exports__["default"] = (OnetimeLinks);
+
+/***/ }),
+
+/***/ "./assets/src/dashboard-app/pages/settings/access-links/OnetimeLinksExpiration.js":
+/*!****************************************************************************************!*\
+  !*** ./assets/src/dashboard-app/pages/settings/access-links/OnetimeLinksExpiration.js ***!
+  \****************************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/listbox/listbox.js");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+const expirationOptions = [{
+  days: 1,
+  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('1 Hour', 'login-me-now')
+}, {
+  days: 3,
+  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('3 Hours', 'login-me-now')
+}, {
+  days: 6,
+  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('6 Hours', 'login-me-now')
+}, {
+  days: 8,
+  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('8 Hours', 'login-me-now')
+}, {
+  days: 12,
+  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('12 Hours', 'login-me-now')
+}, {
+  days: 24,
+  name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('24 Hours', 'login-me-now')
+}];
+const OnetimeLinksExpiration = () => {
+  const enableOnetimeLinks = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state.enableOnetimeLinks);
+  const enableOnetimeLinksStatus = false === enableOnetimeLinks ? false : true;
+  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
+  const updateLogsExpiration = days => {
+    dispatch({
+      type: 'UPDATE_ONETIME_LINKS_EXPIRATION',
+      payload: days
+    });
+    const formData = new window.FormData();
+    formData.append('action', 'login_me_now_update_admin_setting');
+    formData.append('security', lmn_admin.update_nonce);
+    formData.append('key', 'onetime_links_expiration');
+    formData.append('value', days);
+    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
+      url: lmn_admin.ajax_url,
+      method: 'POST',
+      body: formData
+    }).then(() => {
+      dispatch({
+        type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION',
+        payload: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Successfully saved!', 'login-me-now')
+      });
+    });
+  };
+  let days = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state.onetimeLinksExpiration);
+  const currentOption = expirationOptions.find(option => option.days == days);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
+    className: `login-me-now-dep-field-${enableOnetimeLinksStatus} text-sm block border-b border-solid border-slate-200 px-8 py-8 justify-between`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mr-16 w-full flex items-center"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox, {
+    onChange: updateLogsExpiration
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox.Button, null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Expire after ', 'login-me-now') + ' ' + currentOption.name), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox.Options, {
+    className: "bg-slate-10 pt-3 divide-y divide-dashed"
+  }, expirationOptions.map(option => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Listbox.Option, {
+    key: option.days,
+    value: option.days,
+    className: "text-sm text-slate-500 relative cursor-pointer select-none py-2 pr-1 mb-1"
+  }, option.name)))));
+};
+/* harmony default export */ __webpack_exports__["default"] = (OnetimeLinksExpiration);
 
 /***/ }),
 
@@ -10812,6 +10986,16 @@ const globalDataReducer = function () {
         ...state,
         logsExpiration: action.payload
       };
+    case 'UPDATE_ENABLE_ONETIME_LINKS':
+      return {
+        ...state,
+        enableOnetimeLinks: action.payload
+      };
+    case 'UPDATE_ONETIME_LINKS_EXPIRATION':
+      return {
+        ...state,
+        onetimeLinksExpiration: action.payload
+      };
     case 'UPDATE_ENABLE_PRELOAD_LOCAL_FONTS':
       return {
         ...state,
@@ -10852,6 +11036,8 @@ const initialState = wp.hooks.applyFilters('login_me_now_dashboard/datastore', {
   enableLoadFontsLocally: false,
   enableLogs: true,
   logsExpiration: 7,
+  enableOnetimeLinks: true,
+  onetimeLinksExpiration: 8,
   enablePreloadLocalFonts: false,
   enableWhiteLabel: false,
   enableBeta: 'disable',
@@ -10897,6 +11083,8 @@ const setInitialState = store => {
       enableLoadFontsLocally: data.self_hosted_gfonts,
       enableLogs: data.logs,
       logsExpiration: data.logs_expiration,
+      enableOnetimeLinks: data.onetime_links,
+      onetimeLinksExpiration: data.onetime_links_expiration,
       enablePreloadLocalFonts: data.preload_local_fonts,
       blocksStatuses: data.pro_addons
     };

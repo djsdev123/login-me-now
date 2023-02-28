@@ -90,10 +90,14 @@ class Admin_Ajax {
 		return apply_filters(
 			'login_me_now_admin_settings_datatypes',
 			array(
-				'self_hosted_gfonts'  => 'bool',
-				'logs'                => 'bool',
-				'preload_local_fonts' => 'bool',
-				'logs_expiration'     => 'integer',
+				'self_hosted_gfonts'       => 'bool',
+				'preload_local_fonts'      => 'bool',
+				
+				'logs'                     => 'bool',
+				'logs_expiration'          => 'integer',
+
+				'onetime_links'            => 'bool',
+				'onetime_links_expiration' => 'integer',
 			)
 		);
 	}

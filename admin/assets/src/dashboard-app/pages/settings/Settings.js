@@ -25,7 +25,7 @@ const Settings = () => {
 		'login_me_now_dashboard.settings_navigation',
 		[
 			{ name: __( 'General', 'login-me-now' ), slug: 'global-settings', icon: SettingsIcons['global-settings'] },
-			{ name: __( 'Browser Extension', 'login-me-now' ), slug: 'fonts-performance', icon: SettingsIcons['fonts-performance'] },
+			{ name: __( 'Access Links', 'login-me-now' ), slug: 'access-links', icon: SettingsIcons['access-links'] },
 		]
 	);
 

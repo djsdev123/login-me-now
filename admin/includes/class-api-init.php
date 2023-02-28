@@ -135,10 +135,14 @@ class API_Init extends WP_REST_Controller {
 		$defaults = apply_filters(
 			'login_me_now_dashboard_rest_options',
 			array(
-				'self_hosted_gfonts'  => self::get_admin_settings_option( 'self_hosted_gfonts', false ),
-				'logs'                => self::get_admin_settings_option( 'logs', false ),
-				'logs_expiration'     => self::get_admin_settings_option( 'logs_expiration', 7 ),
-				'preload_local_fonts' => self::get_admin_settings_option( 'preload_local_fonts', false ),
+				'self_hosted_gfonts'       => self::get_admin_settings_option( 'self_hosted_gfonts', false ),
+				'preload_local_fonts'      => self::get_admin_settings_option( 'preload_local_fonts', false ),
+
+				'logs'                     => self::get_admin_settings_option( 'logs', false ),
+				'logs_expiration'          => self::get_admin_settings_option( 'logs_expiration', 7 ),
+
+				'onetime_links'            => self::get_admin_settings_option( 'onetime_links', true ),
+				'onetime_links_expiration' => self::get_admin_settings_option( 'onetime_links_expiration', 8 ),
 			)
 		);
 

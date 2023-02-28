@@ -6,13 +6,15 @@ import PreloadLocalFonts from '@DashboardApp/pages/settings/PreloadLocalFonts';
 import FlushLocalFonts from '@DashboardApp/pages/settings/FlushLocalFonts';
 import Logs from './general/Logs';
 import LogsExpiration from './general/LogsExpiration';
+import OnetimeLinks from './access-links/OnetimeLinks';
+import OnetimeLinksExpiration from './access-links/OnetimeLinksExpiration';
 
 function SettingsWrapper({ state }) {
 	const wrappers = wp.hooks.applyFilters(
 		'login_me_now_dashboard.settings_tab_wrappers',
 		{
 			'global-settings': <> <Logs /> <LogsExpiration /> </>,
-			'fonts-performance': <> <LoadFontsLocally /> <PreloadLocalFonts /> <FlushLocalFonts /> </>,
+			'access-links': <> <OnetimeLinks/> <OnetimeLinksExpiration/> <LoadFontsLocally /> <PreloadLocalFonts /> <FlushLocalFonts /> </>,
 		}
 	);
 	return <div>{wrappers[state]}</div>;

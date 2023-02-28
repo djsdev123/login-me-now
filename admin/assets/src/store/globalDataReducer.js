@@ -35,6 +35,16 @@ const globalDataReducer = (state = {}, action) => {
 				...state,
 				logsExpiration: action.payload,
 			};
+		case 'UPDATE_ENABLE_ONETIME_LINKS':
+			return {
+				...state,
+				enableOnetimeLinks: action.payload,
+			};
+		case 'UPDATE_ONETIME_LINKS_EXPIRATION':
+			return {
+				...state,
+				onetimeLinksExpiration: action.payload,
+			};
 		case 'UPDATE_ENABLE_PRELOAD_LOCAL_FONTS':
 			return {
 				...state,

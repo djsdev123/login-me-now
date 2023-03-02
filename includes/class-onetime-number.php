@@ -22,13 +22,13 @@ class Onetime_Number {
 	 *
 	 * @return string|WP_Error|null
 	 */
-	public function get_shareable_link( Int $user_id ) {
+	public function get_shareable_link( Int $user_id, Int $expiration ) {
 		$user = get_userdata( $user_id );
 		if ( ! $user ) {
 			return;
 		}
 
-		$number = $this->get_new( $user );
+		$number = $this->get_new( $user, $expiration );
 		if ( ! $number ) {
 			return;
 		}
@@ -42,15 +42,15 @@ class Onetime_Number {
 	 * Generate a JWT
 	 *
 	 * @param WP_User $user
-	 * @param Integer $expiration
+	 * @param Integer $hour for expiration
 	 *
 	 * @return mixed|WP_Error|null
 	 */
-	private function get_new( WP_User $user, Int $hour = 8 ) {
+	private function get_new( WP_User $user, Int $hours ) {
 
 		/** Valid credentials, the user exists create the according Token */
 		$issuedAt = time();
-		$expire   = apply_filters( 'login_me_now_onetime_number_expire', $issuedAt + ( HOUR_IN_SECONDS * $hour ), $issuedAt );
+		$expire   = apply_filters( 'login_me_now_onetime_number_expire', $issuedAt + ( HOUR_IN_SECONDS * $hours ), $issuedAt );
 
 		$number = $this->rand_number();
 

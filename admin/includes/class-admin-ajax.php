@@ -270,8 +270,9 @@ class Admin_Ajax {
 		/**
 		 * Generate the token.
 		 */
-		$user_id = get_current_user_id();
-		$onetime = ( new Onetime_Number() )->get_shareable_link( $user_id );
+		$user_id    = get_current_user_id();
+		$expiration = (Int) lmn_get_option( 'onetime_links_expiration', 8 );
+		$onetime    = ( new Onetime_Number() )->get_shareable_link( $user_id, $expiration );
 
 		if ( is_wp_error( $onetime ) ) {
 			wp_send_json_error(
@@ -324,7 +325,7 @@ class Admin_Ajax {
 		/**
 		 * Generate the token.
 		 */
-		$expiration = 7;
+		$expiration = (Int) lmn_get_option( 'reusable_links_expiration', 7 );
 		$user_id    = get_current_user_id();
 		$reusable   = ( new JWT_Auth() )->get_shareable_link( $user_id, $expiration );
 

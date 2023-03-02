@@ -3,7 +3,7 @@
  * Login Me Now Admin Loader
  *
  * @package Login Me Now
- * @since 1.0.0
+ * @since 0.94
  */
 
 namespace Login_Me_Now;
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Login_Me_Now_Admin_Loader
  *
- * @since 1.0.0
+ * @since 0.94
  */
 class Login_Me_Now_Admin_Loader {
 
@@ -24,14 +24,14 @@ class Login_Me_Now_Admin_Loader {
 	 *
 	 * @access private
 	 * @var null $instance
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -47,7 +47,7 @@ class Login_Me_Now_Admin_Loader {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function __construct() {
 		define( 'LOGIN_ME_NOW_ADMIN_DIR', LOGIN_ME_NOW_BASE_DIR . 'admin/' );
@@ -59,7 +59,7 @@ class Login_Me_Now_Admin_Loader {
 	/**
 	 * Include required classes.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function includes() {
 		/* Tokens Table */

@@ -3,7 +3,7 @@
  * Admin Base HTML.
  *
  * @package Login Me Now
- * @since 1.0.0
+ * @since 0.94
  */
 
 // Exit if accessed directly.

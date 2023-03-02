@@ -95,7 +95,7 @@ export default function MainNav() {
 								</div>
 								<div className="flex items-center pl-3">
 									<span>{lmn_admin.version}</span>
-									<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium border border-slate-400 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('CORE', 'login-me-now')} </span>
+									<span className="ml-1 sm:ml-2 text-[0.625rem] leading-[1rem] font-medium border border-slate-400 rounded-[0.1875rem] relative inline-flex flex-shrink-0 py-[0rem] px-1.5"> {__('BETA', 'login-me-now')} </span>
 								</div>
 								{lmn_admin.pro_available && (
 									<div className="flex items-center pl-3">

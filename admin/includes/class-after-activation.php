@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.93
- * @version 1.0.0
+ * @version 0.94
  */
 
 namespace Login_Me_Now;
@@ -27,7 +27,7 @@ class After_Activation {
 	/**
 	 * Create necessary tables and update options
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function migrate_from_beta() {
 		if ( defined( 'LOGIN_ME_NOW_VERSION' ) ) {
@@ -54,7 +54,7 @@ class After_Activation {
 		/**
 		 * Create logs table if not exist
 		 *
-		 * @since 1.0.0
+		 * @since 0.94
 		 *
 		 * @return void
 		 */

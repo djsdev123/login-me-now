@@ -3,7 +3,7 @@
  * Class API_Init.
  *
  * @package Login Me Now
- * @since 1.0.0
+ * @since 0.94
  */
 
 namespace Login_Me_Now;
@@ -28,14 +28,14 @@ class API_Init extends WP_REST_Controller {
 	 *
 	 * @access private
 	 * @var null $instance
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -65,7 +65,7 @@ class API_Init extends WP_REST_Controller {
 	 *
 	 * @access private
 	 * @var string $option_name DB option name.
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	private static $option_name = 'login_me_now_admin_settings';
 
@@ -74,14 +74,14 @@ class API_Init extends WP_REST_Controller {
 	 *
 	 * @access private
 	 * @var array $login_me_now_admin_settings Settings array.
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	private static $login_me_now_admin_settings = array();
 
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function __construct() {
 		self::$login_me_now_admin_settings = get_option( self::$option_name, array() );
@@ -93,7 +93,7 @@ class API_Init extends WP_REST_Controller {
 	/**
 	 * Login Me Now's REST knowledge base data.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @return mixed
 	 */
 	public static function login_me_now_get_knowledge_base_data() {
@@ -103,7 +103,7 @@ class API_Init extends WP_REST_Controller {
 	/**
 	 * Register API routes.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function register_routes() {
 		register_rest_route(
@@ -127,7 +127,7 @@ class API_Init extends WP_REST_Controller {
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return array $updated_option defaults + set DB option data.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function get_admin_settings( $request ) {
 		$db_option = get_option( 'login_me_now_admin_settings', array() );
@@ -135,14 +135,17 @@ class API_Init extends WP_REST_Controller {
 		$defaults = apply_filters(
 			'login_me_now_dashboard_rest_options',
 			array(
-				'self_hosted_gfonts'       => self::get_admin_settings_option( 'self_hosted_gfonts', false ),
-				'preload_local_fonts'      => self::get_admin_settings_option( 'preload_local_fonts', false ),
+				'self_hosted_gfonts'        => self::get_admin_settings_option( 'self_hosted_gfonts', false ),
+				'preload_local_fonts'       => self::get_admin_settings_option( 'preload_local_fonts', false ),
 
-				'logs'                     => self::get_admin_settings_option( 'logs', false ),
-				'logs_expiration'          => self::get_admin_settings_option( 'logs_expiration', 7 ),
+				'logs'                      => self::get_admin_settings_option( 'logs', false ),
+				'logs_expiration'           => self::get_admin_settings_option( 'logs_expiration', 7 ),
 
-				'onetime_links'            => self::get_admin_settings_option( 'onetime_links', true ),
-				'onetime_links_expiration' => self::get_admin_settings_option( 'onetime_links_expiration', 8 ),
+				'onetime_links'             => self::get_admin_settings_option( 'onetime_links', true ),
+				'onetime_links_expiration'  => self::get_admin_settings_option( 'onetime_links_expiration', 8 ),
+
+				'reusable_links'            => self::get_admin_settings_option( 'reusable_links', true ),
+				'reusable_links_expiration' => self::get_admin_settings_option( 'reusable_links_expiration', 7 ),
 			)
 		);
 
@@ -156,7 +159,7 @@ class API_Init extends WP_REST_Controller {
 	 *
 	 * @param  WP_REST_Request $request Full details about the request.
 	 * @return WP_Error|boolean
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function get_permissions_check( $request ) {
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
@@ -173,7 +176,7 @@ class API_Init extends WP_REST_Controller {
 	 * @param  string $key     The sub-option key.
 	 * @param  mixed  $default Option default value if option is not available.
 	 * @return mixed            Return the option value based on provided key
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public static function get_admin_settings_option( $key, $default = false ) {
 		$value = isset( self::$login_me_now_admin_settings[$key] ) ? self::$login_me_now_admin_settings[$key] : $default;
@@ -188,7 +191,7 @@ class API_Init extends WP_REST_Controller {
 	 * @param string $key       The option key.
 	 * @param mixed  $value     The value to update.
 	 * @return mixed            Return the option value based on provided key
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public static function update_admin_settings_option( $key, $value ) {
 		$login_me_now_admin_updated_settings       = get_option( self::$option_name, array() );

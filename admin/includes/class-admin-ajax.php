@@ -3,7 +3,7 @@
  * Login Me Now Admin Ajax Base.
  *
  * @package Login Me Now
- * @since 1.0.0
+ * @since 0.94
  */
 
 namespace Login_Me_Now;
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class Admin_Ajax.
  *
- * @since 1.0.0
+ * @since 0.94
  */
 class Admin_Ajax {
 
@@ -23,7 +23,7 @@ class Admin_Ajax {
 	 * Ajax action prefix.
 	 *
 	 * @var string
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	private $prefix = 'login-me-now';
 
@@ -32,14 +32,14 @@ class Admin_Ajax {
 	 *
 	 * @access private
 	 * @var null $instance
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -56,14 +56,14 @@ class Admin_Ajax {
 	 * Errors class instance.
 	 *
 	 * @var array
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	private $errors = array();
 
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function __construct() {
 		$this->errors = array(
@@ -84,20 +84,23 @@ class Admin_Ajax {
 	 * Return boolean settings for admin dashboard app.
 	 *
 	 * @return array
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function login_me_now_admin_settings_typewise() {
 		return apply_filters(
 			'login_me_now_admin_settings_datatypes',
 			array(
-				'self_hosted_gfonts'       => 'bool',
-				'preload_local_fonts'      => 'bool',
-				
-				'logs'                     => 'bool',
-				'logs_expiration'          => 'integer',
+				'self_hosted_gfonts'        => 'bool',
+				'preload_local_fonts'       => 'bool',
 
-				'onetime_links'            => 'bool',
-				'onetime_links_expiration' => 'integer',
+				'logs'                      => 'bool',
+				'logs_expiration'           => 'integer',
+
+				'onetime_links'             => 'bool',
+				'onetime_links_expiration'  => 'integer',
+
+				'reusable_links'            => 'bool',
+				'reusable_links_expiration' => 'integer',
 			)
 		);
 	}
@@ -106,7 +109,7 @@ class Admin_Ajax {
 	 * Save settings.
 	 *
 	 * @return void
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function login_me_now_update_admin_setting() {
 
@@ -165,7 +168,7 @@ class Admin_Ajax {
 	 *
 	 * @param string $type Message type.
 	 * @return string
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function get_error_msg( $type ) {
 
@@ -179,7 +182,7 @@ class Admin_Ajax {
 	/**
 	 * Required Plugin Activate
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function required_plugin_activate() {
 
@@ -241,7 +244,7 @@ class Admin_Ajax {
 	/**
 	 * Generate Onetime Token
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function login_me_now_generate_onetime_link() {
 
@@ -295,7 +298,7 @@ class Admin_Ajax {
 	/**
 	 * Generate Reusable Token
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function login_me_now_generate_reusable_link() {
 

@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.90
- * @version 1.0.0
+ * @version 0.94
  */
 
 require_once LOGIN_ME_NOW_BASE_DIR . 'includes/functions.php';

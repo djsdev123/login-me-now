@@ -3,7 +3,7 @@
  * Login Me Now CRON Jobs Base.
  *
  * @package Login Me Now
- * @since 1.0.0
+ * @since 0.94
  */
 
 namespace Login_Me_Now;
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Class CRON_Jobs
  *
- * @since 1.0.0
+ * @since 0.94
  */
 class CRON_Jobs {
 
@@ -24,14 +24,14 @@ class CRON_Jobs {
 	 *
 	 * @access private
 	 * @var null $instance
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -47,7 +47,7 @@ class CRON_Jobs {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function __construct() {
 		// Create cron job.
@@ -65,7 +65,7 @@ class CRON_Jobs {
 	/**
 	 * Purges old Log records.
 	 * 
-	 * @since 1.0.0
+	 * @since 0.94
 	 * 
 	 * @param  int $days_old How many days back to go.
 	 * @param  boolean $dry_run  Is this a dry run?

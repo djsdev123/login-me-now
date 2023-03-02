@@ -1,8 +1,8 @@
 <?php
 /**
  * @author  HeyMehedi
- * @since   1.0.0
- * @version 1.0.0
+ * @since   0.94
+ * @version 0.94
  */
 
 use Login_Me_Now\Logs_Table;

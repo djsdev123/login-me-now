@@ -1,8 +1,8 @@
 <?php
 /**
  * @author  HeyMehedi
- * @since   1.0.0
- * @version 1.0.0
+ * @since   0.94
+ * @version 0.94
  */
 
 /**
@@ -21,7 +21,7 @@ function lmn_get_option( $option, $default = '' ) {
 	 * Dynamic filter lmn_get_option_$option.
 	 * $option is the name of the Setting.
 	 *
-	 * @since  1.0.0
+	 * @since  0.94
 	 * @var Mixed.
 	 */
 

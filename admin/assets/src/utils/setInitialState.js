@@ -17,6 +17,9 @@ const setInitialState = (store) => {
 			enableOnetimeLinks: data.onetime_links,
 			onetimeLinksExpiration: data.onetime_links_expiration,
 
+			enableReusableLinks: data.reusable_links,
+			reusableLinksExpiration: data.reusable_links_expiration,
+
 			enablePreloadLocalFonts: data.preload_local_fonts,
 			blocksStatuses: data.pro_addons,
 		};

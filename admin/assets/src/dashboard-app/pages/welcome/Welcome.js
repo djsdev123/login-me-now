@@ -55,7 +55,7 @@ const Welcome = () => {
 	};
 
 	const getLoginMeNowProTitle = () => {
-		return lmn_admin.pro_installed_status ? __('Activate Now', 'login-me-now') : __('Upgrade Now', 'login-me-now');
+		// return lmn_admin.pro_installed_status ? __('Activate Now', 'login-me-now') : __('Upgrade Now', 'login-me-now');
 	}
 
 	const onGetLoginMeNowPro = (e) => {

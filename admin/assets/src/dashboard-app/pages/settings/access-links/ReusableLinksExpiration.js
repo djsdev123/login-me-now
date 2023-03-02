@@ -4,31 +4,28 @@ import { Listbox } from '@headlessui/react'
 import apiFetch from '@wordpress/api-fetch';
 
 const expirationOptions = [
-  { days: 1, name:  __('1 Hour', 'login-me-now')},
-  { days: 3, name:  __('3 Hours', 'login-me-now')},
-  { days: 6, name:  __('6 Hours', 'login-me-now')},
-  { days: 8, name:  __('8 Hours', 'login-me-now')},
-  { days: 12, name:  __('12 Hours', 'login-me-now')},
-  { days: 24, name:  __('24 Hours', 'login-me-now')},
-  { days: 48, name:  __('48 Hours', 'login-me-now')},
-  { days: 72, name:  __('72 Hours', 'login-me-now')}
+  { days: 1, name:  __('1 Day', 'login-me-now')},
+  { days: 7, name:  __('1 Week', 'login-me-now')},
+  { days: 30, name:  __('1 Month', 'login-me-now')},
+  { days: 365, name:  __('1 Year', 'login-me-now')},
+  { days: 10000, name:  __('Lifetime ', 'login-me-now')},
 ]
 
-const OnetimeLinksExpiration = () => {
+const ReusableLinksExpiration = () => {
 
-  const enableOnetimeLinks = useSelector((state) => state.enableOnetimeLinks);
-	const enableOnetimeLinksStatus = false === enableOnetimeLinks ? false : true;
+  const enableReusableLinks = useSelector((state) => state.enableReusableLinks);
+	const enableReusableLinksStatus = false === enableReusableLinks ? false : true;
 
 	const dispatch = useDispatch();
   
-  const updateLogsExpiration = (days) => {
+  const updateReusableLinksExpiration = (days) => {
 
-    dispatch({ type: 'UPDATE_ONETIME_LINKS_EXPIRATION', payload: days });
+    dispatch({ type: 'UPDATE_REUSABLE_LINKS_EXPIRATION', payload: days });
 
     const formData = new window.FormData();
     formData.append('action', 'login_me_now_update_admin_setting');
     formData.append('security', lmn_admin.update_nonce);
-    formData.append('key', 'onetime_links_expiration');
+    formData.append('key', 'reusable_links_expiration');
     formData.append('value', days);
 
     apiFetch({
@@ -40,14 +37,16 @@ const OnetimeLinksExpiration = () => {
     });
   };
 
-	let days = useSelector((state) => state.onetimeLinksExpiration);
+	let days = useSelector((state) => state.reusableLinksExpiration);
   const currentOption = expirationOptions.find(option => option.days == days);
   
+  console.log(days);
+  
   return (
-    <section className={`login-me-now-dep-field-${enableOnetimeLinksStatus} text-sm block border-b border-solid border-slate-200 px-8 py-8 justify-between`}>
+    <section className={`login-me-now-dep-field-${enableReusableLinksStatus} text-sm block border-b border-solid border-slate-200 px-8 py-8 justify-between`}>
 			<div className='mr-16 w-full flex items-center'></div>
     
-      <Listbox onChange={updateLogsExpiration}>
+      <Listbox onChange={updateReusableLinksExpiration}>
 
         <Listbox.Button>{ __('Expire after ', 'login-me-now') + ' ' + currentOption.name}</Listbox.Button>
 
@@ -73,4 +72,4 @@ const OnetimeLinksExpiration = () => {
   )
 }
 
-export default OnetimeLinksExpiration;
+export default ReusableLinksExpiration;

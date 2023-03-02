@@ -1,8 +1,8 @@
 <?php
 /**
  * @author  HeyMehedi
- * @since   1.0.0
- * @version 1.0.0
+ * @since   0.94
+ * @version 0.94
  */
 
 namespace Login_Me_Now;
@@ -10,14 +10,14 @@ namespace Login_Me_Now;
 /**
  * Logs related methods and actions
  *
- * @since 1.0.0
+ * @since 0.94
  */
 class Logs_Table {
 
 	/**
 	 * Create logs table if not exist
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 *
 	 * @return void
 	 */
@@ -58,7 +58,7 @@ class Logs_Table {
 	/**
 	 * Insert log data
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 *
 	 * @return void
 	 */
@@ -83,7 +83,7 @@ class Logs_Table {
 	/**
 	 * Get all logs
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 *
 	 * @return Array|Object|NULL
 	 */
@@ -102,7 +102,7 @@ class Logs_Table {
 	/**
 	 * Delete logs
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 *
 	 * @return void
 	 */

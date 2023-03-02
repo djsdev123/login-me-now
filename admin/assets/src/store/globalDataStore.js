@@ -11,6 +11,9 @@ const initialState = wp.hooks.applyFilters('login_me_now_dashboard/datastore', {
 	enableOnetimeLinks: true,
 	onetimeLinksExpiration: 8,
 
+	enableReusableLinks: true,
+	reusableLinksExpiration: 7,
+
 	enablePreloadLocalFonts: false,
 	enableWhiteLabel: false,
 	enableBeta: 'disable',

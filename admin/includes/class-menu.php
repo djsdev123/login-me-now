@@ -3,7 +3,7 @@
  * Class Menu.
  *
  * @package Login Me Now
- * @since 1.0.0
+ * @since 0.94
  */
 
 namespace Login_Me_Now;
@@ -21,14 +21,14 @@ class Menu {
 	 *
 	 * @access private
 	 * @var null $instance
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -44,7 +44,7 @@ class Menu {
 	/**
 	 * Page title
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @var string $page_title
 	 */
 	public static $page_title = 'Login Me Now';
@@ -52,7 +52,7 @@ class Menu {
 	/**
 	 * Plugin slug
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @var string $plugin_slug
 	 */
 	public static $plugin_slug = 'login-me-now';
@@ -60,7 +60,7 @@ class Menu {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function __construct() {
 		$this->initialize_hooks();
@@ -69,7 +69,7 @@ class Menu {
 	/**
 	 * Init Hooks.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @return void
 	 */
 	public function initialize_hooks() {
@@ -86,7 +86,7 @@ class Menu {
 	/**
 	 * Admin settings init.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function init_admin_settings() {
 		if ( ! is_customize_preview() ) {
@@ -97,7 +97,7 @@ class Menu {
 	/**
 	 * Add custom CSS for admin area sub menu icons.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function admin_submenu_css() {
 		echo '<style class="astra-menu-appearance-style">
@@ -110,7 +110,7 @@ class Menu {
 	/**
 	 *  Initialize after Login Me Now gets loaded.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function settings_admin_scripts() {
 		// Enqueue admin scripts.
@@ -125,7 +125,7 @@ class Menu {
 	/**
 	 * Add submenu to admin menu.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function setup_menu() {
 		global $submenu;
@@ -189,7 +189,7 @@ class Menu {
 	/**
 	 * Renders the admin settings.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @return void
 	 */
 	public function render_admin_dashboard() {
@@ -210,7 +210,7 @@ class Menu {
 	/**
 	 * Enqueues the needed CSS/JS for the builder's admin settings page.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function styles_scripts() {
 
@@ -264,7 +264,7 @@ class Menu {
 	/**
 	 * Get plugin status
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 *
 	 * @param  string $plugin_init_file Plguin init file.
 	 * @return mixed
@@ -285,7 +285,7 @@ class Menu {
 	/**
 	 * Get Login Me Now's pro feature list.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @return array
 	 * @access public
 	 */
@@ -324,7 +324,7 @@ class Menu {
 	/**
 	 * Settings app scripts
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 * @param array $localize Variable names.
 	 */
 	public function settings_app_scripts( $localize ) {
@@ -379,7 +379,7 @@ class Menu {
 	/**
 	 *  Add footer link.
 	 *
-	 * @since 1.0.0
+	 * @since 0.94
 	 */
 	public function admin_footer_link() {
 		echo '<span id="footer-thankyou"> Thank you for using <span class="focus:text-astra-hover active:text-astra-hover hover:text-astra-hover"> ' . esc_attr( __( 'Login Me Now', 'login-me-now' ) ) . '.</span></span>';

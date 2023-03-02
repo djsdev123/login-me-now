@@ -45,6 +45,18 @@ const globalDataReducer = (state = {}, action) => {
 				...state,
 				onetimeLinksExpiration: action.payload,
 			};
+			
+		case 'UPDATE_ENABLE_REUSABLE_LINKS':
+			return {
+				...state,
+				enableReusableLinks: action.payload,
+			};
+		case 'UPDATE_REUSABLE_LINKS_EXPIRATION':
+			return {
+				...state,
+				reusableLinksExpiration: action.payload,
+			};
+
 		case 'UPDATE_ENABLE_PRELOAD_LOCAL_FONTS':
 			return {
 				...state,

@@ -17,11 +17,11 @@ use Login_Me_Now\Tokens_Table;
 class AutoLogin {
 
 	public function __construct() {
-		add_action( 'template_include', array( $this, 'using_number' ) );
-		add_action( 'template_include', array( $this, 'using_token' ) );
+		add_action( 'template_include', array( $this, 'using_onetime_number' ) );
+		add_action( 'template_include', array( $this, 'using_reusable_number' ) );
 	}
 
-	public function using_number( $template ) {
+	public function using_onetime_number( $template ) {
 		if ( ! isset( $_GET['lmn'] ) ) {
 			return $template;
 		}
@@ -61,7 +61,7 @@ class AutoLogin {
 		$this->now( $user_id );
 	}
 
-	public function using_token( $template ) {
+	public function using_reusable_number( $template ) {
 		if ( ! isset( $_GET['login-me-now'] ) ) {
 			return $template;
 		}
@@ -106,7 +106,7 @@ class AutoLogin {
 			return;
 		}
 
-		$token_id     = ! empty( $payload->iat ) ? $payload->iat : false;
+		$token_id     = ! empty( $payload->data->tid ) ? $payload->data->tid : false;
 		$token_status = Tokens_Table::get_token_status( $token_id );
 
 		if ( ! $token_status || 'active' != $token_status ) {

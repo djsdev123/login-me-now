@@ -154,6 +154,8 @@ class JWT_Auth {
 		$notBefore = apply_filters( 'login_me_now_not_before', $issuedAt, $issuedAt );
 		$expire    = apply_filters( 'login_me_now_expire', $issuedAt + ( DAY_IN_SECONDS * $expiration ), $issuedAt );
 
+		$rand_number = (Int) $this->rand_number();
+
 		$token = array(
 			'iss'  => get_bloginfo( 'url' ),
 			'iat'  => $issuedAt,
@@ -163,6 +165,7 @@ class JWT_Auth {
 				'user' => array(
 					'id' => $user->data->ID,
 				),
+				'tid'  => $rand_number,
 			),
 		);
 
@@ -184,8 +187,6 @@ class JWT_Auth {
 			$secret_key,
 			$algorithm
 		);
-
-		$rand_number = (Int) $this->rand_number();
 
 		/** Store the token ref in user meta using the $issuedAt, so we can block the token if needed */
 		Tokens_Table::insert( $user->data->ID, $rand_number, $expire, 'active' );

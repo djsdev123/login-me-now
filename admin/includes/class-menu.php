@@ -3,7 +3,7 @@
  * Class Menu.
  *
  * @package Login Me Now
- * @since 0.94
+ * @since 0.95
  */
 
 namespace Login_Me_Now;
@@ -241,7 +241,7 @@ class Menu {
 			'admin_url'              => admin_url( 'admin.php' ),
 			'home_slug'              => self::$plugin_slug,
 			'upgrade_url'            => LOGIN_ME_NOW_PRO_UPGRADE_URL,
-			'extension_url'          => 'https://chrome.google.com/webstore/detail/login-me-now/kkkofomlfhbepmpiplggmfpomdnkljoh/?sourch=wp-dashboard',
+			'extension_url'          => 'https://chrome.google.com/webstore/detail/login-me-now/kkkofomlfhbepmpiplggmfpomdnkljoh/?source=wp-dashboard',
 			'login_me_now_base_url'  => admin_url( 'admin.php?page=' . self::$plugin_slug ),
 			'logo_url'               => apply_filters( 'login_me_now_admin_menu_icon', LOGIN_ME_NOW_BASE_URL . 'admin/assets/images/icon.png' ),
 			'update_nonce'           => wp_create_nonce( 'login_me_now_update_admin_setting' ),

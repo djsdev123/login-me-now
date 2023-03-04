@@ -40,8 +40,6 @@ const ReusableLinksExpiration = () => {
 	let days = useSelector((state) => state.reusableLinksExpiration);
   const currentOption = expirationOptions.find(option => option.days == days);
   
-  console.log(days);
-  
   return (
     <section className={`login-me-now-dep-field-${enableReusableLinksStatus} text-sm block border-b border-solid border-slate-200 px-8 py-8 justify-between`}>
 			<div className='mr-16 w-full flex items-center'></div>

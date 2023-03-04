@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.94
- * @version 0.94
+ * @version 0.95
  */
 
 /**
@@ -16,6 +16,10 @@ function lmn_get_option( $option, $default = '' ) {
 
 	$options = get_option( 'login_me_now_admin_settings', array() );
 	$value   = ( isset( $options[$option] ) && '' !== $options[$option] ) ? $options[$option] : array();
+
+	if ( empty( $value ) ) {
+		$value = $default;
+	}
 
 	/**
 	 * Dynamic filter lmn_get_option_$option.

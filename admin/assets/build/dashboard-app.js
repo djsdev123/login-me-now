@@ -10138,7 +10138,6 @@ const ReusableLinksExpiration = () => {
   };
   let days = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state.reusableLinksExpiration);
   const currentOption = expirationOptions.find(option => option.days == days);
-  console.log(days);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
     className: `login-me-now-dep-field-${enableReusableLinksStatus} text-sm block border-b border-solid border-slate-200 px-8 py-8 justify-between`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -10438,7 +10437,6 @@ function MagicLinkPopup() {
       }, 120000);
     }
   }, [magicLinkPopup]);
-  console.log(magicLinkPopup);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     "aria-live": "assertive",
     className: "fixed inset-10 z-10 flex px-4 py-6 pointer-events-none sm:p-6 sm:items-start"

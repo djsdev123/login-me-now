@@ -95,20 +95,16 @@ use Login_Me_Now\Tokens_Table;
 			} )
 			.then( res => res.json() )
 			.then( res => {
-				console.log(res);
 				Toast.fire({
 					icon: 'success',
 					title: 'Status updated',
 				})
 			} )
 			.catch( err => {
-				console.log(err)
 				Toast.fire({
 					icon: 'error',
 					title: "Something wen't wrong",
 				})
 			} );
-
-		console.log(event.target.value);
 	}
 </script>

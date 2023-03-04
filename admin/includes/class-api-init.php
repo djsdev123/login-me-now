@@ -3,7 +3,7 @@
  * Class API_Init.
  *
  * @package Login Me Now
- * @since 0.94
+ * @since 0.95
  */
 
 namespace Login_Me_Now;
@@ -138,7 +138,7 @@ class API_Init extends WP_REST_Controller {
 				'self_hosted_gfonts'        => self::get_admin_settings_option( 'self_hosted_gfonts', false ),
 				'preload_local_fonts'       => self::get_admin_settings_option( 'preload_local_fonts', false ),
 
-				'logs'                      => self::get_admin_settings_option( 'logs', false ),
+				'logs'                      => self::get_admin_settings_option( 'logs', true ),
 				'logs_expiration'           => self::get_admin_settings_option( 'logs_expiration', 7 ),
 
 				'onetime_links'             => self::get_admin_settings_option( 'onetime_links', true ),

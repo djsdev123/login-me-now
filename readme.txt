@@ -4,7 +4,7 @@ Tags: one click login, password less login, direct dashboard, direct access
 Requires at least: 5.6
 Tested up to: 6.1.1
 Requires PHP: 7.1
-Stable tag: 0.94
+Stable tag: 0.95
 License: GPLv3 or Any Later Version
 
 Login Me Now - A simple and user-friendly plugin to Login Directly to Dashboard from Chrome Extension
@@ -21,6 +21,11 @@ If you need some help, we are right here to support you in the plugin’s [suppo
 Install Login Me Now either via the WordPress.org plugin repository or by uploading the files to your server.
 
 == Changelog ==
+
+= 0.95(Beta) – Mar 4, 2023 =
+* Fix: Default Settings 
+* Remove: Twice Log
+* 
 
 = 0.94(Beta) – Mar 4, 2023 =
 * Improved: Tokens Table

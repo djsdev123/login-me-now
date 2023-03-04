@@ -20,8 +20,6 @@ export default function MagicLinkPopup() {
 		}
 	}, [magicLinkPopup] );
 
-	console.log(magicLinkPopup);
-
 	return (
 		<>
 			{ /* Global notification live region, render this permanently at the end of the document */ }

@@ -3,7 +3,7 @@
  * Login Me Now Admin Ajax Base.
  *
  * @package Login Me Now
- * @since 0.94
+ * @since 0.95
  */
 
 namespace Login_Me_Now;
@@ -337,8 +337,6 @@ class Admin_Ajax {
 				)
 			);
 		}
-
-		( new Logs_Table )->insert( $user_id, "Generated a reusable link" );
 
 		wp_send_json_success(
 			array(

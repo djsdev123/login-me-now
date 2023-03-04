@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.94
- * @version 0.94
+ * @version 0.95
  */
 
 namespace Login_Me_Now;
@@ -63,7 +63,8 @@ class Logs_Table {
 	 * @return void
 	 */
 	public static function insert( Int $user_id, String $message ) {
-		if ( ! lmn_get_option( 'logs', true ) ) {
+		$save_logs = lmn_get_option( 'logs', true );
+		if ( ! $save_logs ) {
 			return;
 		}
 

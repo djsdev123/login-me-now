@@ -1,4 +1,4 @@
-=== Login Me Now ===
+=== Login Me Now - 1 click login without password ===
 Contributors: HeyMehedi, HalalBrains, HiMrFaruk
 Tags: one click login, password less login, direct dashboard, direct access
 Requires at least: 5.6
@@ -16,15 +16,15 @@ The access link automatically expires after a set number of hours or days.
 
 Overall, Login Me Now is the ultimate solution for anyone looking to enhance the security and convenience of their WordPress website login process.
 
-** This plugin serves a multitude of benefits **
+== This plugin serves a multitude of benefits ==
 * Generate a unique, time-limited access link.
 * No need for a username or password - simply use the access link to log in.
 * Set an expiration time with options ranging from a few hours to a month. The custom expiration date can also be set.
 * Track the last login time for each user who logs in with an access token.
 * Keep track of the number of times each user accesses the WP dashboard with their access token.
 
-** [Use browser extension](https://chrome.google.com/webstore/detail/login-me-now/kkkofomlfhbepmpiplggmfpomdnkljoh) **
-You don't need to remember all your usernames & passwords for different websites' dashboards. You can store all your login credentials securely in one place.
+== Browser Extension ==
+You don't need to remember all your usernames & passwords for different websites' dashboards. You can store all your login credentials securely in one place. [Use Login Me Now chrome extension](https://chrome.google.com/webstore/detail/login-me-now/kkkofomlfhbepmpiplggmfpomdnkljoh)
 
 🔥 Faster login process
 
@@ -36,21 +36,22 @@ We want to assure you that our chrome extension does not store any data on your 
 
 Enjoy using the chrome extension with confidence, knowing that your login information is not being stored or shared with any parties.
 
-** Who is this plugin for? **
-*FOR DEVELOPERS:*
+== Who is this plugin for? ==
+
+= FOR DEVELOPERS: =
 If you require admin access to your client's WordPress setup to resolve any issues, you can ask the website owner to install this plugin to provide temporary access. This eliminates the need to request a password or manually create an account, ensuring you have secure and temporary access to the client's WordPress setup without compromising their website's security.
 
-*FOR CUSTOMER SUCCESS & SUPPORT ENGINEERS:*
+= FOR CUSTOMER SUCCESS & SUPPORT ENGINEERS: =
 This plugin simplifies the process of requesting temporary access to your customers' WordPress dashboards. This plugin eliminates the hassle of requesting a password or manually creating a user account and ensures access to the customer's WP dashboard without compromising their website's security. 
 
-*FOR AGENCY OWNERS:*
+= FOR AGENCY OWNERS: =
 This plugin can assist your agency in reducing security risks and improving team efficiency. It eliminates the need for employees to attempt to remember a number of unique passwords for different websites. This plugin also provides automatic expiration times and the ability to disable access, allowing you to revoke access to terminated employees/ freelancers and clients easily.
 
-*FOR DIGITAL MARKETERS:*
+= FOR DIGITAL MARKETERS: =
 This plugin enables secure access to your website for SEO consultants, content writers, or developers based on your specified access link configurations. This eliminates the risk of security breaches, allowing you to provide access to external parties without compromising your website's security. 
 
 
-**FIND AN ISSUE?**
+== FIND AN ISSUE? ==
 If you want to report a technical bug or are interested to contribute we encourage you to [follow along](https://github.com/HalalBrains/login-me-now/) or [contribute](https://github.com/HalalBrains/login-me-now/) to the development of this plugin on GitHub. Please note that GitHub is not a support forum.If you need some help, we are right here to support you in the plugin’s
 
 If you need some help, we are right here to support you in the plugin’s [support forum](https://wordpress.org/support/plugin/login-me-now/), You can post a topic. Please search existing topics before starting a new one.

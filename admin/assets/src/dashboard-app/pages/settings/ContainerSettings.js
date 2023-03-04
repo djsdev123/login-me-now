@@ -13,7 +13,7 @@ function SettingsWrapper({ state }) {
 		'login_me_now_dashboard.settings_tab_wrappers',
 		{
 			'global-settings': <> <Logs /> <LogsExpiration /> </>,
-			'access-links': <> <OnetimeLinks/> <OnetimeLinksExpiration/> <ReusableLinks /> <ReusableLinksExpiration /> </>,
+			'access-links': <> <OnetimeLinks/> <OnetimeLinksExpiration/> <ReusableLinks /> <ReusableLinksExpiration /></>,
 		}
 	);
 	return <div>{wrappers[state]}</div>;

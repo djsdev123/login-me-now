@@ -2,21 +2,66 @@
 /**
  * @author  HeyMehedi
  * @since   0.90
- * @version 0.93
+ * @version 0.94
  */
 
-namespace Login_Me_Now;
+namespace Login_Me_now_Now;
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use Login_Me_Now\Helper;
+use Login_Me_Now\JWT_Auth;
+use Login_Me_Now\Logs_Table;
+use Login_Me_Now\Tokens_Table;
 
 class AutoLogin {
 
 	public function __construct() {
-		add_action( 'template_include', array( $this, 'login_me' ) );
+		add_action( 'template_include', array( $this, 'using_onetime_number' ) );
+		add_action( 'template_include', array( $this, 'using_reusable_number' ) );
 	}
 
-	public function login_me( $template ) {
+	public function using_onetime_number( $template ) {
+		if ( ! isset( $_GET['lmn'] ) ) {
+			return $template;
+		}
+
+		if ( empty( $_GET['lmn'] ) ) {
+			$title   = __( 'Number Not Provided', 'login-me-now' );
+			$message = __( 'Please provide a valid number', 'login-me-now' );
+			Helper::get_template_part( 'messages/error', array( 'title' => $title, 'message' => $message ) );
+
+			return;
+		}
+
+		/** First thing, check the secret number if not exist return an error*/
+		$number  = sanitize_text_field( $_GET['lmn'] );
+		$t_value = get_transient( $number );
+		if ( ! $t_value ) {
+			$title   = __( 'Invalid number', 'login-me-now' );
+			$message = __( 'Please provide a valid number', 'login-me-now' );
+			Helper::get_template_part( 'messages/error', array( 'title' => $title, 'message' => $message ) );
+
+			return;
+		}
+
+		$user_id = ! empty( $t_value ) ? $t_value : false;
+
+		if ( ! $user_id ) {
+			$title   = __( 'User not found', 'login-me-now' );
+			$message = __( 'Please contact the admin', 'login-me-now' );
+			Helper::get_template_part( 'messages/error', array( 'title' => $title, 'message' => $message ) );
+
+			return;
+		}
+
+		delete_transient( $number );
+
+		( new Logs_Table )->insert( $user_id, "Logged in using onetime link #{$number}" );
+		$this->now( $user_id );
+	}
+
+	public function using_reusable_number( $template ) {
 		if ( ! isset( $_GET['login-me-now'] ) ) {
 			return $template;
 		}
@@ -43,7 +88,7 @@ class AutoLogin {
 			$token     = sanitize_text_field( $_GET['token'] );
 			$algorithm = ( new JWT_Auth )->get_algorithm();
 			$payload   = JWT::decode( $token, new Key( $secret_key, $algorithm ) );
-		} catch ( \Throwable $th ) {
+		} catch ( \Throwable$th ) {
 			$title   = __( 'Token not valid', 'login-me-now' );
 			$message = $th->getMessage();
 			Helper::get_template_part( 'messages/error', array( 'title' => $title, 'message' => $message ) );
@@ -61,7 +106,7 @@ class AutoLogin {
 			return;
 		}
 
-		$token_id     = ! empty( $payload->iat ) ? $payload->iat : false;
+		$token_id     = ! empty( $payload->data->tid ) ? $payload->data->tid : false;
 		$token_status = Tokens_Table::get_token_status( $token_id );
 
 		if ( ! $token_status || 'active' != $token_status ) {
@@ -71,6 +116,8 @@ class AutoLogin {
 
 			return;
 		}
+
+		( new Logs_Table )->insert( $user_id, "Logged in using reusable link #{$token_id}" );
 
 		$this->now( $user_id );
 	}

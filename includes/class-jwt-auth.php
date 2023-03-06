@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.90
- * @version 0.93
+ * @version 0.94
  */
 
 namespace Login_Me_Now;
@@ -57,6 +57,17 @@ class JWT_Auth {
 		}
 
 		return $this->new_token( $user, $expiration );
+	}
+
+	/**
+	 * Random number generate
+	 *
+	 * @return Integer
+	 */
+	private function rand_number() {
+		$number = mt_rand( 1000000000000000, 9999999999999999 );
+
+		return $number;
 	}
 
 	/**
@@ -143,6 +154,8 @@ class JWT_Auth {
 		$notBefore = apply_filters( 'login_me_now_not_before', $issuedAt, $issuedAt );
 		$expire    = apply_filters( 'login_me_now_expire', $issuedAt + ( DAY_IN_SECONDS * $expiration ), $issuedAt );
 
+		$rand_number = (Int) $this->rand_number();
+
 		$token = array(
 			'iss'  => get_bloginfo( 'url' ),
 			'iat'  => $issuedAt,
@@ -152,6 +165,7 @@ class JWT_Auth {
 				'user' => array(
 					'id' => $user->data->ID,
 				),
+				'tid'  => $rand_number,
 			),
 		);
 
@@ -175,7 +189,9 @@ class JWT_Auth {
 		);
 
 		/** Store the token ref in user meta using the $issuedAt, so we can block the token if needed */
-		Tokens_Table::insert( $user->data->ID, $issuedAt, $expire, 'active' );
+		Tokens_Table::insert( $user->data->ID, $rand_number, $expire, 'active' );
+
+		( new Logs_Table )->insert( $user->data->ID, "Generated reusable link #{$rand_number}" );
 
 		if ( ! $additional_data ) {
 			return $token;

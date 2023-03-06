@@ -2,25 +2,25 @@
 /**
  * @author  HeyMehedi
  * @since   0.93
- * @version 0.93
+ * @version 0.94
  */
 
 namespace Login_Me_Now;
 
 /**
- * Database related methods and actions
+ * Tokens related methods and actions
  *
  * @since 0.93
  */
 class Tokens_Table {
 	/**
-	 * Create plugin tables if not exist
+	 * Create tokens table if not exist
 	 *
 	 * @since 0.93
 	 *
 	 * @return void
 	 */
-	public function create_tables() {
+	public function create_table() {
 		global $wpdb;
 
 		$collate = '';
@@ -40,8 +40,10 @@ class Tokens_Table {
 			`id` bigint(20) NOT NULL AUTO_INCREMENT,
 			`user_id` bigint(20) NOT NULL,
 			`token_id` bigint(20) NOT NULL,
+			`count`  bigint(20) NOT NULL,
 			`expire`  bigint(20) NOT NULL,
 			`status` varchar(260) DEFAULT NULL,
+			`created_at` varchar(260) DEFAULT NULL,
 			PRIMARY KEY (`id`),
 			KEY `user_id` (`user_id`),
 			KEY `token_id` (`token_id`)
@@ -52,6 +54,21 @@ class Tokens_Table {
 
 		foreach ( $table_schema as $table ) {
 			dbDelta( $table );
+		}
+	}
+
+	public function alter_table() {
+		global $wpdb;
+
+		$table_schema = array(
+			"ALTER TABLE {$wpdb->prefix}login_me_now_tokens ADD `count` bigint(20) NOT NULL AFTER `token_id`,
+			ADD `created_at` varchar(260) DEFAULT NULL AFTER `status`;",
+		);
+
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+		foreach ( $table_schema as $table ) {
+			$wpdb->query( $table );
 		}
 	}
 
@@ -66,10 +83,10 @@ class Tokens_Table {
 		global $wpdb;
 
 		$checkin_sql = sprintf( "INSERT INTO {$wpdb->prefix}login_me_now_tokens
-		(user_id, token_id, expire, status)
+		(user_id, token_id, expire, status, created_at)
 		VALUES
-		('%s', '%s', '%s', '%s')",
-			intval( $user_id ), $token_id, $expire, $status );
+		('%s', '%s', '%s', '%s', '%s')",
+			intval( $user_id ), $token_id, $expire, $status, time() );
 
 		$wpdb->query( $checkin_sql );
 	}

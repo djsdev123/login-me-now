@@ -227,12 +227,12 @@ class JWT_Auth {
 	 * @return WP_Error | Object | Array
 	 */
 	public function validate_token( WP_REST_Request $request, $only_token = false ) {
-		$token = $request->get_param( 'token' );
+		$req_token = $request->get_param( 'token' );
 
 		/**
 		 * if the format is not valid return an error.
 		 */
-		if ( ! $token ) {
+		if ( ! $req_token ) {
 			return new WP_Error(
 				'login_me_now_invalid_token',
 				'Invalid token.',
@@ -267,7 +267,7 @@ class JWT_Auth {
 				);
 			}
 
-			$token = JWT::decode( $token, new Key( $secret_key, $algorithm ) );
+			$token = JWT::decode( $req_token, new Key( $secret_key, $algorithm ) );
 
 			/** The Token is decoded now validate the iss */
 			if ( $token->iss !== get_bloginfo( 'url' ) ) {
@@ -295,17 +295,24 @@ class JWT_Auth {
 
 			/** Everything looks good return the decoded token if we are using the token */
 			if ( $only_token ) {
-				return $token;
+				return $req_token;
 			}
+
+			$user = get_userdata( $token->data->user->id );
+
+			/** The token already signed, now create the object with no sensible user data to the client*/
+			$data = array(
+				'token'             => $req_token,
+				'site_url'          => get_bloginfo( 'url' ),
+				'site_icon_url'     => get_site_icon_url( 'url' ),
+				'user_email'        => $user->data->user_email,
+				'user_nicename'     => $user->data->user_nicename,
+				'user_display_name' => $user->data->display_name,
+			);
 
 			/** This is for the /validate endpoint*/
 
-			return array(
-				'code' => 'login_me_now_valid_token',
-				'data' => array(
-					'status' => 200,
-				),
-			);
+			return $data;
 		} catch ( Exception $e ) {
 			/** Something were wrong trying to decode the token, send back the error */
 			return new WP_Error(

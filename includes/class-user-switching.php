@@ -40,6 +40,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
+$enable = lmn_get_option( 'user_switching', true );
+
+
+if ( ! $enable ) {
+	return;
+}
+
 add_action( 'plugins_loaded', function () {
 	require_once ( ABSPATH . '/wp-admin/includes/plugin.php' );
 

@@ -17,7 +17,7 @@ function lmn_get_option( $option, $default = '' ) {
 	$options = get_option( 'login_me_now_admin_settings', array() );
 	$value   = ( isset( $options[$option] ) && '' !== $options[$option] ) ? $options[$option] : array();
 
-	if ( empty( $value ) ) {
+	if ( array() === $value ) {
 		$value = $default;
 	}
 

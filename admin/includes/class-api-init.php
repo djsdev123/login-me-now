@@ -146,6 +146,8 @@ class API_Init extends WP_REST_Controller {
 
 				'reusable_links'            => self::get_admin_settings_option( 'reusable_links', true ),
 				'reusable_links_expiration' => self::get_admin_settings_option( 'reusable_links_expiration', 7 ),
+
+				'user_switching'            => self::get_admin_settings_option( 'user_switching', true ),
 			)
 		);
 

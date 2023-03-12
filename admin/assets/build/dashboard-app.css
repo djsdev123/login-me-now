@@ -1258,11 +1258,11 @@ select {
 .pr-12 {
   padding-right: 3rem;
 }
-.pr-1 {
-  padding-right: 0.25rem;
-}
 .pt-8 {
   padding-top: 2rem;
+}
+.pr-1 {
+  padding-right: 0.25rem;
 }
 .text-left {
   text-align: left;

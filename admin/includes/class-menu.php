@@ -313,10 +313,6 @@ class Menu {
 					'title' => __( 'OTP Login', 'login-me-now' ),
 					'desc'  => __( "Let user login to the WordPress dashboard using one time password ( OTP ) sent via SMS. The user don't have to know bad and weak passwords, sharing of credentials or reuse of the same password on multiple accounts.", 'login-me-now' ),
 				),
-				'user-switching'   => array(
-					'title' => __( 'User Switching', 'login-me-now' ),
-					'desc'  => __( 'Quickly swap between user accounts in WordPress at the click of a button. You’ll be instantly logged out and logged in as your desired user', 'login-me-noq' ),
-				),
 			)
 		);
 	}

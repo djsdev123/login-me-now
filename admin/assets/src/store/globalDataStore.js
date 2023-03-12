@@ -14,6 +14,8 @@ const initialState = wp.hooks.applyFilters('login_me_now_dashboard/datastore', {
 	enableReusableLinks: true,
 	reusableLinksExpiration: 7,
 
+	enableUserSwitching: true,
+
 	enablePreloadLocalFonts: false,
 	enableWhiteLabel: false,
 	enableBeta: 'disable',
@@ -22,14 +24,6 @@ const initialState = wp.hooks.applyFilters('login_me_now_dashboard/datastore', {
 	blocksStatuses: [],
 	enableFileGeneration: 'disable',
 	activeSettingsNavigationTab: '',
-	pluginDescription: '',
-	pluginName: '',
-	themeScreenshotURL: '',
-	themeDescription: '',
-	themeName: '',
-	agencyLicenseLink: '',
-	agencyAuthorURL: '',
-	agencyAuthorName: '',
 }
 );
 

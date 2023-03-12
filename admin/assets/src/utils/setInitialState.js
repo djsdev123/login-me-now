@@ -20,6 +20,8 @@ const setInitialState = (store) => {
 			enableReusableLinks: data.reusable_links,
 			reusableLinksExpiration: data.reusable_links_expiration,
 
+			enableUserSwitching: data.user_switching,
+
 			enablePreloadLocalFonts: data.preload_local_fonts,
 			blocksStatuses: data.pro_addons,
 		};

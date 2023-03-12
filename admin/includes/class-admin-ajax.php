@@ -101,6 +101,8 @@ class Admin_Ajax {
 
 				'reusable_links'            => 'bool',
 				'reusable_links_expiration' => 'integer',
+
+				'user_switching'            => 'bool',
 			)
 		);
 	}

@@ -9563,8 +9563,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _general_LogsExpiration__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./general/LogsExpiration */ "./assets/src/dashboard-app/pages/settings/general/LogsExpiration.js");
 /* harmony import */ var _access_links_OnetimeLinks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./access-links/OnetimeLinks */ "./assets/src/dashboard-app/pages/settings/access-links/OnetimeLinks.js");
 /* harmony import */ var _access_links_OnetimeLinksExpiration__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./access-links/OnetimeLinksExpiration */ "./assets/src/dashboard-app/pages/settings/access-links/OnetimeLinksExpiration.js");
-/* harmony import */ var _access_links_ReusableLinksExpiration__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./access-links/ReusableLinksExpiration */ "./assets/src/dashboard-app/pages/settings/access-links/ReusableLinksExpiration.js");
-/* harmony import */ var _access_links_ReusableLinks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./access-links/ReusableLinks */ "./assets/src/dashboard-app/pages/settings/access-links/ReusableLinks.js");
+/* harmony import */ var _access_links_ReusableLinks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./access-links/ReusableLinks */ "./assets/src/dashboard-app/pages/settings/access-links/ReusableLinks.js");
+/* harmony import */ var _access_links_ReusableLinksExpiration__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./access-links/ReusableLinksExpiration */ "./assets/src/dashboard-app/pages/settings/access-links/ReusableLinksExpiration.js");
+/* harmony import */ var _general_UserSwitching__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./general/UserSwitching */ "./assets/src/dashboard-app/pages/settings/general/UserSwitching.js");
+
 
 
 
@@ -9579,8 +9581,8 @@ function SettingsWrapper(_ref) {
     state
   } = _ref;
   const wrappers = wp.hooks.applyFilters('login_me_now_dashboard.settings_tab_wrappers', {
-    'global-settings': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_general_Logs__WEBPACK_IMPORTED_MODULE_3__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_general_LogsExpiration__WEBPACK_IMPORTED_MODULE_4__["default"], null), " "),
-    'access-links': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_access_links_OnetimeLinks__WEBPACK_IMPORTED_MODULE_5__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_access_links_OnetimeLinksExpiration__WEBPACK_IMPORTED_MODULE_6__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_access_links_ReusableLinks__WEBPACK_IMPORTED_MODULE_8__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_access_links_ReusableLinksExpiration__WEBPACK_IMPORTED_MODULE_7__["default"], null))
+    'global-settings': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_general_Logs__WEBPACK_IMPORTED_MODULE_3__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_general_LogsExpiration__WEBPACK_IMPORTED_MODULE_4__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_general_UserSwitching__WEBPACK_IMPORTED_MODULE_9__["default"], null), " "),
+    'access-links': (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_access_links_OnetimeLinks__WEBPACK_IMPORTED_MODULE_5__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_access_links_OnetimeLinksExpiration__WEBPACK_IMPORTED_MODULE_6__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_access_links_ReusableLinks__WEBPACK_IMPORTED_MODULE_7__["default"], null), " ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_access_links_ReusableLinksExpiration__WEBPACK_IMPORTED_MODULE_8__["default"], null))
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, wrappers[state]);
 }
@@ -10320,6 +10322,91 @@ const LogsExpiration = () => {
 
 /***/ }),
 
+/***/ "./assets/src/dashboard-app/pages/settings/general/UserSwitching.js":
+/*!**************************************************************************!*\
+  !*** ./assets/src/dashboard-app/pages/settings/general/UserSwitching.js ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/switch/switch.js");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
+/* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+
+function classNames() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++) {
+    classes[_key] = arguments[_key];
+  }
+  return classes.filter(Boolean).join(' ');
+}
+const UserSwitching = () => {
+  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
+  const enableUserSwitching = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(state => state.enableUserSwitching);
+  const enableUserSwitchingStatus = false === enableUserSwitching ? false : true;
+  const updateUserSwitchingStatus = () => {
+    let assetStatus;
+    if (enableUserSwitching === false) {
+      assetStatus = true;
+    } else {
+      assetStatus = false;
+    }
+    dispatch({
+      type: 'UPDATE_ENABLE_USER_SWITCHING',
+      payload: assetStatus
+    });
+    const formData = new window.FormData();
+    formData.append('action', 'login_me_now_update_admin_setting');
+    formData.append('security', lmn_admin.update_nonce);
+    formData.append('key', 'user_switching');
+    formData.append('value', assetStatus);
+    _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
+      url: lmn_admin.ajax_url,
+      method: 'POST',
+      body: formData
+    }).then(() => {
+      dispatch({
+        type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION',
+        payload: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Successfully saved!', 'login-me-now')
+      });
+    });
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("section", {
+    className: "block border-solid border-slate-200 px-8 pt-8 justify-between"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mr-16 w-full flex items-center"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "p-0 flex-1 justify-right inline-flex text-xl leading-6 font-semibold text-slate-800"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('User Switching', 'login-me-now')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Switch, {
+    checked: enableUserSwitchingStatus,
+    onChange: updateUserSwitchingStatus,
+    className: classNames(enableUserSwitchingStatus ? 'bg-lmn' : 'bg-slate-200', 'group relative inline-flex h-4 w-9 flex-shrink-0 cursor-pointer items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-lmn focus:ring-offset-2')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    "aria-hidden": "true",
+    className: "pointer-events-none absolute h-full w-full rounded-md bg-white"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    "aria-hidden": "true",
+    className: classNames(enableUserSwitchingStatus ? 'bg-lmn' : 'bg-gray-200', 'pointer-events-none absolute mx-auto h-4 w-9 rounded-full transition-colors duration-200 ease-in-out')
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    "aria-hidden": "true",
+    className: classNames(enableUserSwitchingStatus ? 'translate-x-5' : 'translate-x-0', 'toggle-bubble pointer-events-none absolute left-0 inline-block h-5 w-5 transform rounded-full border border-gray-200 bg-white shadow ring-0 transition-transform duration-200 ease-in-out')
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "mt-2 w-9/12 text-sm text-slate-500 tablet:w-full"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enable this option to use the user switching functionality.', 'login-me-now')));
+};
+/* harmony default export */ __webpack_exports__["default"] = (UserSwitching);
+
+/***/ }),
+
 /***/ "./assets/src/dashboard-app/pages/welcome/ExtensionCard.js":
 /*!*****************************************************************!*\
   !*** ./assets/src/dashboard-app/pages/welcome/ExtensionCard.js ***!
@@ -10919,6 +11006,11 @@ const globalDataReducer = function () {
         ...state,
         reusableLinksExpiration: action.payload
       };
+    case 'UPDATE_ENABLE_USER_SWITCHING':
+      return {
+        ...state,
+        enableUserSwitching: action.payload
+      };
     case 'UPDATE_ENABLE_PRELOAD_LOCAL_FONTS':
       return {
         ...state,
@@ -10963,6 +11055,7 @@ const initialState = wp.hooks.applyFilters('login_me_now_dashboard/datastore', {
   onetimeLinksExpiration: 8,
   enableReusableLinks: true,
   reusableLinksExpiration: 7,
+  enableUserSwitching: true,
   enablePreloadLocalFonts: false,
   enableWhiteLabel: false,
   enableBeta: 'disable',
@@ -10970,15 +11063,7 @@ const initialState = wp.hooks.applyFilters('login_me_now_dashboard/datastore', {
   magicLinkPopup: '',
   blocksStatuses: [],
   enableFileGeneration: 'disable',
-  activeSettingsNavigationTab: '',
-  pluginDescription: '',
-  pluginName: '',
-  themeScreenshotURL: '',
-  themeDescription: '',
-  themeName: '',
-  agencyLicenseLink: '',
-  agencyAuthorURL: '',
-  agencyAuthorName: ''
+  activeSettingsNavigationTab: ''
 });
 const globalDataStore = (0,redux__WEBPACK_IMPORTED_MODULE_1__.createStore)(_globalDataReducer__WEBPACK_IMPORTED_MODULE_0__["default"], initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 /* harmony default export */ __webpack_exports__["default"] = (globalDataStore);
@@ -11012,6 +11097,7 @@ const setInitialState = store => {
       onetimeLinksExpiration: data.onetime_links_expiration,
       enableReusableLinks: data.reusable_links,
       reusableLinksExpiration: data.reusable_links_expiration,
+      enableUserSwitching: data.user_switching,
       enablePreloadLocalFonts: data.preload_local_fonts,
       blocksStatuses: data.pro_addons
     };

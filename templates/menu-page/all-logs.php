@@ -49,7 +49,7 @@ use Login_Me_Now\Logs_Table;
 	$user_info = get_userdata( $log->user_id );
 	printf( '<td>%s</td>', esc_html( $user_info->user_login ) );
 	printf( '<td>%s</td>', esc_html( $log->ip ) );
-	printf( '<td>%s</td>', esc_html( $log->created_at ) );
+	printf( '<td>%s</td>', esc_html(  date( 'M d, Y, h:i A', strtotime( $log->created_at ) ) ) );
 	printf( '<td>%s</td>', esc_html( $log->message ) );
 	echo '</tr>';}?>
 

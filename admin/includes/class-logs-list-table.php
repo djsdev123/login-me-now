@@ -14,14 +14,14 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 /**
  * Logs related methods and actions
  *
- * @since 0.94
+ * @since 0.96
  */
 class Logs_List_Table extends \WP_List_Table{
 
 	public function __construct() {
 		parent::__construct( array(
-			'singular' => 'aiocr',
-			'plural'   => 'aiocrs',
+			'singular' => 'lmnlog',
+			'plural'   => 'lmnlogs',
 			'ajax'     => false,
 		) );
 	}
@@ -29,7 +29,7 @@ class Logs_List_Table extends \WP_List_Table{
 	/**
 	 * Get all logs
 	 *
-	 * @since 0.94
+	 * @since 0.96
 	 *
 	 * @return Array|Object|NULL
 	 */

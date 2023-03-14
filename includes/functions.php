@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.94
- * @version 0.95
+ * @version 0.96
  */
 
 /**

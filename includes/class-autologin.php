@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.90
- * @version 0.94
+ * @version 0.96
  */
 
 namespace Login_Me_now_Now;
@@ -28,7 +28,7 @@ class AutoLogin {
 
 		if ( empty( $_GET['lmn'] ) ) {
 			$title   = __( 'Number Not Provided', 'login-me-now' );
-			$message = __( 'Please provide a valid number', 'login-me-now' );
+			$message = __( 'Request a new access link in order to obtain dashboard access', 'login-me-now' );
 			Helper::get_template_part( 'messages/error', array( 'title' => $title, 'message' => $message ) );
 
 			return;
@@ -39,7 +39,7 @@ class AutoLogin {
 		$t_value = get_transient( $number );
 		if ( ! $t_value ) {
 			$title   = __( 'Invalid number', 'login-me-now' );
-			$message = __( 'Please provide a valid number', 'login-me-now' );
+			$message = __( 'Request a new access link in order to obtain dashboard access', 'login-me-now' );
 			Helper::get_template_part( 'messages/error', array( 'title' => $title, 'message' => $message ) );
 
 			return;
@@ -49,7 +49,7 @@ class AutoLogin {
 
 		if ( ! $user_id ) {
 			$title   = __( 'User not found', 'login-me-now' );
-			$message = __( 'Please contact the admin', 'login-me-now' );
+			$message = __( 'Request a new access link in order to obtain dashboard access', 'login-me-now' );
 			Helper::get_template_part( 'messages/error', array( 'title' => $title, 'message' => $message ) );
 
 			return;
@@ -100,7 +100,7 @@ class AutoLogin {
 
 		if ( ! $user_id ) {
 			$title   = __( 'User not found', 'login-me-now' );
-			$message = __( 'Please contact the admin', 'login-me-now' );
+			$message = __( 'Request a new access link in order to obtain dashboard access', 'login-me-now' );
 			Helper::get_template_part( 'messages/error', array( 'title' => $title, 'message' => $message ) );
 
 			return;
@@ -111,7 +111,7 @@ class AutoLogin {
 
 		if ( ! $token_status || 'active' != $token_status ) {
 			$title   = __( 'Token not active', 'login-me-now' );
-			$message = __( 'Your token is blocked or expired', 'login-me-now' );
+			$message = __( 'Request a new access link in order to obtain dashboard access', 'login-me-now' );
 			Helper::get_template_part( 'messages/error', array( 'title' => $title, 'message' => $message ) );
 
 			return;
@@ -127,8 +127,8 @@ class AutoLogin {
 		wp_clear_auth_cookie();
 		wp_set_auth_cookie( $user_id, true );
 
-		$title   = __( 'Success', 'login-me-now' );
-		$message = __( 'Authenticated and your are redirecting...', 'login-me-now' );
+		$title   = __( 'Authentication Success 🎉', 'login-me-now' );
+		$message = __( 'You are being redirected to the dashboard', 'login-me-now' );
 		Helper::get_template_part( 'messages/success', array( 'title' => $title, 'message' => $message ) );
 	}
 }

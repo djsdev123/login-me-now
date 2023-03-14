@@ -11,7 +11,7 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use Login_Me_Now\Helper;
 use Login_Me_Now\JWT_Auth;
-use Login_Me_Now\Logs_Table;
+use Login_Me_Now\Logs_DB;
 use Login_Me_Now\Tokens_Table;
 
 class AutoLogin {
@@ -57,7 +57,7 @@ class AutoLogin {
 
 		delete_transient( $number );
 
-		( new Logs_Table )->insert( $user_id, "Logged in using onetime link #{$number}" );
+		( new Logs_DB )->insert( $user_id, "Logged in using onetime link #{$number}" );
 		$this->now( $user_id );
 	}
 
@@ -117,7 +117,7 @@ class AutoLogin {
 			return;
 		}
 
-		( new Logs_Table )->insert( $user_id, "Logged in using reusable link #{$token_id}" );
+		( new Logs_DB )->insert( $user_id, "Logged in using reusable link #{$token_id}" );
 
 		$this->now( $user_id );
 	}

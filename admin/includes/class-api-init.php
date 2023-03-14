@@ -4,6 +4,7 @@
  *
  * @package Login Me Now
  * @since 0.95
+ * @version 0.96
  */
 
 namespace Login_Me_Now;

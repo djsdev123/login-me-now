@@ -83,7 +83,7 @@ class CRON_Jobs {
 			return;
 		}
 
-		Logs_Table::delete_logs( $days_old );
+		Logs_DB::delete_logs( $days_old );
 	}
 
 }

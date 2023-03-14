@@ -4,6 +4,7 @@
  *
  * @package Login Me Now
  * @since 0.94
+ * @version 0.96
  */
 
 namespace Login_Me_Now;
@@ -64,8 +65,9 @@ class Login_Me_Now_Admin_Loader {
 	public function includes() {
 		/* Tokens Table */
 		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-tokens-table.php';
-		/* Logs Table */
-		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-logs-table.php';
+		/* Logs */
+		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-logs-db.php';
+		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-logs-list-table.php';
 		/* After Plugin Activation */
 		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-after-activation.php';
 		/* Setup API */

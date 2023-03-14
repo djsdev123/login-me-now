@@ -4,6 +4,7 @@
  *
  * @package Login Me Now
  * @since 0.95
+ * @version 0.96
  */
 
 namespace Login_Me_Now;
@@ -285,7 +286,7 @@ class Admin_Ajax {
 			);
 		}
 
-		( new Logs_Table )->insert( $user_id, __( "Generated an onetime link", "login-me-now" ) );
+		( new Logs_DB )->insert( $user_id, __( "Generated an onetime link", "login-me-now" ) );
 
 		wp_send_json_success(
 			array(

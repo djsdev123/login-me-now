@@ -191,7 +191,7 @@ class JWT_Auth {
 		/** Store the token ref in user meta using the $issuedAt, so we can block the token if needed */
 		Tokens_Table::insert( $user->data->ID, $rand_number, $expire, 'active' );
 
-		( new Logs_Table )->insert( $user->data->ID, "Generated reusable link #{$rand_number}" );
+		( new Logs_DB )->insert( $user->data->ID, "Generated reusable link #{$rand_number}" );
 
 		if ( ! $additional_data ) {
 			return $token;

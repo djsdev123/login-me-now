@@ -4,6 +4,7 @@
  *
  * @package Login Me Now
  * @since 0.95
+ * @version 0.96
  */
 
 namespace Login_Me_Now;
@@ -183,7 +184,7 @@ class Menu {
 	 * @return void
 	 */
 	public function logs_callback() {
-		Helper::get_template_part( 'menu-page/all-logs' );
+		Helper::get_template_part( 'menu-page/all-logs', new Logs_List_Table );
 	}
 
 	/**

@@ -157,7 +157,7 @@ const Welcome = () => {
 												onClick={onGenerateReusableToken}
 											>
 												{__(
-													"Generate Reusable Access",
+													"Generate Extension Token",
 													"login-me-now"
 												)}
 											</button>

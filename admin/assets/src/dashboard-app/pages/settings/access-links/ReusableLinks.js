@@ -45,7 +45,7 @@ const ReusableLinks = () => {
 		<section className='block border-solid border-slate-200 px-8 pt-8 justify-between'>
 			<div className='mr-16 w-full flex items-center'>
 				<h3 className="p-0 flex-1 justify-right inline-flex text-xl leading-6 font-semibold text-slate-800">
-					{__('Reusable Links', 'login-me-now')}
+					{__('Extension Token', 'login-me-now')}
 				</h3>
 				<Switch
 					checked={enableReusableLinksStatus}
@@ -74,7 +74,7 @@ const ReusableLinks = () => {
 				
 			</div>
 			<p className="mt-2 w-9/12 text-sm text-slate-500 tablet:w-full">
-				{__('Enable this option to allow users to use reusable the link.', 'login-me-now')}
+				{__('Enable this option to allow users to create extension token.', 'login-me-now')}
 			</p>
 		</section>
 	);

@@ -15,6 +15,7 @@ use WP_User;
  */
 class Onetime_Number {
 
+	
 	/**
 	 * Get the shareable onetime link
 	 *
@@ -39,7 +40,7 @@ class Onetime_Number {
 	}
 
 	/**
-	 * Generate a JWT
+	 * Generate a Onetime Number
 	 *
 	 * @param WP_User $user
 	 * @param Integer $hour for expiration

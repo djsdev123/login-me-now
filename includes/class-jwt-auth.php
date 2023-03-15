@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.90
- * @version 0.94
+ * @version 0.96
  */
 
 namespace Login_Me_Now;
@@ -135,7 +135,7 @@ class JWT_Auth {
 	 *
 	 * @return mixed|WP_Error|null
 	 */
-	private function new_token( WP_User $user, Int $expiration = 7, $additional_data = true ) {
+	public function new_token( WP_User $user, Int $expiration = 7, $additional_data = true ) {
 		$secret_key = self::get_secret_key();
 
 		/** First thing, check the secret key if not exist return an error*/
@@ -222,11 +222,11 @@ class JWT_Auth {
 	 *
 	 * @param WP_REST_Request $request
 	 * @param bool|string $token
-	 * @param bool $only_token
+	 * @param string $return_type | token, data, user | default data
 	 *
 	 * @return WP_Error | Object | Array
 	 */
-	public function validate_token( WP_REST_Request $request, $only_token = false ) {
+	public function validate_token( WP_REST_Request $request, $return_type = 'data' ) {
 		$req_token = $request->get_param( 'token' );
 
 		/**
@@ -294,11 +294,15 @@ class JWT_Auth {
 			}
 
 			/** Everything looks good return the decoded token if we are using the token */
-			if ( $only_token ) {
+			if ( 'token' === $return_type ) {
 				return $req_token;
 			}
 
 			$user = get_userdata( $token->data->user->id );
+
+			if ( 'user_id' === $return_type ) {
+				return $token->data->user->id;
+			}
 
 			/** The token already signed, now create the object with no sensible user data to the client*/
 			$data = array(

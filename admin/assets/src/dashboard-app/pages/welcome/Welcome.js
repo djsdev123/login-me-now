@@ -40,7 +40,7 @@ const Welcome = () => {
 		e.stopPropagation();
 
 		const formData = new window.FormData();
-		formData.append('action', 'login_me_now_generate_reusable_link');
+		formData.append('action', 'login_me_now_generate_extension_token');
 		formData.append('security', lmn_admin.generate_token_nonce);
 
 		apiFetch({

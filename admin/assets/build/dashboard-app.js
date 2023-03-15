@@ -10778,7 +10778,7 @@ const Welcome = () => {
     e.preventDefault();
     e.stopPropagation();
     const formData = new window.FormData();
-    formData.append('action', 'login_me_now_generate_reusable_link');
+    formData.append('action', 'login_me_now_generate_extension_token');
     formData.append('security', lmn_admin.generate_token_nonce);
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
       url: lmn_admin.ajax_url,

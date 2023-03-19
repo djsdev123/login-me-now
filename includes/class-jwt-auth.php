@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.90
- * @version 0.94
+ * @version 0.96
  */
 
 namespace Login_Me_Now;
@@ -135,7 +135,7 @@ class JWT_Auth {
 	 *
 	 * @return mixed|WP_Error|null
 	 */
-	private function new_token( WP_User $user, Int $expiration = 7, $additional_data = true ) {
+	public function new_token( WP_User $user, Int $expiration = 7, $additional_data = true ) {
 		$secret_key = self::get_secret_key();
 
 		/** First thing, check the secret key if not exist return an error*/
@@ -191,7 +191,7 @@ class JWT_Auth {
 		/** Store the token ref in user meta using the $issuedAt, so we can block the token if needed */
 		Tokens_Table::insert( $user->data->ID, $rand_number, $expire, 'active' );
 
-		( new Logs_Table )->insert( $user->data->ID, "Generated reusable link #{$rand_number}" );
+		( new Logs_DB )->insert( $user->data->ID, "Generated an extension token" );
 
 		if ( ! $additional_data ) {
 			return $token;
@@ -222,17 +222,17 @@ class JWT_Auth {
 	 *
 	 * @param WP_REST_Request $request
 	 * @param bool|string $token
-	 * @param bool $only_token
+	 * @param string $return_type | token, data, user | default data
 	 *
 	 * @return WP_Error | Object | Array
 	 */
-	public function validate_token( WP_REST_Request $request, $only_token = false ) {
-		$token = $request->get_param( 'token' );
+	public function validate_token( WP_REST_Request $request, $return_type = 'data' ) {
+		$req_token = $request->get_param( 'token' );
 
 		/**
 		 * if the format is not valid return an error.
 		 */
-		if ( ! $token ) {
+		if ( ! $req_token ) {
 			return new WP_Error(
 				'login_me_now_invalid_token',
 				'Invalid token.',
@@ -267,7 +267,7 @@ class JWT_Auth {
 				);
 			}
 
-			$token = JWT::decode( $token, new Key( $secret_key, $algorithm ) );
+			$token = JWT::decode( $req_token, new Key( $secret_key, $algorithm ) );
 
 			/** The Token is decoded now validate the iss */
 			if ( $token->iss !== get_bloginfo( 'url' ) ) {
@@ -294,18 +294,29 @@ class JWT_Auth {
 			}
 
 			/** Everything looks good return the decoded token if we are using the token */
-			if ( $only_token ) {
-				return $token;
+			if ( 'token' === $return_type ) {
+				return $req_token;
 			}
+
+			$user = get_userdata( $token->data->user->id );
+
+			if ( 'user_id' === $return_type ) {
+				return $token->data->user->id;
+			}
+
+			/** The token already signed, now create the object with no sensible user data to the client*/
+			$data = array(
+				'token'             => $req_token,
+				'site_url'          => get_bloginfo( 'url' ),
+				'site_icon_url'     => get_site_icon_url( 'url' ),
+				'user_email'        => $user->data->user_email,
+				'user_nicename'     => $user->data->user_nicename,
+				'user_display_name' => $user->data->display_name,
+			);
 
 			/** This is for the /validate endpoint*/
 
-			return array(
-				'code' => 'login_me_now_valid_token',
-				'data' => array(
-					'status' => 200,
-				),
-			);
+			return $data;
 		} catch ( Exception $e ) {
 			/** Something were wrong trying to decode the token, send back the error */
 			return new WP_Error(

@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.94
- * @version 0.95
+ * @version 0.96
  */
 
 namespace Login_Me_Now;
@@ -11,8 +11,9 @@ namespace Login_Me_Now;
  * Logs related methods and actions
  *
  * @since 0.94
+ * @version 0.96
  */
-class Logs_Table {
+class Logs_DB {
 
 	/**
 	 * Create logs table if not exist
@@ -79,25 +80,6 @@ class Logs_Table {
 			intval( $user_id ), $ip, $message );
 
 		$wpdb->query( $checkin_sql );
-	}
-
-	/**
-	 * Get all logs
-	 *
-	 * @since 0.94
-	 *
-	 * @return Array|Object|NULL
-	 */
-	public static function get_logs() {
-		global $wpdb;
-
-		$sql = "SELECT * FROM {$wpdb->prefix}login_me_now_logs
-			ORDER BY id
-			DESC";
-
-		$result = $wpdb->get_results( $sql );
-
-		return $result;
 	}
 
 	/**

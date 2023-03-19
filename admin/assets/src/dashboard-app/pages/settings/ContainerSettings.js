@@ -5,14 +5,15 @@ import Logs from './general/Logs';
 import LogsExpiration from './general/LogsExpiration';
 import OnetimeLinks from './access-links/OnetimeLinks';
 import OnetimeLinksExpiration from './access-links/OnetimeLinksExpiration';
-import ReusableLinksExpiration from './access-links/ReusableLinksExpiration';
 import ReusableLinks from './access-links/ReusableLinks';
+import ReusableLinksExpiration from './access-links/ReusableLinksExpiration';
+import UserSwitching from './general/UserSwitching';
 
 function SettingsWrapper({ state }) {
 	const wrappers = wp.hooks.applyFilters(
 		'login_me_now_dashboard.settings_tab_wrappers',
 		{
-			'global-settings': <> <Logs /> <LogsExpiration /> </>,
+			'global-settings': <> <Logs /> <LogsExpiration /> <UserSwitching /> </>,
 			'access-links': <> <OnetimeLinks/> <OnetimeLinksExpiration/> <ReusableLinks /> <ReusableLinksExpiration /></>,
 		}
 	);

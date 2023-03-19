@@ -1,16 +1,28 @@
 import { Fragment, useEffect } from 'react'
 import { Transition } from '@headlessui/react';
-import { CheckCircleIcon } from '@heroicons/react/outline'
+import { CheckCircleIcon, ClipboardCheckIcon, ClipboardIcon } from '@heroicons/react/outline'
 import { useLocation } from "react-router-dom";
 import { XIcon } from '@heroicons/react/solid'
 import { useSelector, useDispatch } from 'react-redux';
 import { __ } from '@wordpress/i18n';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+
+
 
 export default function MagicLinkPopup() {
 
 	const dispatch = useDispatch();
 
 	const magicLinkPopup = useSelector( ( state ) => state.magicLinkPopup );
+
+	const copyText = magicLinkPopup.link;
+	const [copied, setCopied] = React.useState(false);
+	const onCopy = React.useCallback(() => {
+		setCopied(true);
+		setTimeout(() => {
+			setCopied(false);
+		}, 2000);
+	}, [])
 
 	useEffect( () => {
 		if ( '' !== magicLinkPopup ) {
@@ -44,11 +56,20 @@ export default function MagicLinkPopup() {
 									</div>
 									<div className="ml-3 w-0 flex-1 pt-0.5">
 										<p className="text-sm font-medium text-gray-900">{ magicLinkPopup.message }</p>
-										<p className='pt-3 mb-2'>{ __( 'Here you go:', 'login-me-now')}</p>
-										<code className='text-sm font-medium break-all'>{ magicLinkPopup.link }</code>
-
-										{/* <p className='pt-3'>Magic Number</p>
-										<code className='text-sm font-medium'>{ magicLinkPopup.text }</code> */}
+										<div className='mt-5 relative'>
+											<CopyToClipboard onCopy={onCopy} text={copyText}>
+												<code className='text-sm font-medium break-all'>{ magicLinkPopup.link }</code>										
+											</CopyToClipboard>
+											
+											<div className='absolute top-0 right-[-13%]'>
+												{copied ? 
+													<ClipboardCheckIcon className="h-5 w-5 text-[#50d71e]" aria-hidden="true" /> :
+													<CopyToClipboard onCopy={onCopy} text={copyText}> 
+														<ClipboardIcon className="h-5 w-5" aria-hidden="true" />
+													</CopyToClipboard>
+													}
+											</div>				
+										</div>
 									</div>
 									<div className="ml-4 flex-shrink-0 flex">
 										<button

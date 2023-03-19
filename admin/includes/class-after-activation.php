@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.93
- * @version 0.94
+ * @version 0.96
  */
 
 namespace Login_Me_Now;
@@ -58,7 +58,7 @@ class After_Activation {
 		 *
 		 * @return void
 		 */
-		( new Logs_Table )->create_table();
+		( new Logs_DB )->create_table();
 
 		/**
 		 * Add the secret key if not exist

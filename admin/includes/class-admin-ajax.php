@@ -4,6 +4,7 @@
  *
  * @package Login Me Now
  * @since 0.95
+ * @version 0.96
  */
 
 namespace Login_Me_Now;
@@ -77,7 +78,9 @@ class Admin_Ajax {
 		add_action( 'wp_ajax_login_me_now_recommended_plugin_activate', array( $this, 'required_plugin_activate' ) );
 
 		add_action( 'wp_ajax_login_me_now_generate_onetime_link', array( $this, 'login_me_now_generate_onetime_link' ) );
-		add_action( 'wp_ajax_login_me_now_generate_reusable_link', array( $this, 'login_me_now_generate_reusable_link' ) );
+		add_action( 'wp_ajax_login_me_now_generate_extension_token', array( $this, 'login_me_now_generate_extension_token' ) );
+
+		add_action( 'wp_ajax_update_status_of_token', array( $this, 'update_status_of_token' ) );
 	}
 
 	/**
@@ -101,6 +104,8 @@ class Admin_Ajax {
 
 				'reusable_links'            => 'bool',
 				'reusable_links_expiration' => 'integer',
+
+				'user_switching'            => 'bool',
 			)
 		);
 	}
@@ -283,7 +288,7 @@ class Admin_Ajax {
 			);
 		}
 
-		( new Logs_Table )->insert( $user_id, __( "Generated an onetime link", "login-me-now" ) );
+		( new Logs_DB )->insert( $user_id, __( "Generated an onetime link", "login-me-now" ) );
 
 		wp_send_json_success(
 			array(
@@ -297,11 +302,11 @@ class Admin_Ajax {
 	}
 
 	/**
-	 * Generate Reusable Token
+	 * Generate Extension Token
 	 *
-	 * @since 0.94
+	 * @since 0.96
 	 */
-	public function login_me_now_generate_reusable_link() {
+	public function login_me_now_generate_extension_token() {
 
 		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
 
@@ -327,13 +332,24 @@ class Admin_Ajax {
 		 */
 		$expiration = (Int) lmn_get_option( 'reusable_links_expiration', 7 );
 		$user_id    = get_current_user_id();
-		$reusable   = ( new JWT_Auth() )->get_shareable_link( $user_id, $expiration );
-
-		if ( is_wp_error( $reusable ) ) {
+		$user       = get_userdata( $user_id );
+		if ( ! $user ) {
 			wp_send_json_error(
 				array(
 					'success' => false,
-					'message' => $reusable->get_error_message(),
+					'message' => __( 'Something wen\'t wrong', 'login-me-now' ),
+				)
+			);
+
+			return;
+		}
+		$token = ( new JWT_Auth() )->new_token( $user, $expiration, false );
+
+		if ( is_wp_error( $token ) ) {
+			wp_send_json_error(
+				array(
+					'success' => false,
+					'message' => $token->get_error_message(),
 				)
 			);
 		}
@@ -341,10 +357,28 @@ class Admin_Ajax {
 		wp_send_json_success(
 			array(
 				'success' => true,
-				'message' => __( 'Reusable Link Successfully Generated', 'login-me-now' ),
-				'link'    => $reusable,
+				'message' => __( 'Extension Token Successfully Generated', 'login-me-now' ),
+				'link'    => $token,
 			)
 		);
+	}
+
+	/**
+	 * Update Particular Extension Token Status
+	 *
+	 * @since 0.96
+	 */
+	public function update_status_of_token() {
+		$status = ! empty( $_POST['status'] ) ? sanitize_text_field( $_POST['status'] ) : false;
+		$id     = ! empty( $_POST['id'] ) ? sanitize_text_field( $_POST['id'] ) : 0;
+
+		if ( ! $status && ! $id ) {
+			wp_send_json( __( "Something wen't wrong!" ) );
+			wp_die();
+		}
+
+		Tokens_Table::update( $id, $status );
+		wp_die();
 	}
 }
 

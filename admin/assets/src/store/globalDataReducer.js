@@ -57,6 +57,12 @@ const globalDataReducer = (state = {}, action) => {
 				reusableLinksExpiration: action.payload,
 			};
 
+		case 'UPDATE_ENABLE_USER_SWITCHING':
+				return {
+					...state,
+					enableUserSwitching: action.payload,
+				};
+
 		case 'UPDATE_ENABLE_PRELOAD_LOCAL_FONTS':
 			return {
 				...state,

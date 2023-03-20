@@ -4,7 +4,7 @@ Tags: one click login, password less login, direct dashboard, direct access
 Requires at least: 5.6
 Tested up to: 6.1.1
 Requires PHP: 7.1
-Stable tag: 0.95
+Stable tag: 0.96
 License: GPLv3 or Any Later Version
 
 Login Me Now - A simple and user-friendly plugin to Login Directly to Dashboard from Chrome Extension
@@ -71,6 +71,15 @@ No. That would be horrible not only for you but even more so for us (huge liabil
 Yes, you will know the activities in the dashboard of the recipient by checking the activity log option of this plugin. This means you can keep track of what the recipient is doing while they have temporary access to your website. 
 
 == Changelog ==
+
+= 0.96(Beta) – Mar 18, 2023 =
+* Added: User Switching 
+* Added: Extension Token
+* Improved: Token Validation
+* Improved: Logs Table
+* Improved: Success Message
+* Improved: Security 
+* Removed: Reusable Link Feature
 
 = 0.95(Beta) – Mar 4, 2023 =
 * Fix: Default Settings 

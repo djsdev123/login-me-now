@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.90
- * @version 0.96
+ * @version 0.97
  */
 
 namespace Login_Me_now_Now;
@@ -52,7 +52,12 @@ class AutoLogin {
 
 		delete_transient( $number );
 
-		( new Logs_DB )->insert( $user_id, "Logged in using onetime link" );
+		$message = __( "Logged in using onetime link", 'login-me-now' );
+		if ( ! empty( $_GET['extension'] ) ) {
+			$message = __( "Logged in using Chrome Extension", 'login-me-now' );
+		}
+		( new Logs_DB )->insert( $user_id, $message );
+
 		$this->now( $user_id );
 	}
 

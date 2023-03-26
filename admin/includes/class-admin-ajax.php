@@ -310,9 +310,9 @@ class Admin_Ajax {
 
 		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
 
-		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( $response_data );
-		}
+		// if ( ! current_user_can( 'manage_options' ) ) {
+		// 	wp_send_json_error( $response_data );
+		// }
 
 		if ( empty( $_POST ) ) {
 			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
@@ -343,7 +343,13 @@ class Admin_Ajax {
 
 			return;
 		}
-		$token = ( new JWT_Auth() )->new_token( $user, $expiration, false );
+		
+		$additional_data = false;
+		if ( ! empty( $_POST['additional_data'] ) ) {
+			$additional_data = true;
+		}
+
+		$token = ( new JWT_Auth() )->new_token( $user, $expiration, $additional_data );
 
 		if ( is_wp_error( $token ) ) {
 			wp_send_json_error(

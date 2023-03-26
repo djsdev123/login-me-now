@@ -4,7 +4,7 @@
  *
  * @package Login Me Now
  * @since 0.95
- * @version 0.96
+ * @version 0.97
  */
 
 namespace Login_Me_Now;
@@ -89,16 +89,6 @@ class API_Init extends WP_REST_Controller {
 
 		// REST API extensions init.
 		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
-	}
-
-	/**
-	 * Login Me Now's REST knowledge base data.
-	 *
-	 * @since 0.94
-	 * @return mixed
-	 */
-	public static function login_me_now_get_knowledge_base_data() {
-		return json_decode( wp_remote_retrieve_body( wp_remote_get( 'https://halalbrains.com/wp-json/powerful-docs/v1/get-docs' ) ) );
 	}
 
 	/**

@@ -26,7 +26,7 @@ Overall, Login Me Now is the ultimate solution for anyone looking to enhance the
 == Browser Extension ==
 You don't need to remember all your usernames & passwords for different websites' dashboards. You can store all your login credentials securely in one place. [Use Login Me Now chrome extension](https://chrome.google.com/webstore/detail/login-me-now/kkkofomlfhbepmpiplggmfpomdnkljoh)
 
-🔥 Faster login process
+🚀 Faster login process
 
 You can log in to your WP website's dashboard more quickly. This can save you time, especially if you frequently access multiple websites' dashboards throughout the day. 
 

@@ -54,6 +54,8 @@ class Login_Me_Now_Admin_Loader {
 		define( 'LOGIN_ME_NOW_ADMIN_DIR', LOGIN_ME_NOW_BASE_DIR . 'admin/' );
 		define( 'LOGIN_ME_NOW_ADMIN_URL', LOGIN_ME_NOW_BASE_URL . 'admin/' );
 
+		add_action( 'admin_footer', array( $this, 'lmn_save_popup' ) );
+
 		$this->includes();
 	}
 
@@ -78,6 +80,10 @@ class Login_Me_Now_Admin_Loader {
 		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-menu.php';
 		/* CRON Jobs */
 		require_once LOGIN_ME_NOW_ADMIN_DIR . 'includes/class-cron-jobs.php';
+	}
+
+	public function lmn_save_popup() {
+		include_once LOGIN_ME_NOW_ADMIN_DIR . 'views/extension-popup.php';
 	}
 }
 

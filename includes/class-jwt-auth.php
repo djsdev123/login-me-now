@@ -293,6 +293,12 @@ class JWT_Auth {
 				);
 			}
 
+			$token_id     = ! empty( $token->data->tid ) ? $token->data->tid : false;
+			$token_status = Tokens_Table::get_token_status( $token_id );
+			if ( ! $token_status || 'active' != $token_status ) {
+				return $token_status;
+			}
+
 			/** Everything looks good return the decoded token if we are using the token */
 			if ( 'token' === $return_type ) {
 				return $req_token;
@@ -301,7 +307,7 @@ class JWT_Auth {
 			$user = get_userdata( $token->data->user->id );
 
 			if ( 'user_id' === $return_type ) {
-				return $token->data->user->id;
+				return (Int) $token->data->user->id;
 			}
 
 			/** The token already signed, now create the object with no sensible user data to the client*/

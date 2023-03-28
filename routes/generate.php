@@ -58,15 +58,15 @@ class API_Generate extends Rest_Base {
 	 * @since 0.96
 	 */
 	public function generate_onetime_number( WP_REST_Request $request ) {
-		$JWT     = new JWT_Auth;
-		$user_id = $JWT->validate_token( $request, 'user_id' );
+		$JWT    = new JWT_Auth;
+		$result = $JWT->validate_token( $request, 'user_id' );
 
-		if ( $user_id ) {
-			$link = ( new Onetime_Number )->get_shareable_link( $user_id, 8 );
+		if ( is_numeric( $result ) ) {
+			$link = ( new Onetime_Number )->get_shareable_link( $result, 8 );
 			wp_send_json_success( $link );
 		}
 
-		wp_send_json_error();
+		wp_send_json_error( array( 'status' => $result ) );
 	}
 }
 

@@ -56,17 +56,16 @@ class Helper {
 		return $tokens;
 	}
 
-	public static function update_meta_data() {
-
-	}
-
 	public static function generate_status_options( $active, $id ) {
 		$status = array(
 			'active'  => __( 'Active', 'login-me-now' ),
-			'blocked' => __( 'Blocked', 'login-me-now' ),
+			'blocked' => __( 'Block', 'login-me-now' ),
 			'pause'   => __( 'Pause', 'login-me-now' ),
-			'expired' => __( 'Expired', 'login-me-now' ),
 		);
+
+		if ( 'expired' === $active ) {
+			return __( '<span style="color:red;">Expired</span>', 'login-me-now' );
+		}
 
 		$html = '<select onchange="updateStatus(event)" data-id="' . $id . '">';
 		foreach ( $status as $key => $value ) {

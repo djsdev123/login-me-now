@@ -12,7 +12,7 @@ const initialState = wp.hooks.applyFilters('login_me_now_dashboard/datastore', {
 	onetimeLinksExpiration: 8,
 
 	enableReusableLinks: true,
-	reusableLinksExpiration: 7,
+	reusableLinksExpiration: 365,
 
 	enableUserSwitching: true,
 

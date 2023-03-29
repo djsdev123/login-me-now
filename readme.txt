@@ -1,10 +1,10 @@
 === Login Me Now - 1 click login without password ===
 Contributors: HeyMehedi, HalalBrains, HiMrFaruk
-Tags: one click login, password less login, direct dashboard, direct access
+Tags: login, password, direct dashboard, wp-login, direct access
 Requires at least: 5.6
 Tested up to: 6.1.1
 Requires PHP: 7.1
-Stable tag: 0.96
+Stable tag: 0.97
 License: GPLv3 or Any Later Version
 
 Login Me Now - A simple and user-friendly plugin to Login Directly to Dashboard from Chrome Extension

@@ -73,12 +73,13 @@ echo $html;
 		background: #1A3B66;
 		text-transform: uppercase;
 		border-radius: 5px;
+		color: #fff;
 	}
 
 	#lmnExt button:hover {
 		background: #062247;
 	}
-	#lmn-save {
+	#lmnExt #lmn-save {
 		color: #26FF75;
 		display: flex;
 		align-items: center;

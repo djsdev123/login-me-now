@@ -2,11 +2,13 @@
 /**
  * @author  HeyMehedi
  * @since   0.93
- * @version 0.93
+ * @version 0.97
  */
 
 use Login_Me_Now\Helper;
 use Login_Me_Now\Tokens_Table;
+
+$current_time = time();
 ?>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -67,6 +69,11 @@ use Login_Me_Now\Tokens_Table;
 	printf( '<td>%s</td>', $user_info->user_login );
 	printf( '<td>%s</td>', ! empty( $token->created_at ) ? ( date( 'M d, Y, h:i A', $token->created_at ) ) : __( 'Not set', 'login-me-now' ) );
 	printf( '<td>%s</td>', date( 'M d, Y, h:i A', $token->expire ) );
+	// echo $token->expire . '<br>';
+
+	if( $token->expire < $current_time ) {
+		$token->status = 'expired';
+	}
 	printf( '<td>%s</td>', Helper::generate_status_options( $token->status, $token->id ) );
 	echo '</tr>';}?>
 

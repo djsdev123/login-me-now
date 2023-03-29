@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   0.90
- * @version 0.93
+ * @version 0.97
  */
 
 namespace Login_Me_Now;

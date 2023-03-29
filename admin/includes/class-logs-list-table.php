@@ -2,7 +2,7 @@
 /**
  * @author  Login Me Now
  * @since   0.96
- * @version 0.96
+ * @version 0.97
  */
 
 namespace Login_Me_Now;

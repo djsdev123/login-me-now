@@ -1,6 +1,6 @@
 === Login Me Now - 1 click login without password ===
 Contributors: HeyMehedi, HalalBrains, HiMrFaruk
-Tags: login, password, direct dashboard, wp-login, direct access
+Tags: login, password, password-less, wp-login, secure login
 Requires at least: 5.6
 Tested up to: 6.1.1
 Requires PHP: 7.1
@@ -71,6 +71,14 @@ No. That would be horrible not only for you but even more so for us (huge liabil
 Yes, you will know the activities in the dashboard of the recipient by checking the activity log option of this plugin. This means you can keep track of what the recipient is doing while they have temporary access to your website. 
 
 == Changelog ==
+
+= 0.97(Beta) – Mar 30, 2023 =
+* Added: Save Dashboard Access Popup
+* Fixed: Token Status Validation Issue
+* Fixed: Token Generate Issue for No-Admin User
+* Improved: Logs List Table
+* Improved: Tokens List Table
+* Update: Default Token Expiration
 
 = 0.96(Beta) – Mar 18, 2023 =
 * Added: User Switching 

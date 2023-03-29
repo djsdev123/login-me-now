@@ -7,7 +7,7 @@ Author: HalalBrains
 Author URI: https://halalbrains.com/
 Text Domain: login-me-now
 Domain Path: /languages
-Version: 0.96
+Version: 0.97
  */
 
 defined( 'ABSPATH' ) || die( 'No direct script access allowed!' );
@@ -16,7 +16,7 @@ if ( defined( 'LOGIN_ME_NOW_VERSION' ) ) {
 	return;
 }
 
-define( 'LOGIN_ME_NOW_VERSION', '0.96' );
+define( 'LOGIN_ME_NOW_VERSION', '0.97' );
 define( 'LOGIN_ME_NOW_PRO_UPGRADE_URL', 'https://halalbrains.com/login-me-now/' );
 
 define( 'LOGIN_ME_NOW_BASE_DIR', plugin_dir_path( __FILE__ ) );

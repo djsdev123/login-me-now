@@ -176,11 +176,11 @@ class Menu {
 	 * @return void
 	 */
 	public function tokens_callback() {
-		Helper::get_template_part( 'menu-page/token-status' );
+		Helper::get_template_part( 'menu-page/token-status', new Tokens_List_Table );
 	}
 
 	/**
-	 * Render Tokens
+	 * Render Logs
 	 * @return void
 	 */
 	public function logs_callback() {

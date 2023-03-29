@@ -1,14 +1,10 @@
+
 <?php
 /**
  * @author  HeyMehedi
  * @since   0.93
  * @version 0.97
  */
-
-use Login_Me_Now\Helper;
-use Login_Me_Now\Tokens_Table;
-
-$current_time = time();
 ?>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -49,35 +45,19 @@ $current_time = time();
 	}
 </style>
 
-<h2><?php esc_html_e( 'All Tokens', 'login-me-now' );?></h2>
+<div class="wrap">
 
-<!-- <input type="text" id="myInput" onkeyup="searchTokens()" placeholder="Search for usernames.." title="Type in a name"> -->
+	<h2><?php esc_html_e( 'Login Me Now Tokens', 'login-me-now' );?> </h2>
 
-<table id="tokensTable">
-  <tr class="header">
-    <th style="width:10%;"><?php esc_html_e( 'Token ID', 'login-me-now' );?></th>
-    <th style="width:25%;"><?php esc_html_e( 'Username', 'login-me-now' );?></th>
-    <th style="width:15%;"><?php esc_html_e( 'Issued At', 'login-me-now' );?></th>
-    <th style="width:15%;"><?php esc_html_e( 'Expire', 'login-me-now' );?></th>
-    <th style="width:15%;"><?php esc_html_e( 'Status', 'login-me-now' );?></th>
-  </tr>
+	<form method="post">
+		<?php
+		$args->prepare_items();
+		$args->display(); 
+		?>
 
-  <?php foreach ( Tokens_Table::get_tokens() as $token ) {
-	echo '<tr>';
-	$user_info = get_userdata( $token->user_id );
-	printf( '<td>%s</td>', $token->token_id );
-	printf( '<td>%s</td>', $user_info->user_login );
-	printf( '<td>%s</td>', ! empty( $token->created_at ) ? ( date( 'M d, Y, h:i A', $token->created_at ) ) : __( 'Not set', 'login-me-now' ) );
-	printf( '<td>%s</td>', date( 'M d, Y, h:i A', $token->expire ) );
-	// echo $token->expire . '<br>';
+	</form>
 
-	if( $token->expire < $current_time ) {
-		$token->status = 'expired';
-	}
-	printf( '<td>%s</td>', Helper::generate_status_options( $token->status, $token->id ) );
-	echo '</tr>';}?>
-
-</table>
+</div>
 
 <script>
 	// Show the alert when the page loads

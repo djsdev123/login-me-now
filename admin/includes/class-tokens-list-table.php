@@ -1,8 +1,8 @@
 <?php
 /**
  * @author  Login Me Now
- * @since   0.96
- * @version 0.96
+ * @since   0.97
+ * @version 0.97
  */
 
 namespace Login_Me_Now;
@@ -12,38 +12,41 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 }
 
 /**
- * Logs related methods and actions
+ * Tokens related methods and actions
  *
- * @since 0.96
+ * @since 0.97
  */
-class Logs_List_Table extends \WP_List_Table{
+class Tokens_List_Table extends \WP_List_Table{
+
+	public $current_time;
 
 	public function __construct() {
+		$this->current_time = time();
 		parent::__construct( array(
-			'singular' => 'lmnlog',
-			'plural'   => 'lmnlogs',
+			'singular' => 'lmntoken',
+			'plural'   => 'lmntokens',
 			'ajax'     => false,
 		) );
 	}
 
 	/**
-	 * Get all logs
+	 * Get all tokens
 	 *
-	 * @since 0.96
+	 * @since 0.97
 	 *
 	 * @return Array|Object|NULL
 	 */
-	public static function get_logs( $per_page, $current_page ) {
+	public static function get_tokens( $per_page, $current_page ) {
 		global $wpdb;
 
 		// Calculate the offset based on the current page and number of results per page
 		$offset = ( $current_page - 1 ) * $per_page;
 
-		$sql = "SELECT * FROM {$wpdb->prefix}login_me_now_logs
+		$sql = "SELECT * FROM {$wpdb->prefix}login_me_now_tokens
 			ORDER BY id DESC
 			LIMIT %d, %d";
 
-		$count        = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}login_me_now_logs" );
+		$count        = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}login_me_now_tokens" );
 		$prepared_sql = $wpdb->prepare( $sql, $offset, $per_page );
 		$result       = $wpdb->get_results( $prepared_sql );
 
@@ -76,17 +79,25 @@ class Logs_List_Table extends \WP_List_Table{
 	 */
 	public function column_default( $item, $column_name ) {
 		switch ( $column_name ) {
+			case 'token_id':
+				return $item->token_id;
 			case 'user_login':
-				$user_id   = isset( $item->user_id ) ? $item->user_id : 0;
-				$user_info = get_userdata( $user_id );
+				$user_info = get_userdata( $item->user_id );
 
 				return $user_info->user_email;
-			case 'message':
-				return $item->message;
-			case 'created_at':
-				return ! empty( $item->created_at ) ? ( date( 'M d, Y, h:i A', strtotime( $item->created_at ) ) ) : __( 'Not set', 'login-me-now' );
-			case 'ip_address':
-				return $item->ip;
+			case 'issued_at':
+				return ! empty( $item->created_at ) ? ( date( 'M d, Y, h:i A', $item->created_at ) ) : __( 'Not set', 'login-me-now' );
+			case 'expire':
+				return date( 'M d, Y, h:i A', $item->expire );
+			case 'status':
+				if ( $item->expire < $this->current_time ) {
+					$item->status = 'expired';
+				}
+
+				Helper::generate_status_options( $item->status, $item->id );
+
+				return Helper::generate_status_options( $item->status, $item->id );
+
 			default:
 				return isset( $item->$column_name ) ? $item->$column_name : '';
 		}
@@ -99,30 +110,14 @@ class Logs_List_Table extends \WP_List_Table{
 	 */
 	public function get_columns() {
 		$columns = array(
+			'token_id'   => __( 'Token ID', 'login-me-now' ),
 			'user_login' => __( 'User Email', 'login-me-now' ),
-			'message'    => __( 'Message', 'login-me-now' ),
-			'created_at' => __( 'Time', 'login-me-now' ),
-			'ip_address' => __( 'IP Address', 'login-me-now' ),
+			'issued_at'  => __( 'Issued At', 'login-me-now' ),
+			'expire'     => __( 'Expire', 'login-me-now' ),
+			'status'     => __( 'Status', 'login-me-now' ),
 		);
 
 		return $columns;
-	}
-
-	/**
-	 * Render the title column
-	 *
-	 * @param  object  $item
-	 *
-	 * @return string
-	 */
-	public function column_title( $item ) {
-		$user_id    = isset( $item->user_id ) ? $item->user_id : 0;
-		$user_info  = get_userdata( $user_id );
-		$ip_address = isset( $item->ip ) ? $item->ip : 0;
-		$time       = isset( $item->created_at ) ? $item->created_at : 0;
-		$message    = isset( $item->message ) ? $item->message : 0;
-
-		return sprintf( "<a href='#'>%s</a> %s <i>at</i> <b>%s</b> <i>from</i> %s", esc_html( $user_info->display_name ), esc_html( strtolower( $message ) ), date( 'M d, Y, h:i A', strtotime( $time ) ), esc_html( $ip_address ) );
 	}
 
 	/**
@@ -139,9 +134,9 @@ class Logs_List_Table extends \WP_List_Table{
 		$per_page     = 50;
 		$current_page = $this->get_pagenum();
 
-		$logs        = $this->get_logs( $per_page, $current_page );
-		$this->items = $logs['result'];
-		$count       = $logs['count'];
+		$tokens      = $this->get_tokens( $per_page, $current_page );
+		$this->items = $tokens['result'];
+		$count       = $tokens['count'];
 
 		$this->set_pagination_args( array(
 			'total_items' => $count,

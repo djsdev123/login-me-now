@@ -74,6 +74,7 @@ echo $html;
 		text-transform: uppercase;
 		border-radius: 5px;
 		color: #fff;
+		transition: .3s;
 	}
 
 	#lmnExt button:hover {

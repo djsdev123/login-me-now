@@ -72,7 +72,7 @@ Yes, you will know the activities in the dashboard of the recipient by checking 
 
 == Changelog ==
 
-= 0.97(Beta) – Mar 30, 2023 =
+= 0.97(Beta) – Apr 01, 2023 =
 * Added: Save Dashboard Access Popup
 * Fixed: Token Status Validation Issue
 * Fixed: Token Generate Issue for No-Admin User

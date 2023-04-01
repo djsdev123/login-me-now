@@ -2,7 +2,7 @@
 Contributors: HeyMehedi, HalalBrains, HiMrFaruk
 Tags: login, password, password-less, wp-login, secure login
 Requires at least: 5.6
-Tested up to: 6.1.1
+Tested up to: 6.2
 Requires PHP: 7.1
 Stable tag: 0.97
 License: GPLv3 or Any Later Version

@@ -56,7 +56,7 @@ class Onetime_Number {
 		$number = $this->rand_number();
 
 		/** Store the generated token in transient*/
-		$saved = set_transient( $number, $user->data->ID, $expire );
+		$saved = set_transient( strval($number), $user->data->ID, $expire );
 		if ( ! $saved ) {
 			return new WP_Error(
 				__( "Something wen't wrong, please try again.", 'login-me-now' ),
